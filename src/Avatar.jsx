@@ -1,9 +1,17 @@
 import { useEffect, useState } from "react";
 import { supabase } from "./supabaseClient";
+// * To fix, is missing in props validationeslint error, add the following import statement:
+import PropTypes from "prop-types";
 
 export default function Avatar({ url, size, onUpload }) {
   const [avatarUrl, setAvatarUrl] = useState(null);
   const [uploading, setUploading] = useState(false);
+  // * To fix, is missing in props validationeslint error, add the following prop-types validation:
+  Avatar.propTypes = {
+    url: PropTypes.string.isRequired,
+    size: PropTypes.number.isRequired,
+    onUpload: PropTypes.func.isRequired,
+  };
 
   useEffect(() => {
     if (url) downloadImage(url);

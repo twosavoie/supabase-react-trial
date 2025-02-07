@@ -1,12 +1,19 @@
 import { useState, useEffect } from "react";
 import { supabase } from "./supabaseClient";
 import Avatar from "./Avatar";
+// * To fix, is missing in props validationeslint error, add the following import statement:
+import PropTypes from "prop-types";
 
 export default function Account({ session }) {
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState(null);
   const [website, setWebsite] = useState(null);
   const [avatar_url, setAvatarUrl] = useState(null);
+
+  // * To fix, is missing in props validationeslint error, add the following prop-types validation:
+  Account.propTypes = {
+    session: PropTypes.object.isRequired,
+  };
 
   useEffect(() => {
     let ignore = false;

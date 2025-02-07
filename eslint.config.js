@@ -33,6 +33,9 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+      // Turn off prop types to avoid eslint errors for now
+      // TODO: fix this (done!)
+      // "react/prop-types": "off",
     },
   },
 ]
