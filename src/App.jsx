@@ -22,6 +22,7 @@ function App() {
       {!session ? (
         <Auth />
       ) : (
+        // * Use this video to make this a dialog: https://www.youtube.com/watch?v=YwHJMlvZRCc
         <Account key={session.user.id} session={session} />
       )}
     </div>
