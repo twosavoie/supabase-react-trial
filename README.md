@@ -6,3 +6,10 @@ Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+Built using the Supabase Web App Demo [Build a User Management App with React](https://supabase.com/docs/guides/getting-started/tutorials/with-react)
+
+To run:
+`npm run dev`
+
+[Click to read my blog post about my experience building the app.](https://lscodes.com/react-supabase/?preview_id=49085&preview_nonce=a1b0ea21ef&preview=true&_thumbnail_id=49087)
