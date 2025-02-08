@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { supabase } from "./supabaseClient";
-import Avatar from "./Avatar";
-// * To fix, is missing in props validationeslint error, add the following import statement:
+import { supabase } from "../supabaseClient";
+import Avatar from "../Avatar";
 import PropTypes from "prop-types";
 
 export default function Account({ session }) {
@@ -10,7 +9,6 @@ export default function Account({ session }) {
   const [website, setWebsite] = useState(null);
   const [avatar_url, setAvatarUrl] = useState(null);
 
-  // * To fix, is missing in props validationeslint error, add the following prop-types validation:
   Account.propTypes = {
     session: PropTypes.object.isRequired,
   };
@@ -72,57 +70,61 @@ export default function Account({ session }) {
   }
 
   return (
-    <form onSubmit={updateProfile} className="form-widget">
-      <div>
-        <label htmlFor="email">Email</label>
-        <input id="email" type="text" value={session.user.email} disabled />
-      </div>
-      <div>
-        <label htmlFor="username">Name</label>
-        <input
-          id="username"
-          type="text"
-          required
-          value={username || ""}
-          onChange={(e) => setUsername(e.target.value)}
+    <>
+      <h1>Account</h1>
+      <form onSubmit={updateProfile} className="form-widget">
+        <div>
+          <label htmlFor="email">Email</label>
+          <input id="email" type="text" value={session.user.email} disabled />
+        </div>
+        <div>
+          <label htmlFor="username">Name</label>
+          <input
+            id="username"
+            type="text"
+            required
+            value={username || ""}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="website">Website</label>
+          <input
+            id="website"
+            type="url"
+            value={website || ""}
+            onChange={(e) => setWebsite(e.target.value)}
+          />
+        </div>
+        <Avatar
+          url={avatar_url}
+          size={150}
+          onUpload={(event, url) => {
+            updateProfile(event, url);
+          }}
         />
-      </div>
-      <div>
-        <label htmlFor="website">Website</label>
-        <input
-          id="website"
-          type="url"
-          value={website || ""}
-          onChange={(e) => setWebsite(e.target.value)}
-        />
-      </div>
-      <Avatar
-        url={avatar_url}
-        size={150}
-        onUpload={(event, url) => {
-          updateProfile(event, url);
-        }}
-      />
 
-      <div>
-        <button
-          className="button block primary"
-          type="submit"
-          disabled={loading}
-        >
-          {loading ? "Loading ..." : "Update"}
-        </button>
-      </div>
+        <div>
+          {/* TODO: Add message that account has been updated */}
+          <button
+            className="button block primary"
+            type="submit"
+            disabled={loading}
+          >
+            {loading ? "Loading ..." : "Update"}
+          </button>
+        </div>
 
-      <div>
-        <button
-          className="button block"
-          type="button"
-          onClick={() => supabase.auth.signOut()}
-        >
-          Sign Out
-        </button>
-      </div>
-    </form>
+        <div>
+          <button
+            className="button block"
+            type="button"
+            onClick={() => supabase.auth.signOut()}
+          >
+            Sign Out
+          </button>
+        </div>
+      </form>
+    </>
   );
 }

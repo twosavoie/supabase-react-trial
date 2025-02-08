@@ -2,7 +2,7 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import { supabase } from "./supabaseClient";
 import Auth from "./Auth";
-import Account from "./Account";
+import Header from "./components/Header";
 
 function App() {
   const [session, setSession] = useState(null);
@@ -22,11 +22,13 @@ function App() {
       {!session ? (
         <Auth />
       ) : (
-        // * Use this video to make this a dialog: https://www.youtube.com/watch?v=YwHJMlvZRCc
-        <Account key={session.user.id} session={session} />
+        <>
+          <Header key={session.user.id} session={session} />
+        </>
       )}
     </div>
   );
 }
+// * Use this video to make Account a dialog: https://www.youtube.com/watch?v=YwHJMlvZRCc
 
 export default App;
