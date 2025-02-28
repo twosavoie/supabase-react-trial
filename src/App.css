@@ -1,10 +1,26 @@
-/* #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@media (min-width: 510px) {
+  .auth-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+    width: 75%;
+  }
+
+  /* .block {
+    width: 50%;
+  } */
 }
 
+/* @media (min-width: 1200px) {
+  .auth-container {
+    width: 50%;
+  }
+} */
+
+
+
+/*
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -41,6 +57,237 @@
   color: #888;
 } */
 
+
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: sans-serif;
+  background-color: #0d0d0d;
+  background-color: #231d4b;
+  background-color: #1c173d;
+  color: #fff;
+  color: #f2e4e6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+}
+
+button {
+  cursor: pointer;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.text_large {
+  font-size: 32px;
+}
+
+.text_small {
+  font-size: 24px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  justify-content: center;
+  flex-flow: row wrap;
+  gap: 20px;
+  padding: 42px, 0;
+  width: 100%;
+}
+
+header h1 {
+  width: 100%;
+  text-align: center;
+}
+
+header p {
+  width: 100%;
+  text-align: center;
+}
+
+.todohero_section {
+  border: 1px solid #c2b39a;
+  border: 1px solid #ffc0cb;
+  border: 1px solid #f493a4;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  align-self: center;
+  /* width: 90%; */
+  /* max-width: 455px; */
+  padding: 12px;
+  border-radius: 11px;
+}
+
+.todohero_section div:last-child {
+  background-color: #88ab33;
+  background-color: #d7556c;
+  background-color: #ffc0cb;
+  background-color: #f2e4e6;
+  background-color: #f6d4d8;
+  width: 150px;
+  /* height: 150px; */
+  border-radius: 75px;
+  border: 5px solid #ffc0cb;
+  border: 2px solid #d7556c;
+  font-size: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #231d4b;
+}
+
+.form {
+  align-self: center;
+  width: 97%;
+  /* max-width: 455px; */
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  margin-top: 38px;
+}
+
+.form label {
+  /* width: 90%; */
+}
+
+.form input {
+  background-color: #1f2937;
+  background-color: #0c0828;
+  color: #fff;
+  width: 100%;
+  height: 50px;
+  outline: none;
+  border: none;
+  border-radius: 11px;
+  padding: 12px;
+  margin-top: 10px;
+}
+
+.form button {
+  width: 10%;
+  height: 50px;
+  border-radius: 11px;
+  background-color: #88ab33;
+  background-color: #ffc0cb;
+  background-color: #d7556c;
+  border: none;
+  /* border: 1px solid #d7556c;
+  border: 1px solid #ffc0cb; */
+}
+
+.todo_list {
+  width: 97%;
+  /* max-width: 455px; */
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  flex-flow: row wrap;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  /* margin: 0 auto; */
+  margin-top: 27px;
+  margin-bottom: 27px;
+  gap: 27px;
+}
+
+.todo_item,
+.edit-form input {
+  display: flex;
+  justify-content: space-between;
+  justify-content: center;
+  flex-flow: row wrap;
+  align-items: center;
+  /* height: 70px; */
+  width: 100%;
+  /* max-width: 455px; */
+  border: 1px solid #c2b39a;
+  border: 1px solid #ffc0cb;
+  border: 1px solid #f493a4;
+  border-radius: 11px;
+  font-size: 16px;
+  background-color: #0d0d0d;
+  background-color: #050312;
+  background-color: #0c0828;
+  color: #fff;
+  padding: 12px;
+}
+
+.edit-form input {
+  outline: transparent;
+  width: calc(100% - 14px);
+  height: calc(100% - 12px);
+  border: transparent;
+}
+
+.todo_items_left,
+.todo_items_right {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-around; */
+}
+
+.todo_items_left {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  gap: 12px;
+  font-size: 16px;
+  width: 100%;
+}
+
+.todo_items_left p {
+  text-align: left;
+}
+
+.todo_items_right {
+  gap: 4px;
+  justify-content: space-between;
+  width: 100%;
+  padding: .5rem 0 .5rem 1rem;
+}
+
+.todo_items_right button {
+  background-color: transparent;
+  color: #fff;
+  border: none;
+}
+
+.todo_items_right button svg {
+  fill: #c2b39a;
+  fill: #ffc0cb;
+  fill: #f2e4e6;
+}
+
 dialog {
   /* position: fixed;
   top: 0;
@@ -49,15 +296,129 @@ dialog {
   height: 100%; */
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
-  width: 50%;
+  width: 100%;
   /* display: flex;
   justify-content: center;
-  align-items: center;
-  z-index: 9999; */
+  align-items: center; */
+  /* z-index: 9999; */
+  /* align-self: center; */
+  margin: auto;
+}
+
+.account-form-widget {
+  width: 90%;
+}
+
+@media (min-width: 510px) {
+  dialog {
+    width: 75%;
+  }
+}
+
+@media (min-width: 1200px) {
+  dialog {
+    width: 50%;
+  }
 }
 
 dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
   /* ? Maybe */
   background-color: black;
+}
+
+svg {
+  fill: white;
+}
+
+.todo-input {
+  width: 100%;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  /* flex-direction: column; */
+  gap: 12px;
+  /* width: 100%; */
+}
+
+@media (min-width: 510px) {
+  .wrapper {
+    width: 100%;
+  }
+
+  header {
+    justify-content: center;
+  }
+
+  .todo-input {
+    width: 75%;
+  }
+
+  .todo_list {
+    width: 75%;
+  }
+
+  .todo_item {
+    justify-content: space-between;
+  }
+
+  .todo_items_left {
+    width: 50%;
+  }
+
+  .todo_items_right {
+    justify-content: flex-end;
+    width: 45%;
+  }
+
+  header {
+    flex-flow: nowrap;
+    width: 75%;
+  }
+
+  header h1 {
+    text-align: left;
+    width: initial;
+  }
+
+  header p {
+    text-align: left;
+    /* width: initial; */
+  }
+}
+
+@media (min-width: 1200px) {
+  header {
+    flex-flow: nowrap;
+    width: 50%;
+  }
+
+  header h1 {
+    text-align: left;
+    width: initial;
+  }
+
+  header p {
+    text-align: left;
+    /* width: initial; */
+  }
+
+  .todo-input {
+    width: 50%;
+  }
+
+  .todo_list {
+    width: 50%;
+  }
+
+  .todo_items_left {
+    width: 65%;
+  }
+
+  .todo_items_right {
+    width: 35%;
+  }
 }

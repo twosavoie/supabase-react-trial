@@ -20,14 +20,14 @@ export default function Auth() {
   };
 
   return (
-    <div className="row flex flex-center">
+    <div className="row flex flex-center auth-container">
       <div className="col-6 form-widget">
-        <h1 className="header">Supabase + React</h1>
+        <h1 className="header">TiGu</h1>
         <p className="description">
           Sign in via magic link with your email below
         </p>
         <form className="form-widget" onSubmit={handleLogin}>
-          <div>
+          <div className="sign-in-input">
             <input
               className="inputField"
               type="email"
@@ -37,7 +37,7 @@ export default function Auth() {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div>
+          <div className="sign-in-button">
             <button className={"button block"} disabled={loading}>
               {loading ? <span>Loading</span> : <span>Send magic link</span>}
             </button>
