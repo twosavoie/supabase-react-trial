@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import "../App.css";
+// import "../App.css";
 import PropTypes from "prop-types";
 import Counter from "./Counter";
 
@@ -97,6 +97,7 @@ function TodoItem({ item, todos, setTodos }) {
             >
               <circle cx="11.998" cy="11.998" fillRule="nonzero" r="9.998" />
             </svg>
+            {/* TODO: Make flex-grow 1 */}
             <p
               style={
                 item.is_completed ? { textDecoration: "line-through" } : {}
@@ -105,7 +106,11 @@ function TodoItem({ item, todos, setTodos }) {
               {item?.title}
             </p>
           </button>
+          {/* TODO: Add a ternary to check if count equals what was specified and if so confetti */}
+          {/* TODO: Check spacing because of padding use space-between... instead */}
           <div className="todo_items_right">
+            {/* TODO: Add a goal number */}
+            {/* ? Maybe keep icon, todo, and goal on one line and the rest on the next line like on mobile */}
             <Counter />
             <div>
               <button onClick={handleEdit}>

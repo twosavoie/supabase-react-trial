@@ -1,80 +1,5 @@
-/* Default Vite styling */
-/* :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-
-button:hover {
-  border-color: #646cff;
-}
-
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-
-  a:hover {
-    color: #747bff;
-  }
-
-  button {
-    background-color: #f9f9f9;
-  }
-} */
-
 /* Default Supabase styling */
-html,
+/* html,
 body {
   --custom-font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
     Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
@@ -92,33 +17,33 @@ body {
   margin: 0;
   font-family: var(--custom-font-family);
   background-color: var(--custom-bg-color);
-}
+} */
 
-* {
+/* * {
   color: var(--custom-color);
   font-family: var(--custom-font-family);
   box-sizing: border-box;
-}
+} */
 
-html,
+/* html,
 body,
-#__next {
-  /* height: 100vh; */
-  width: 100vw;
+#__next { */
+/* height: 100vh; */
+/* width: 100vw;
   overflow-x: hidden;
-}
+} */
 
 /* Grid */
 
-.container {
-  /* width: 90%; */
-  margin-left: auto;
+/* .container { */
+/* width: 90%; */
+/* margin-left: auto;
   margin-right: auto;
   display: flex;
   flex-flow: row wrap;
   gap: 40px;
   justify-content: center;
-}
+} */
 
 .row {
   position: relative;
@@ -204,104 +129,32 @@ body,
   display: none;
 }
 
-@media only screen and (min-width: 33.75em) {
-
-  /* 540px */
-  /* .container {
-    width: 80%;
-  } */
-}
-
-@media only screen and (min-width: 45em) {
-
-  /* 720px */
-  /* .col-1 {
-    width: 4.33%;
-  }
-
-  .col-2 {
-    width: 12.66%;
-  }
-
-  .col-3 {
-    width: 21%;
-  }
-
-  .col-4 {
-    width: 29.33%;
-  }
-
-  .col-5 {
-    width: 37.66%;
-  }
-
-  .col-6 {
-    width: 46%;
-  }
-
-  .col-7 {
-    width: 54.33%;
-  }
-
-  .col-8 {
-    width: 62.66%;
-  }
-
-  .col-9 {
-    width: 71%;
-  }
-
-  .col-10 {
-    width: 79.33%;
-  }
-
-  .col-11 {
-    width: 87.66%;
-  }
-
-  .col-12 {
-    width: 96%;
-  }
-
-  .hidden-sm {
-    display: block;
-  } */
-}
-
-@media only screen and (min-width: 60em) {
-
-  /* 960px */
-  /* .container {
-    width: 75%;
-    max-width: 60rem;
-  } */
-}
-
 /* Forms */
 
-label {
-  display: block;
-  /* margin: 5px 0; */
-  color: var(--custom-color-secondary);
+/* ? make flex grow/shrink/basis instead of width? */
+/* label {
+  display: block; */
+/* margin: 5px 0; */
+/* color: var(--custom-color-secondary);
   font-size: 0.8rem;
   text-transform: uppercase;
-  width: 75%;
-  /* margin: 10px 0; */
-}
+  width: 75%; */
+/* margin: 10px 0; */
+/* } */
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   label {
     width: 87%;
   }
-}
+} */
 
-@media (min-width: 1200px) {
+/* @media (min-width: 1200px) {
   label {
     width: 90%;
   }
-}
+} */
 
-input {
+/* input {
   width: 100%;
   border-radius: 5px;
   border: var(--custom-border);
@@ -314,7 +167,7 @@ input {
 
 input[disabled] {
   color: var(--custom-color-secondary);
-}
+} */
 
 /* Utils */
 
@@ -375,7 +228,7 @@ input[disabled] {
 
 /* Button */
 
-button,
+/* button,
 .button {
   color: var(--custom-color);
   border: var(--custom-border);
@@ -394,13 +247,13 @@ button.primary,
 .button.primary {
   background-color: var(--custom-color-brand);
   border: 1px solid var(--custom-color-brand);
-}
+} */
 
 /* Widgets */
 
-.card {
-  /* width: 100%; */
-  display: block;
+/* .card { */
+/* width: 100%; */
+/* display: block;
   border: var(--custom-border);
   border-radius: var(--custom-border-radius);
   padding: var(--custom-spacing);
@@ -410,9 +263,9 @@ button.primary,
   border-radius: var(--custom-border-radius);
   overflow: hidden;
   max-width: 100%;
-}
+} */
 
-.avatar.image {
+/* .avatar.image {
   object-fit: cover;
 }
 
@@ -420,7 +273,7 @@ button.primary,
   background-color: #333;
   border: 1px solid rgb(200, 200, 200);
   border-radius: 5px;
-}
+} */
 
 .footer {
   position: absolute;
@@ -476,7 +329,7 @@ button.primary,
   }
 }
 
-.mainHeader {
+/* .mainHeader {
   width: 100%;
   font-size: 1.3rem;
   margin-bottom: 20px;
@@ -494,9 +347,9 @@ button.primary,
 }
 
 .form-widget {
-  display: flex;
-  /* flex-direction: column; */
-  flex-flow: row wrap;
+  display: flex; */
+/* flex-direction: column; */
+/* flex-flow: row wrap;
   align-items: center;
   gap: 20px;
 }
@@ -515,6 +368,24 @@ button.primary,
   width: 100%;
 }
 
+.account-form-widget-elements {
+  width: 100%;
+}
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.dialog-content {
+  width: 100%;
+  padding: 20px; */
+/* text-align: center; */
+/* }
+
 .sign-in-input {
   width: 90%;
 }
@@ -526,16 +397,16 @@ button.primary,
 
 .sign-in-button button {
   padding: .75rem 1rem;
-}
+} */
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
 
   .sign-in-button {
     width: 35%;
   }
-}
+} */
 
-@media (min-width: 1200px) {
+/* @media (min-width: 1200px) {
   .sign-in-input {
     width: 60%;
   }
@@ -543,13 +414,9 @@ button.primary,
   .sign-in-button {
     width: 35%;
   }
-}
-
-/* .sign-in-button {
-  width: 25%;
 } */
 
-.form-widget>.button {
+/* .form-widget>.button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -577,4 +444,4 @@ button.primary,
   position: absolute;
   white-space: nowrap;
   width: 1px;
-}
+} */

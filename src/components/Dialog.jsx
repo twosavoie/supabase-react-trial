@@ -17,7 +17,7 @@ const Dialog = forwardRef(({ children, toggleDialog }, ref) => {
         }
       }}
     >
-      <div>
+      <div className="dialog-content">
         {children}
         <button onClick={toggleDialog}>Close</button>
       </div>

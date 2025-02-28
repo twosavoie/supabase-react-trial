@@ -1,5 +1,5 @@
 // import { useState } from "react";
-import "../App.css";
+// import "../App.css";
 // import Counter from "./Counter";
 import PropTypes from "prop-types";
 
@@ -40,6 +40,14 @@ function TodoInput({ todos, setTodos }) {
             placeholder="Add a new todo"
             // onChange={(event) => setTodos(event.target.value)}
           />
+        </label>
+        {/* TODO: Add an input for number */}
+        {/* TODO: Add a what the count was specified here */}
+        {/* TODO; Make the todo input field flex-grow 1 and the others to fill in */}
+        {/* TODO: Pass to the TodoItem */}
+        <label htmlFor="count">
+          # of Times goal
+          <input type="number" />
         </label>
         {/* <Counter /> */}
         <button>

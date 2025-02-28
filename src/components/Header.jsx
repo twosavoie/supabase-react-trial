@@ -24,14 +24,18 @@ export default function Header({ session }) {
 
   return (
     <header className="header">
-      <h1>TiGu</h1>
-      <p>Time for GrownUps</p>
+      {/* TODO: Maybe stack h1 and p */}
+      <div className="header-logo">
+        <h1>TiGu</h1>
+        <p>Timer for GrownUps</p>
+      </div>
       <div
         style={{
           display: "flex",
           gap: "1rem",
         }}
       >
+        {/* TODO: Maybe replace "account" with user's image */}
         <button
           onClick={() => {
             setDialogContent(

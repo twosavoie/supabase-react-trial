@@ -70,14 +70,14 @@ export default function Account({ session }) {
   }
 
   return (
-    <>
+    <div className="account-form-widget">
       <h1>Account</h1>
       <form onSubmit={updateProfile} className="form-widget">
-        <div>
+        <div className="account-form-widget-elements">
           <label htmlFor="email">Email</label>
           <input id="email" type="text" value={session.user.email} disabled />
         </div>
-        <div>
+        <div className="account-form-widget-elements">
           <label htmlFor="username">Name</label>
           <input
             id="username"
@@ -87,7 +87,7 @@ export default function Account({ session }) {
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-        <div>
+        <div className="account-form-widget-elements">
           <label htmlFor="website">Website</label>
           <input
             id="website"
@@ -104,7 +104,7 @@ export default function Account({ session }) {
           }}
         />
 
-        <div>
+        <div className="account-form-widget-elements">
           {/* TODO: Add message that account has been updated */}
           <button
             className="button block primary"
@@ -115,7 +115,7 @@ export default function Account({ session }) {
           </button>
         </div>
 
-        <div>
+        <div className="account-form-widget-elements">
           <button
             className="button block"
             type="button"
@@ -125,6 +125,6 @@ export default function Account({ session }) {
           </button>
         </div>
       </form>
-    </>
+    </div>
   );
 }
