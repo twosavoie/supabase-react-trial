@@ -418,6 +418,10 @@ button.primary,
   gap: 20px;
 }
 
+.about-container p {
+  text-align: left;
+}
+
 .dialog-content {
   width: 100%;
   padding: 20px;
