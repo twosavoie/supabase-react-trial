@@ -82,6 +82,7 @@ function TodoItem({ item, todos, setTodos }) {
         </form>
       ) : (
         <>
+          {/* TODO: Change to input checkbox and change fill to a darker pink... maybe use has or https://stackoverflow.com/questions/4148499/how-to-style-a-checkbox-using-css */}
           <button className="todo_items_left" onClick={completeTodo}>
             <svg
               clipRule="evenodd"

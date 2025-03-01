@@ -47,14 +47,6 @@ body {
   width: 100vw;
 }
 
-html,
-body,
-#__next {
-  /* height: 100vh; */
-  width: 100vw;
-  overflow-x: hidden;
-}
-
 /* Grid */
 
 .container {
@@ -70,20 +62,6 @@ body,
 button {
   cursor: pointer;
 }
-
-/* .text_large {
-  font-size: 32px;
-}
-
-.text_small {
-  font-size: 24px;
-}
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  width: 70%;
-} */
 
 header {
   display: flex;
@@ -111,49 +89,24 @@ header p {
   text-align: center;
 }
 
-.todohero_section {
-  border: 1px solid #c2b39a;
-  border: 1px solid #ffc0cb;
-  border: 1px solid #f493a4;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  align-self: center;
-  /* width: 90%; */
-  /* max-width: 455px; */
-  padding: 12px;
-  border-radius: 11px;
-}
-
-.todohero_section div:last-child {
-  background-color: #88ab33;
-  background-color: #d7556c;
-  background-color: #ffc0cb;
-  background-color: #f2e4e6;
-  background-color: #f6d4d8;
-  width: 150px;
-  /* height: 150px; */
-  border-radius: 75px;
-  border: 5px solid #ffc0cb;
-  border: 2px solid #d7556c;
-  font-size: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #231d4b;
-}
-
 /* Form */
 /* ? make flex grow/shrink/basis instead of width? */
-label {
+.todo-input .todo-input-label {
   display: block;
   /* margin: 5px 0; */
   color: var(--custom-color-secondary);
   font-size: 0.8rem;
   text-transform: uppercase;
-  width: 75%;
+  /* width: 75%; */
+  flex-grow: 1;
   /* margin: 10px 0; */
+}
+
+.todo-input .count-input-label {
+  /* width: 20%; */
+  width: 75%;
+  flex-grow: 1;
+  /* width: 100%; */
 }
 
 input {
@@ -267,6 +220,7 @@ input[disabled] {
   gap: 12px;
   font-size: 16px;
   width: 100%;
+  flex-grow: 1;
 }
 
 .todo_items_left p {
@@ -335,7 +289,7 @@ dialog {
 }
 
 .dialog-content button {
-  margin: 20px 0;
+  margin: 20px 0 0 0;
 }
 
 dialog::backdrop {
@@ -345,11 +299,12 @@ dialog::backdrop {
 }
 
 svg {
-  fill: white;
+  /* fill: white; */
+  fill: #f2e4e6;
 }
 
 .todo-input {
-  width: 100%;
+  width: 90%;
 }
 
 form {
@@ -579,8 +534,15 @@ button.primary,
   }
 
   /* Forms */
-  label {
-    width: 87%;
+  .todo-input label {
+    /* width: 87%; */
+  }
+
+  .todo-input .count-input-label {
+    width: 20%;
+    /* width: 76%; */
+    flex-grow: 0;
+    /* width: 100%; */
   }
 
   .todo-input {
@@ -601,7 +563,17 @@ button.primary,
 
   .todo_items_right {
     justify-content: flex-end;
-    width: 45%;
+    width: 50%;
+  }
+
+  .account-form-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .account-form-widget button {
+    width: 48%;
+    gap: 10px;
   }
 }
 
@@ -636,8 +608,8 @@ button.primary,
     /* width: initial; */
   }
 
-  label {
-    width: 90%;
+  .todo-input label {
+    /* width: 90%;  */
   }
 
   .todo-input {
@@ -650,6 +622,7 @@ button.primary,
 
   .todo_items_left {
     width: 65%;
+    /* flex-grow: 1; */
   }
 
   .todo_items_right {

@@ -30,7 +30,7 @@ function TodoInput({ todos, setTodos }) {
   return (
     <div className="todo-input">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="todo">
+        <label htmlFor="todo" className="todo-input-label">
           Add a new todo
           <input
             type="text"
@@ -45,7 +45,7 @@ function TodoInput({ todos, setTodos }) {
         {/* TODO: Add a what the count was specified here */}
         {/* TODO; Make the todo input field flex-grow 1 and the others to fill in */}
         {/* TODO: Pass to the TodoItem */}
-        <label htmlFor="count">
+        <label htmlFor="count" className="count-input-label">
           # of Times goal
           <input type="number" />
         </label>
