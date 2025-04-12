@@ -13,11 +13,11 @@ TodoInput.propTypes = {
   fetchTodos: PropTypes.func.isRequired,
 };
 
-function TodoInput(props) {
+function TodoInput({ fetchTodos }) {
   const [todo_name, setTodo_name] = useState("");
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await addTodo(todo_name, setTodo_name, props.fetchTodos);
+    await addTodo(todo_name, setTodo_name, fetchTodos);
   };
   async function addTodo(todo_name, setTodo_name, fetchTodos) {
     if (!todo_name.trim()) return;
