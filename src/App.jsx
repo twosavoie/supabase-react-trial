@@ -9,7 +9,6 @@ import TodoList from "./components/TodoList.jsx";
 function App() {
   const [session, setSession] = useState(null);
   const [todos, setTodos] = useState([]);
-
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
@@ -20,13 +19,14 @@ function App() {
     });
   }, []);
 
-  // Retrieve data from localStorage when component mounts
-  useEffect(() => {
-    const storedTodos = localStorage.getItem("todos");
-    if (storedTodos) {
-      setTodos(JSON.parse(storedTodos));
-    }
-  }, []);
+  async function fetchTodos() {
+    const { data, error } = await supabase
+      .from("todos")
+      .select("*")
+      .order("created_at", { ascending: true });
+    if (error) console.error("Error fetching todos:", error);
+    else setTodos(data);
+  }
 
   return (
     <div className="container" style={{ padding: "50px 0 100px 0" }}>
@@ -36,16 +36,18 @@ function App() {
         <>
           <Header key={session.user.id} session={session} />
           <TodoInput
-            key={session.user.id}
-            session={session}
+            // key={session.user.id}
+            // session={session}
             todos={todos}
             setTodos={setTodos}
+            fetchTodos={fetchTodos}
           />
           <TodoList
-            key={session.user.id}
-            session={session}
+            // key={session.user.id}
+            // session={session}
             todos={todos}
             setTodos={setTodos}
+            fetchTodos={fetchTodos}
           />
         </>
       )}

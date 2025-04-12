@@ -53,7 +53,8 @@ function TodoItem({ item, todos, setTodos }) {
   const handleInputChange = (e) => {
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
-        todo.id === item.id ? { ...todo, title: e.target.value } : todo
+        // todo.id === item.id ? { ...todo, title: e.target.value } : todo
+        todo.id === item.id ? { ...todo, todo_name: e.target.value } : todo
       )
     );
   };
@@ -74,7 +75,8 @@ function TodoItem({ item, todos, setTodos }) {
               ref={inputRef}
               type="text"
               name="edit-todo"
-              defaultValue={item?.title}
+              // defaultValue={item?.title}
+              defaultValue={item?.todo_name}
               onBlur={handleInputBlur}
               onChange={handleInputChange}
             />
@@ -104,7 +106,8 @@ function TodoItem({ item, todos, setTodos }) {
                 item.is_completed ? { textDecoration: "line-through" } : {}
               }
             >
-              {item?.title}
+              {/* {item?.title} */}
+              {item?.todo_name}
             </p>
           </button>
           {/* TODO: Add a ternary to check if count equals what was specified and if so confetti */}

@@ -1,44 +1,45 @@
-// import { useState } from "react";
+import { useState } from "react";
 // import "../App.css";
 // import Counter from "./Counter";
+import { supabase } from "../supabaseClient";
 import PropTypes from "prop-types";
 
 TodoInput.propTypes = {
   session: PropTypes.object,
   todos: PropTypes.array,
   setTodos: PropTypes.func.isRequired,
+  todo_name: PropTypes.string,
+  setTodo_name: PropTypes.func.isRequired,
+  fetchTodos: PropTypes.func.isRequired,
 };
-// import TodoItem from "./TodoItem";
 
-function TodoInput({ todos, setTodos }) {
-  const handleSubmit = (event) => {
+function TodoInput(props) {
+  const [todo_name, setTodo_name] = useState("");
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const value = event.target.todo.value;
-    const newTodo = {
-      title: value,
-      id: self.crypto.randomUUID(),
-      is_completed: false,
-    };
-    // Update todo state
-    setTodos((prevTodos) => [...prevTodos, newTodo]);
-    const updatedTodoList = JSON.stringify([...todos, newTodo]);
-    localStorage.setItem("todos", updatedTodoList);
-    //reset the form
-    event.target.reset();
+    await addTodo(todo_name, setTodo_name, props.fetchTodos);
   };
-
+  async function addTodo(todo_name, setTodo_name, fetchTodos) {
+    if (!todo_name.trim()) return;
+    const { error } = await supabase.from("todos").insert([{ todo_name }]);
+    if (error) console.error("Error inserting todo:", error);
+    else {
+      setTodo_name("");
+      fetchTodos();
+    }
+  }
   return (
     <div className="todo-input">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="todo" className="todo-input-label">
+        <label htmlFor="todo_name" className="todo-input-label">
           Add a new todo
           <input
             type="text"
-            // value={todo}
-            name="todo"
-            id="todo"
+            value={todo_name}
+            name="todo_name"
+            id="todo_name"
             placeholder="Add a new todo"
-            // onChange={(event) => setTodos(event.target.value)}
+            onChange={(event) => setTodo_name(event.target.value)}
           />
         </label>
         {/* TODO: Add an input for number */}
