@@ -55,5 +55,5 @@ function App() {
   );
 }
 // * Use this video to make Account a dialog: https://www.youtube.com/watch?v=YwHJMlvZRCc
-
+// * https://www.youtube.com/watch?app=desktop&v=yYIdFhkE3RU use Supabase rather than localStorage 24:42 for completed. Start at 29:06 next time
 export default App;

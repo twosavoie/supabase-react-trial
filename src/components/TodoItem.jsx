@@ -2,35 +2,50 @@ import { useEffect, useRef, useState } from "react";
 // import "../App.css";
 import PropTypes from "prop-types";
 import Counter from "./Counter";
+import { supabase } from "../supabaseClient";
 
 TodoItem.propTypes = {
   session: PropTypes.object,
   todos: PropTypes.array,
   setTodos: PropTypes.func.isRequired,
   item: PropTypes.object.isRequired, // Add this line
+  // fetchTodos: PropTypes.func.isRequired,
 };
 
 function TodoItem({ item, todos, setTodos }) {
   const [editing, setEditing] = useState(false);
   const inputRef = useRef(null);
-  const completeTodo = () => {
+
+  async function completeTodo(id) {
+    const updatedStatus = !item.completed;
+
+    const { error } = await supabase
+      .from("todos")
+      .update({ completed: updatedStatus })
+      .eq("id", id);
+
+    if (error) {
+      console.error("Error updating todo:", error);
+      return;
+    }
+
+    // Update local state for instant UI feedback
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
-        todo.id === item.id
-          ? { ...todo, is_completed: !todo.is_completed }
-          : todo
+        todo.id === id ? { ...todo, completed: updatedStatus } : todo
       )
     );
-    const updatedTodos = JSON.stringify(todos);
-    localStorage.setItem("todos", updatedTodos);
-  };
+  }
+
   const handleEdit = () => {
     setEditing(true);
   };
+
   useEffect(() => {
     if (editing && inputRef.current) {
       inputRef.current.focus();
       // position the cursor at the end of the text
+      // ? Why twice?
       inputRef.current.setSelectionRange(
         inputRef.current.value.length,
         inputRef.current.value.length
@@ -85,8 +100,12 @@ function TodoItem({ item, todos, setTodos }) {
       ) : (
         <>
           {/* TODO: Change to input checkbox and change fill to a darker pink... maybe use has or https://stackoverflow.com/questions/4148499/how-to-style-a-checkbox-using-css */}
-          <button className="todo_items_left" onClick={completeTodo}>
-            <svg
+          <button
+            className="todo_items_left"
+            onClick={() => completeTodo(item.id)}
+          >
+            {/* ? Had trouble with the svg changing color so I commented it out.  */}
+            {/* <svg
               clipRule="evenodd"
               fillRule="evenodd"
               strokeLinejoin="round"
@@ -96,16 +115,12 @@ function TodoItem({ item, todos, setTodos }) {
               width={34}
               height={34}
               stroke="#ffc0cb"
-              fill={item.is_completed ? "#d7556c" : "#0d0d0d"}
+              fill={item.completed ? "#d7556c" : "#0d0d0d"}
             >
               <circle cx="11.998" cy="11.998" fillRule="nonzero" r="9.998" />
-            </svg>
+            </svg> */}
             {/* TODO: Make flex-grow 1 */}
-            <p
-              style={
-                item.is_completed ? { textDecoration: "line-through" } : {}
-              }
-            >
+            <p style={item.completed ? { textDecoration: "line-through" } : {}}>
               {/* {item?.title} */}
               {item?.todo_name}
             </p>
