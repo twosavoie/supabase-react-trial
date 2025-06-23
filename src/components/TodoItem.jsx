@@ -9,13 +9,13 @@ TodoItem.propTypes = {
   todos: PropTypes.array,
   setTodos: PropTypes.func.isRequired,
   item: PropTypes.object.isRequired, // Add this line
-  // fetchTodos: PropTypes.func.isRequired,
 };
 
-function TodoItem({ item, todos, setTodos }) {
+function TodoItem({ item, setTodos }) {
   const [editing, setEditing] = useState(false);
   const inputRef = useRef(null);
 
+  // from ChatGPT
   async function completeTodo(id) {
     const updatedStatus = !item.completed;
 
@@ -52,35 +52,53 @@ function TodoItem({ item, todos, setTodos }) {
       );
     }
   }, [editing]);
-  const handleInputSubmit = (event) => {
+  const handleInputSubmit = async (event) => {
     event.preventDefault();
-    // Update localStorage after editing todo
-    const updatedTodos = JSON.stringify(todos);
-    localStorage.setItem("todos", updatedTodos);
-    setEditing(false);
+    // Update Supabase after editing todo
+    await saveEditedTodo();
   };
-  const handleInputBlur = () => {
-    // Update localStorage after editing todo
-    const updatedTodos = JSON.stringify(todos);
-    localStorage.setItem("todos", updatedTodos);
-    setEditing(false);
+  const handleInputBlur = async () => {
+    // Update Supabase after editing todo
+    await saveEditedTodo();
   };
+
+  async function saveEditedTodo() {
+    const newName = item.todo_name;
+
+    const { error } = await supabase
+      .from("todos")
+      .update({ todo_name: newName })
+      .eq("id", item.id);
+
+    if (error) {
+      console.error("Error updating todo name:", error);
+      return;
+    }
+
+    setEditing(false);
+  }
   const handleInputChange = (e) => {
+    const newName = e.target.value;
+
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
-        // todo.id === item.id ? { ...todo, title: e.target.value } : todo
-        todo.id === item.id ? { ...todo, todo_name: e.target.value } : todo
+        todo.id === item.id ? { ...todo, todo_name: newName } : todo
       )
     );
   };
-  const handleDelete = () => {
+
+  const handleDelete = async () => {
+    const { error } = await supabase.from("todos").delete().eq("id", item.id);
+
+    if (error) {
+      console.error("Error deleting todo:", error);
+      return;
+    }
+
+    // Remove it locally for fast UI feedback
     setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== item.id));
-    // Update localStorage after deleting todo
-    const updatedTodos = JSON.stringify(
-      todos.filter((todo) => todo.id !== item.id)
-    );
-    localStorage.setItem("todos", updatedTodos);
   };
+
   return (
     <li id={item?.id} className="todo_item">
       {editing ? (
@@ -103,22 +121,8 @@ function TodoItem({ item, todos, setTodos }) {
           <button
             className="todo_items_left"
             onClick={() => completeTodo(item.id)}
+            // onClick={completeTodo}
           >
-            {/* ? Had trouble with the svg changing color so I commented it out.  */}
-            {/* <svg
-              clipRule="evenodd"
-              fillRule="evenodd"
-              strokeLinejoin="round"
-              strokeMiterlimit="2"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              width={34}
-              height={34}
-              stroke="#ffc0cb"
-              fill={item.completed ? "#d7556c" : "#0d0d0d"}
-            >
-              <circle cx="11.998" cy="11.998" fillRule="nonzero" r="9.998" />
-            </svg> */}
             {/* TODO: Make flex-grow 1 */}
             <p style={item.completed ? { textDecoration: "line-through" } : {}}>
               {/* {item?.title} */}
@@ -130,7 +134,11 @@ function TodoItem({ item, todos, setTodos }) {
           <div className="todo_items_right">
             {/* TODO: Add a goal number */}
             {/* ? Maybe keep icon, todo, and goal on one line and the rest on the next line like on mobile */}
-            <Counter />
+            <Counter
+              todoId={item.id}
+              initialCount={item.count}
+              setTodos={setTodos}
+            />
             <div>
               <button onClick={handleEdit}>
                 <span className="visually-hidden">Edit</span>

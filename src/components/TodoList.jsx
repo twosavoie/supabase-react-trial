@@ -23,6 +23,7 @@ function TodoList({ todos, setTodos, fetchTodos }) {
           item={item}
           todos={item.todo_name}
           setTodos={setTodos}
+          fetchTodos={fetchTodos}
         />
       ))}
     </ol>

@@ -47,7 +47,7 @@ function TodoInput({ fetchTodos }) {
         {/* TODO; Make the todo input field flex-grow 1 and the others to fill in */}
         {/* TODO: Pass to the TodoItem */}
         <label htmlFor="count" className="count-input-label">
-          # of Times goal
+          # of Times to goal
           <input type="number" />
         </label>
         {/* <Counter /> */}
