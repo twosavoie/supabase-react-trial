@@ -11,7 +11,12 @@ TodoItem.propTypes = {
   item: PropTypes.object.isRequired, // Add this line
 };
 
+// ? Would the check if goals >= count go here or in Counter.jsx? How would I trigger confetti from here? Should it all go in Counter.jsx?
 function TodoItem({ item, setTodos }) {
+  // ? Does item include goal?
+  // console.log("TodoItem item:", item);
+  // console.log("TodoItem item.goal:", item.goal);
+  // console.log("TodoItem item.todo_name:", item.todo_name);
   const [editing, setEditing] = useState(false);
   const inputRef = useRef(null);
 

@@ -11,6 +11,9 @@ TodoList.propTypes = {
 };
 
 function TodoList({ todos, setTodos, fetchTodos }) {
+  // ? Does this work? Is goal within todos?
+  console.log("TodoList todos:", todos);
+  // ? Add fetchTodos to the dependency array to ensure the latest version is used?
   useEffect(() => {
     fetchTodos();
   }, []);
@@ -22,6 +25,8 @@ function TodoList({ todos, setTodos, fetchTodos }) {
           key={item.id}
           item={item}
           todos={item.todo_name}
+          // ? Pass item.goal? Is it needed? Is it already in item?
+          // goal={item.goal}
           setTodos={setTodos}
           fetchTodos={fetchTodos}
         />

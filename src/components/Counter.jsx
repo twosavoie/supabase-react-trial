@@ -37,12 +37,38 @@ function Counter({ todoId, initialCount, setTodos }) {
     );
   };
 
-  // TODO: Separate the message from the onClick handler. Add increment and decrement count buttons.
+  const decrementCount = async () => {
+    const newCount = count - 1;
+    setCount(newCount);
+
+    // ✅ Update Supabase
+    const { error } = await supabase
+      .from("todos")
+      .update({ count: newCount })
+      .eq("id", todoId);
+
+    if (error) {
+      console.error("Error updating count:", error);
+      return;
+    }
+
+    // ✅ Update local state
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id === todoId ? { ...todo, count: newCount } : todo
+      )
+    );
+  };
+
   return (
-    <div className="card">
-      {/* <p>Count is {count}</p> */}
-      <button onClick={incrementCount}>count is {count}</button>
-    </div>
+    <>
+      {/* <p>Count:</p> */}
+      <div className="card">
+        <p>{count}</p>
+        <button onClick={incrementCount}>+</button>
+        <button onClick={decrementCount}>-</button>
+      </div>
+    </>
   );
 }
 

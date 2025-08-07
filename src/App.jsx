@@ -20,9 +20,11 @@ function App() {
   }, []);
 
   async function fetchTodos() {
+    if (!session) return;
     const { data, error } = await supabase
       .from("todos")
       .select("*")
+      .eq("user_id", session.user.id)
       .order("created_at", { ascending: true });
     if (error) console.error("Error fetching todos:", error);
     else setTodos(data);
@@ -37,7 +39,7 @@ function App() {
           <Header key={session.user.id} session={session} />
           <TodoInput
             // key={session.user.id}
-            // session={session}
+            session={session}
             todos={todos}
             setTodos={setTodos}
             fetchTodos={fetchTodos}

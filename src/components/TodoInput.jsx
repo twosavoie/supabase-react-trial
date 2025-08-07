@@ -13,18 +13,36 @@ TodoInput.propTypes = {
   fetchTodos: PropTypes.func.isRequired,
 };
 
-function TodoInput({ fetchTodos }) {
+function TodoInput({ fetchTodos, session }) {
   const [todo_name, setTodo_name] = useState("");
+  const [goal, setGoal] = useState(1);
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await addTodo(todo_name, setTodo_name, fetchTodos);
+    await addTodo(
+      todo_name,
+      goal,
+      setTodo_name,
+      setGoal,
+      fetchTodos,
+      session.user.id
+    );
   };
-  async function addTodo(todo_name, setTodo_name, fetchTodos) {
+  async function addTodo(
+    todo_name,
+    goal,
+    setTodo_name,
+    setGoal,
+    fetchTodos,
+    userId
+  ) {
     if (!todo_name.trim()) return;
-    const { error } = await supabase.from("todos").insert([{ todo_name }]);
+    const { error } = await supabase
+      .from("todos")
+      .insert([{ todo_name, user_id: userId, goal: goal ? Number(goal) : 1 }]);
     if (error) console.error("Error inserting todo:", error);
     else {
       setTodo_name("");
+      setGoal(1);
       fetchTodos();
     }
   }
@@ -48,7 +66,13 @@ function TodoInput({ fetchTodos }) {
         {/* TODO: Pass to the TodoItem */}
         <label htmlFor="count" className="count-input-label">
           # of Times to goal
-          <input type="number" />
+          <input
+            type="number"
+            value={goal}
+            name="goal"
+            id="goal"
+            onChange={(event) => setGoal(event.target.value)}
+          />
         </label>
         {/* <Counter /> */}
         <button>
