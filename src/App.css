@@ -26,7 +26,8 @@ body {
   --custom-border: 1px solid #333;
   --custom-wide-border: 3px solid #333;
   /* --custom-border: 1px solid #0c0828; */
-  --highlight-border: 1px solid #f493a4;
+  /* --highlight-border: 1px solid #f493a4; */
+  --highlight-border: .5px solid #f493a4;
   --custom-border-radius: 5px;
   --custom-spacing: 5px;
 
@@ -116,6 +117,7 @@ header p {
   width: 75%;
   flex-grow: 1;
   /* width: 100%; */
+  font-size: 0.8rem;
 }
 
 input {
@@ -205,7 +207,8 @@ input[disabled] {
   background-color: #0c0828; */
   background-color: var(--darker-bg-color);
   color: #fff;
-  padding: 12px;
+  /* ? Maybe? */
+  /* padding: 12px; */
 }
 
 .edit-form input {
@@ -219,7 +222,8 @@ input[disabled] {
 .todo_items_right {
   display: flex;
   align-items: center;
-  /* justify-content: space-around; */
+  justify-content: space-between;
+  padding: 0 1rem;
 }
 
 .todo_items_left {
@@ -365,6 +369,7 @@ button.primary,
 
 .card p {
   /* width: 100%; */
+  padding: 0 1rem;
 }
 
 .avatar {
@@ -576,15 +581,16 @@ button.primary,
 
   .todo_item {
     justify-content: space-between;
+    gap: 20px;
   }
 
   .todo_items_left {
-    width: 50%;
+    width: 60%;
   }
 
   .todo_items_right {
     justify-content: flex-end;
-    width: 50%;
+    width: 37%;
   }
 
   .account-form-buttons {

@@ -15,7 +15,7 @@ TodoInput.propTypes = {
 
 function TodoInput({ fetchTodos, session }) {
   const [todo_name, setTodo_name] = useState("");
-  const [goal, setGoal] = useState(1);
+  const [goal, setGoal] = useState(0);
   const handleSubmit = async (event) => {
     event.preventDefault();
     await addTodo(
@@ -38,11 +38,11 @@ function TodoInput({ fetchTodos, session }) {
     if (!todo_name.trim()) return;
     const { error } = await supabase
       .from("todos")
-      .insert([{ todo_name, user_id: userId, goal: goal ? Number(goal) : 1 }]);
+      .insert([{ todo_name, user_id: userId, goal: goal ? Number(goal) : 0 }]);
     if (error) console.error("Error inserting todo:", error);
     else {
       setTodo_name("");
-      setGoal(1);
+      setGoal(0);
       fetchTodos();
     }
   }
@@ -64,8 +64,8 @@ function TodoInput({ fetchTodos, session }) {
         {/* TODO: Add a what the count was specified here */}
         {/* TODO; Make the todo input field flex-grow 1 and the others to fill in */}
         {/* TODO: Pass to the TodoItem */}
-        <label htmlFor="count" className="count-input-label">
-          # of Times to goal
+        <label htmlFor="goal" className="count-input-label">
+          GOAL
           <input
             type="number"
             value={goal}

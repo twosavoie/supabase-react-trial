@@ -122,18 +122,27 @@ function TodoItem({ item, setTodos }) {
         </form>
       ) : (
         <>
-          {/* TODO: Change to input checkbox and change fill to a darker pink... maybe use has or https://stackoverflow.com/questions/4148499/how-to-style-a-checkbox-using-css */}
-          <button
-            className="todo_items_left"
-            onClick={() => completeTodo(item.id)}
-            // onClick={completeTodo}
-          >
-            {/* TODO: Make flex-grow 1 */}
-            <p style={item.completed ? { textDecoration: "line-through" } : {}}>
-              {/* {item?.title} */}
-              {item?.todo_name}
-            </p>
-          </button>
+          <div className="todo_items_left">
+            {/* TODO: Change to input checkbox and change fill to a darker pink... maybe use has or https://stackoverflow.com/questions/4148499/how-to-style-a-checkbox-using-css */}
+            <button
+              // className="todo_items_left"
+              onClick={() => completeTodo(item.id)}
+              // onClick={completeTodo}
+            >
+              {/* TODO: Make flex-grow 1 */}
+              <p
+                style={item.completed ? { textDecoration: "line-through" } : {}}
+              >
+                {/* {item?.title} */}
+                {item?.todo_name}
+              </p>
+            </button>
+            {/* <p>Goal: {item?.goal}</p> */}
+            {item.goal > 0 && <p>Goal: {item.goal}</p>}
+            {/* {item.goal > 0 ? <p>Goal: {item?.goal}</p> : {}} */}
+          </div>
+          {/* ? Add the goal number here? If so, wrap it and the button in a div and move the todo_items_left classname to it so that they are in the same parent container */}
+          {/* ? Could also add a ternary so that it only appears if there's a goal? May not work because the goal has been set to 1 by default. But could set it to 0 */}
           {/* TODO: Add a ternary to check if count equals what was specified and if so confetti */}
           {/* TODO: Check spacing because of padding use space-between... instead */}
           <div className="todo_items_right">
