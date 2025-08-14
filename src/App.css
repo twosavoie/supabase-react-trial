@@ -46,6 +46,8 @@ body {
   align-items: center;
   justify-content: center;
   width: 100vw;
+  /* * Don't know if this is needed */
+  /* user-select: none; */
 }
 
 /* Grid */
@@ -105,7 +107,7 @@ header p {
   display: block;
   /* margin: 5px 0; */
   color: var(--custom-color-secondary);
-  font-size: 0.8rem;
+  font-size: 1rem;
   text-transform: uppercase;
   /* width: 75%; */
   flex-grow: 1;
@@ -117,7 +119,7 @@ header p {
   width: 75%;
   flex-grow: 1;
   /* width: 100%; */
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 input {
@@ -125,7 +127,7 @@ input {
   border-radius: var(--custom-border-radius);
   border: var(--custom-border);
   padding: 8px;
-  font-size: 0.9rem;
+  font-size: 1rem;
   background-color: var(--custom-bg-color);
   color: var(--custom-color);
   margin: 10px 0 0 0;
@@ -207,8 +209,8 @@ input[disabled] {
   background-color: #0c0828; */
   background-color: var(--darker-bg-color);
   color: #fff;
-  /* ? Maybe? */
-  /* padding: 12px; */
+  /* ? Maybe remove? Check if todo description hits top and bottom. Maybe remove from sides instead?*/
+  padding: 12px 0;
 }
 
 .edit-form input {
@@ -238,14 +240,47 @@ input[disabled] {
 
 .todo_items_left p {
   text-align: left;
+  text-decoration-thickness: 2px;
+  /* * So todo item is not all uppercase */
+  text-transform: initial;
 }
 
 .todo_items_right {
   gap: 4px;
   justify-content: space-between;
   width: 100%;
+  /* ? Maybe remove or change? */
   padding: .5rem 0 .5rem 1rem;
+  padding: .5rem 0 0 1rem;
 }
+
+.todo_items_left button {
+  /* ? working out spacing */
+  flex-grow: 1;
+  border: none;
+  background-color: var(--darker-bg-color);
+  /* * Adjust padding because it no longer has a background color and border change to l/r 1rem if they are put back */
+  padding: 0.5rem 0;
+}
+
+.todo_items_left p.goal {
+  /* ? This gives the todo as much space as possible if there is a goal (and later a date) but does this look weird? Maybe time to remove the background color? */
+  flex-basis: 55%;
+  text-align: right;
+}
+
+.todo_items_right {
+  /* justify-content: flex-end; */
+  /* * Wide enough to not wrap but take up as little space as possible */
+  /* width: 37%; */
+}
+
+.todo_items_right .edit-delete-buttons {
+  display: flex;
+  /* justify-content: space-between; */
+  /* width: 100%; */
+}
+
 
 .todo_items_right button {
   background-color: transparent;
@@ -334,15 +369,18 @@ form {
 button,
 .button {
   color: var(--custom-color);
+  /* ? Do I like it better w/o the border and background color? */
   border: var(--custom-border);
+  /* border: none; */
   background-color: var(--custom-bg-color);
+  /* background-color: var(--darker-bg-color); */
   display: inline-block;
   text-align: center;
   border-radius: var(--custom-border-radius);
   padding: 0.5rem 1rem;
   cursor: pointer;
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 1rem;
   text-transform: uppercase;
 }
 
@@ -361,9 +399,11 @@ button.primary,
   /* display: block; */
   border: var(--custom-border);
   border-radius: var(--custom-border-radius);
-  padding: var(--custom-spacing);
+  /* ? Maybe remove? Does the spacing look weird? */
+  /* padding: var(--custom-spacing); */
   display: flex;
-  flex-wrap: wrap;
+  /* ? remove to keep the counter items from wrapping? */
+  /* flex-wrap: wrap; */
   align-items: center;
 }
 
@@ -517,8 +557,9 @@ button.primary,
 
 /* @media (min-width: 768px) { */
 @media (min-width: 1000px) {
-  /* * Was 510px */
 
+  /* * Was 510px */
+  /* TODO: work out the spacing between 1000 and 1400px better. Maybe use a different breakpoint? Or use flex grow/shrink/basis instead of width? */
   /* Authorization form */
   .auth-container {
     max-width: 1280px;
@@ -581,16 +622,36 @@ button.primary,
 
   .todo_item {
     justify-content: space-between;
-    gap: 20px;
+    /* gap: 20px; */
   }
 
   .todo_items_left {
     width: 60%;
   }
 
+  .todo_items_left button {
+    /* ? working out spacing */
+    /* flex-grow: 1;
+    border: none;
+    background-color: var(--darker-bg-color); */
+  }
+
+  .todo_items_left p.goal {
+    /* ? This gives the todo as much space as possible if there is a goal (and later a date) but does this look weird? Maybe time to remove the background color? */
+    /* flex-basis: 30%; */
+    text-align: right;
+  }
+
   .todo_items_right {
     justify-content: flex-end;
+    /* * Wide enough to not wrap but take up as little space as possible */
     width: 37%;
+  }
+
+  .todo_items_right .edit-delete-buttons {
+    /* display: flex; */
+    /* justify-content: space-between; */
+    /* width: 100%; */
   }
 
   .account-form-buttons {
@@ -602,6 +663,16 @@ button.primary,
     width: 48%;
     gap: 10px;
   }
+}
+
+@media (min-width: 1024px) {
+
+  /* .auth-container {
+    width: 65%;
+  } */
+  /* .todo_items_right {
+    width: 30%;
+  } */
 }
 
 @media (min-width: 1400px) {
@@ -623,9 +694,14 @@ button.primary,
   .todo_list {
     width: 60%;
   }
+
+  /* .todo_items_right {
+    width: 37%;
+  } */
 }
 
 /* ? is 1500px better and keeps the counter box from wrapping? Maybe not have counter box wrap? or is this fixed when I add goal anyway? */
+/* ? Is this breakpoint needed? */
 @media (min-width: 1500px) {
 
   /* Authorization form */

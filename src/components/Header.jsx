@@ -26,8 +26,11 @@ export default function Header({ session }) {
     <header className="header">
       {/* TODO: Maybe stack h1 and p */}
       <div className="header-logo">
-        <h1>TiGu</h1>
-        <p>Timer for GrownUps</p>
+        {/* <h1>TiGu</h1> */}
+        <h1>Pebli</h1>
+        <p>
+          A Todo Tracker for Grownups. There are many pebbles along your path
+        </p>
       </div>
       <div
         style={{

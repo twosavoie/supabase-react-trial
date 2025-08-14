@@ -42,6 +42,20 @@ function TodoItem({ item, setTodos }) {
     );
   }
 
+  // Automatically complete todo when count >= goal and not already completed. If count < goal, mark incomplete
+  // * Can also cross off and uncross off an item. If the count changes this useEffect runs again and recrosses off the item if the count is >= goal. Not sure how I feel about this.
+  useEffect(() => {
+    if (typeof item.goal === "number" && item.goal > 0) {
+      if (item.count >= item.goal && !item.completed) {
+        completeTodo(item.id);
+      } else if (item.count < item.goal && item.completed) {
+        // Mark as incomplete if count drops below goal
+        completeTodo(item.id);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [item.count, item.goal]);
+
   const handleEdit = () => {
     setEditing(true);
   };
@@ -123,37 +137,38 @@ function TodoItem({ item, setTodos }) {
       ) : (
         <>
           <div className="todo_items_left">
-            {/* TODO: Change to input checkbox and change fill to a darker pink... maybe use has or https://stackoverflow.com/questions/4148499/how-to-style-a-checkbox-using-css */}
+            {/* TODO: Change to input checkbox? Revert to previous version with a circle? Change fill to a darker pink... maybe use has or https://stackoverflow.com/questions/4148499/how-to-style-a-checkbox-using-css */}
             <button
               // className="todo_items_left"
               onClick={() => completeTodo(item.id)}
               // onClick={completeTodo}
             >
-              {/* TODO: Make flex-grow 1 */}
               <p
-                style={item.completed ? { textDecoration: "line-through" } : {}}
+                style={
+                  item.completed
+                    ? {
+                        textDecoration: "line-through",
+                        textDecorationThickness: "3px",
+                        textDecorationColor: "var(--custom-color)",
+                      }
+                    : {}
+                }
               >
                 {/* {item?.title} */}
                 {item?.todo_name}
               </p>
             </button>
             {/* <p>Goal: {item?.goal}</p> */}
-            {item.goal > 0 && <p>Goal: {item.goal}</p>}
-            {/* {item.goal > 0 ? <p>Goal: {item?.goal}</p> : {}} */}
+            {item.goal > 0 && <p className="goal">Goal: {item.goal}</p>}
           </div>
-          {/* ? Add the goal number here? If so, wrap it and the button in a div and move the todo_items_left classname to it so that they are in the same parent container */}
-          {/* ? Could also add a ternary so that it only appears if there's a goal? May not work because the goal has been set to 1 by default. But could set it to 0 */}
-          {/* TODO: Add a ternary to check if count equals what was specified and if so confetti */}
-          {/* TODO: Check spacing because of padding use space-between... instead */}
+          {/* TODO: Add a ternary to check if count equals what was specified and if so confetti and todo item is crossed out by calling completeTodo functions */}
           <div className="todo_items_right">
-            {/* TODO: Add a goal number */}
-            {/* ? Maybe keep icon, todo, and goal on one line and the rest on the next line like on mobile */}
             <Counter
               todoId={item.id}
               initialCount={item.count}
               setTodos={setTodos}
             />
-            <div>
+            <div className="edit-delete-buttons">
               <button onClick={handleEdit}>
                 <span className="visually-hidden">Edit</span>
                 <svg

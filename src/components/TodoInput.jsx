@@ -56,7 +56,7 @@ function TodoInput({ fetchTodos, session }) {
             value={todo_name}
             name="todo_name"
             id="todo_name"
-            placeholder="Add a new todo"
+            placeholder="Relax with a K-Drama and a cup of cocoa"
             onChange={(event) => setTodo_name(event.target.value)}
           />
         </label>
