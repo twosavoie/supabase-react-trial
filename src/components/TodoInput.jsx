@@ -16,6 +16,7 @@ TodoInput.propTypes = {
 function TodoInput({ fetchTodos, session }) {
   const [todo_name, setTodo_name] = useState("");
   const [goal, setGoal] = useState(0);
+  // TODO: add a "By:" date
   const handleSubmit = async (event) => {
     event.preventDefault();
     await addTodo(
@@ -65,7 +66,7 @@ function TodoInput({ fetchTodos, session }) {
         {/* TODO; Make the todo input field flex-grow 1 and the others to fill in */}
         {/* TODO: Pass to the TodoItem */}
         <label htmlFor="goal" className="count-input-label">
-          GOAL
+          Goal
           <input
             type="number"
             value={goal}

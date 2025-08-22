@@ -31,7 +31,8 @@ function App() {
   }
 
   return (
-    <div className="container" style={{ padding: "50px 0 100px 0" }}>
+    // * there was a style={{ padding: "50px 0 100px 0" }} on the container before
+    <div className="container">
       {!session ? (
         <Auth />
       ) : (
