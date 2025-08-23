@@ -65,6 +65,7 @@ body {
   justify-content: center;
   width: 100vw;
   height: 100vh;
+  height: 120vh;
   /* height: 100%; */
   /* * Don't know if this is needed */
   /* user-select: none; */
