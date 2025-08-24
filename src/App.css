@@ -28,6 +28,7 @@
 
   --darker-bg-color: #0c0828;
   --custom-color: #f2e4e6;
+  --color: #ffffff;
   --custom-border: 1px solid #333;
   --custom-wide-border: 3px solid #333;
   --highlight-border: .5px solid #f493a4;
@@ -136,7 +137,7 @@ input[disabled] {
 
 .form input {
   background-color: var(--darker-bg-color);
-  color: #fff;
+  color: var(--color);
   width: 100%;
   height: 50px;
   outline: none;
@@ -179,7 +180,7 @@ input[disabled] {
   border-radius: var(--custom-border-radius);
   font-size: 16px;
   background-color: var(--darker-bg-color);
-  color: #fff;
+  color: var(--color);
   padding: 12px 0;
 }
 
@@ -201,18 +202,40 @@ input[disabled] {
 .todo_items_left {
   background-color: transparent;
   border: none;
-  color: #fff;
+  color: var(--color);
   gap: 12px;
   font-size: 16px;
   width: 100%;
   flex-grow: 1;
 }
 
-.todo_items_left p {
-  text-align: left;
-  text-decoration-thickness: 2px;
-  /* * So todo item is not all uppercase */
-  text-transform: initial;
+/* .todo_items_left p { */
+/* text-align: left; */
+/* text-decoration-thickness: 2px; */
+/* * So todo item is not all uppercase */
+/* text-transform: initial; */
+/* } */
+
+.todo_items_left label {
+  display: inline-flex;
+  align-items: center;
+}
+
+.todo_items_left input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-top: 0;
+  margin-right: 8px;
+  accent-color: #d7556c;
+  /* accent-color: #ed5e77; */
+  /* accent-color: #ed4c68; */
+  /* accent-color: #ef657d; */
+  /* accent-color: #ed4e6a; */
+}
+
+.todo_items_left input[type=checkbox]:hover {
+  /* filter: brightness(1.5); */
+  accent-color: #ed5e77;
 }
 
 .todo_items_right {
@@ -241,7 +264,7 @@ input[disabled] {
 
 .todo_items_right button {
   background-color: transparent;
-  color: #fff;
+  color: var(--color);
   border: none;
 }
 

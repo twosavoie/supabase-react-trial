@@ -51,13 +51,13 @@ function TodoInput({ fetchTodos, session }) {
     <div className="todo-input">
       <form onSubmit={handleSubmit}>
         <label htmlFor="todo_name" className="todo-input-label">
-          Add a new todo
+          Add a new todo:
           <input
             type="text"
             value={todo_name}
             name="todo_name"
             id="todo_name"
-            placeholder="Relax with a K-Drama and a cup of cocoa"
+            placeholder="For instance, Relax with a K-Drama and a cup of cocoa"
             onChange={(event) => setTodo_name(event.target.value)}
           />
         </label>
@@ -66,7 +66,7 @@ function TodoInput({ fetchTodos, session }) {
         {/* TODO; Make the todo input field flex-grow 1 and the others to fill in */}
         {/* TODO: Pass to the TodoItem */}
         <label htmlFor="goal" className="count-input-label">
-          Goal
+          Set a Goal:
           <input
             type="number"
             value={goal}

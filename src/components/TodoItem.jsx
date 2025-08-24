@@ -137,28 +137,27 @@ function TodoItem({ item, setTodos }) {
       ) : (
         <>
           <div className="todo_items_left">
-            {/* TODO: Change to input checkbox? Revert to previous version with a circle? Change fill to a darker pink... maybe use has or https://stackoverflow.com/questions/4148499/how-to-style-a-checkbox-using-css */}
-            <button
-              // className="todo_items_left"
-              onClick={() => completeTodo(item.id)}
-              // onClick={completeTodo}
-            >
-              <p
+            <label>
+              <input
+                type="checkbox"
+                checked={!!item.completed}
+                onChange={() => completeTodo(item.id)}
+                aria-label={`Mark ${item.todo_name} as complete`}
+              />
+              <span
                 style={
                   item.completed
                     ? {
                         textDecoration: "line-through",
                         textDecorationThickness: "3px",
-                        textDecorationColor: "var(--custom-color)",
+                        // textDecorationColor: "#fbd8df",
                       }
                     : {}
                 }
               >
-                {/* {item?.title} */}
                 {item?.todo_name}
-              </p>
-            </button>
-            {/* <p>Goal: {item?.goal}</p> */}
+              </span>
+            </label>
             {item.goal > 0 && <p className="goal">Goal: {item.goal}</p>}
           </div>
           {/* TODO: Add a ternary to check if count equals what was specified and if so confetti and todo item is crossed out by calling completeTodo functions */}

@@ -63,11 +63,29 @@ function Counter({ todoId, initialCount, setTodos }) {
   return (
     <>
       {/* <p>Count:</p> */}
-      <div className="card">
+      {/* <div className="card">
         <p>{count}</p>
         <button onClick={incrementCount}>+</button>
         <button onClick={decrementCount}>-</button>
-      </div>
+      </div> */}
+      <fieldset className="card">
+        <legend className="visually-hidden">Counter for this todo</legend>
+        <p aria-live="polite">{count}</p>
+        <button
+          type="button"
+          aria-label="Increase count"
+          onClick={incrementCount}
+        >
+          +
+        </button>
+        <button
+          type="button"
+          aria-label="Decrease count"
+          onClick={decrementCount}
+        >
+          -
+        </button>
+      </fieldset>
     </>
   );
 }
