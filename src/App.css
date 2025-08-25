@@ -47,7 +47,10 @@ body {
   display: flex;
   justify-content: center;
   width: 100vw;
-  height: 120vh;
+  /* ? Does min-height allow the gradient to fill the whole screen? */
+  min-height: 120vh;
+  /* ? Or 100vh */
+  min-height: 100dvh;
 }
 
 /* Grid */
@@ -543,6 +546,7 @@ button.primary,
   .todo-input .count-input-label {
     width: 20%;
     flex-grow: 0;
+    text-transform: uppercase;
   }
 
   .todo-input {
