@@ -284,6 +284,11 @@ dialog {
   text-align: center;
 }
 
+.account-form-widget p {
+  margin: 20px;
+  text-align: center;
+}
+
 .account-form-widget button {
   margin: 20px 0;
 }
