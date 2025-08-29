@@ -61,10 +61,6 @@ function TodoInput({ fetchTodos, session }) {
             onChange={(event) => setTodo_name(event.target.value)}
           />
         </label>
-        {/* TODO: Add an input for number */}
-        {/* TODO: Add a what the count was specified here */}
-        {/* TODO; Make the todo input field flex-grow 1 and the others to fill in */}
-        {/* TODO: Pass to the TodoItem */}
         <label htmlFor="goal" className="count-input-label">
           Set a Goal:
           <input
@@ -75,7 +71,6 @@ function TodoInput({ fetchTodos, session }) {
             onChange={(event) => setGoal(event.target.value)}
           />
         </label>
-        {/* <Counter /> */}
         <button>
           <span className="visually-hidden">Submit</span>
           <svg

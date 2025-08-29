@@ -13,7 +13,7 @@ TodoList.propTypes = {
 function TodoList({ todos, setTodos, fetchTodos }) {
   // ? Does this work? Is goal within todos?
   console.log("TodoList todos:", todos);
-  // ? Add fetchTodos to the dependency array to ensure the latest version is used?
+  // ? Add fetchTodos to the dependency array to ensure the latest version is used? Does it cause it to re-fetch too often? Even without it, it seems to re-fetch often.
   useEffect(() => {
     fetchTodos();
   }, []);
