@@ -135,6 +135,27 @@ input {
   margin: 10px 0 0 0;
 }
 
+/* input:autofill,
+input:-webkit-autofill-strong-password,
+input:-webkit-autofill-strong-password-viewable,
+input:-webkit-autofill-and-obscured {
+/* ? Does this work? */
+/* * Doesn't seem to */
+/*  background-color: var(--custom-bg-color) !important;
+  color: var(--custom-color) !important;
+} */
+
+/* * hack to override webkit autofill background color */
+/* * From https://stackoverflow.com/questions/12374442/change-background-color-of-input-type-text-when-browser-autofill-it or https://stackoverflow.com/questions/41871618/how-to-change-safari-autofill-yellow-background-color */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--custom-bg-color) inset !important;
+  -webkit-text-fill-color: var(--custom-color) !important;
+}
+
 input[disabled] {
   color: var(--custom-color-secondary);
 }
@@ -512,6 +533,18 @@ button.primary,
   white-space: nowrap;
 }
 
+@media (min-width:768px) {
+
+  /* TODO: Test on an iPad mini to see if this is the correct media query of if it should be moved to the 1000px media query */
+  .sign-in-input {
+    width: 60%;
+  }
+
+  .sign-in-button {
+    width: 25%;
+  }
+}
+
 @media (min-width: 1000px) {
 
   /* Authorization form */
@@ -521,6 +554,11 @@ button.primary,
     padding: 2rem;
     text-align: center;
     width: 75%;
+  }
+
+  /* ? Duplicate? */
+  .sign-in-input {
+    width: 60%;
   }
 
   .sign-in-button {
