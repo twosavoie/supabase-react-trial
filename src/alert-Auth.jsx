@@ -6,32 +6,26 @@ export default function Auth() {
   const [email, setEmail] = useState("");
   const [step, setStep] = useState(1);
   const [otp, setOtp] = useState("");
-  const [message, setMessage] = useState("");
-  const [error, setError] = useState("");
 
   const handleSendOtp = async (event) => {
     event.preventDefault();
     setLoading(true);
-    setMessage("");
-    setError("");
     const { error } = await supabase.auth.signInWithOtp({
       email,
       options: { shouldCreateUser: true },
     });
     setLoading(false);
     if (error) {
-      setError(error.error_description || error.message);
+      alert(error.error_description || error.message);
     } else {
       setStep(2);
-      setMessage("Check your email for the OTP code!");
+      alert("Check your email for the OTP code!");
     }
   };
 
   const handleVerifyOtp = async (event) => {
     event.preventDefault();
     setLoading(true);
-    setMessage("");
-    setError("");
     const { error } = await supabase.auth.verifyOtp({
       email,
       token: otp,
@@ -39,9 +33,9 @@ export default function Auth() {
     });
     setLoading(false);
     if (error) {
-      setError(error.error_description || error.message);
+      alert(error.error_description || error.message);
     } else {
-      setMessage("OTP verified! You are signed in.");
+      alert("OTP verified! You are signed in.");
     }
   };
 
@@ -52,8 +46,6 @@ export default function Auth() {
         <p className="description">
           Sign in with your email and a one-time code
         </p>
-        {message && <div className="success-message">{message}</div>}
-        {error && <div className="error-message">{error}</div>}
         {step === 1 ? (
           <form className="form-widget" onSubmit={handleSendOtp}>
             <div className="sign-in-input">
@@ -64,7 +56,6 @@ export default function Auth() {
                 value={email}
                 required
                 onChange={(e) => setEmail(e.target.value)}
-                disabled={loading}
               />
             </div>
             <div className="sign-in-button">
@@ -83,7 +74,6 @@ export default function Auth() {
                 value={otp}
                 required
                 onChange={(e) => setOtp(e.target.value)}
-                disabled={loading}
               />
             </div>
             <div className="sign-in-button">

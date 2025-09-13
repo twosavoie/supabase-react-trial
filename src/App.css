@@ -146,7 +146,7 @@ input:-webkit-autofill-and-obscured {
 } */
 
 /* * hack to override webkit autofill background color */
-/* * From https://stackoverflow.com/questions/12374442/change-background-color-of-input-type-text-when-browser-autofill-it or https://stackoverflow.com/questions/41871618/how-to-change-safari-autofill-yellow-background-color */
+/* * From Google AI overview. Also see: https://stackoverflow.com/questions/41871618/how-to-change-safari-autofill-yellow-background-color */
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -188,6 +188,34 @@ input[disabled] {
   background-color: #d7556c;
   border: none;
 }
+
+/* * Style messages for Auth */
+.success-message {
+  /* * */
+  color: #155724;
+  color: #0b2812;
+  background: #d4edda;
+  background: #dbe8de;
+  border: 1px solid #c3e6cb;
+  padding: 0.5em;
+  margin-bottom: 1em;
+  border-radius: var(--custom-border-radius);
+}
+
+.error-message {
+  /* * */
+  color: #721c24;
+  color: #401015;
+  /* color: #2d0b0f; */
+  background: #f8d7da;
+  background: #f2dee0;
+  border: 1px solid #f5c6cb;
+  padding: 0.5em;
+  margin-bottom: 1em;
+  border-radius: var(--custom-border-radius);
+}
+
+/* End Style messages for Auth */
 
 .todo_list {
   width: 90%;
@@ -429,6 +457,7 @@ button.primary,
   display: flex;
   flex-flow: row wrap;
   align-items: center;
+  justify-content: center;
   gap: 20px;
 }
 
