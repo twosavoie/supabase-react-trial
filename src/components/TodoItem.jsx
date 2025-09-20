@@ -151,6 +151,7 @@ function TodoItem({ item, setTodos }) {
                         textDecoration: "line-through",
                         textDecorationThickness: "3px",
                         // textDecorationColor: "#fbd8df",
+                        // ? Add confetti component here?
                       }
                     : {}
                 }

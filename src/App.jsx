@@ -58,7 +58,7 @@ function App() {
   );
 }
 
-// * https://www.freecodecamp.org/news/build-a-todo-app-from-scratch-with-reactjs/ original app
-// * Use this video to make Account a dialog: https://www.youtube.com/watch?v=YwHJMlvZRCc
-// * https://www.youtube.com/watch?app=desktop&v=yYIdFhkE3RU use Supabase rather than localStorage 24:42 for completed. Start at 29:06 next time
+// Source: https://www.freecodecamp.org/news/build-a-todo-app-from-scratch-with-reactjs/ original app
+// Source: Use this video to make Account a dialog: https://www.youtube.com/watch?v=YwHJMlvZRCc
+// Source: https://www.youtube.com/watch?app=desktop&v=yYIdFhkE3RU use Supabase rather than localStorage 24:42 for completed. Start at 29:06 next time
 export default App;

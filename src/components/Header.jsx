@@ -28,9 +28,7 @@ export default function Header({ session }) {
       <div className="header-logo">
         {/* <h1>TiGu</h1> */}
         <h1>Pebli</h1>
-        <p>
-          A Todo Tracker for Grownups. There are many pebbles along your path
-        </p>
+        <p>The pebbles you collect become your path</p>
       </div>
       <div
         style={{
