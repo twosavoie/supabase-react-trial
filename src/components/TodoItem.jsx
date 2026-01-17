@@ -37,8 +37,8 @@ function TodoItem({ item, setTodos }) {
     // Update local state for instant UI feedback
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
-        todo.id === id ? { ...todo, completed: updatedStatus } : todo
-      )
+        todo.id === id ? { ...todo, completed: updatedStatus } : todo,
+      ),
     );
   }
 
@@ -67,7 +67,7 @@ function TodoItem({ item, setTodos }) {
       // ? Why twice?
       inputRef.current.setSelectionRange(
         inputRef.current.value.length,
-        inputRef.current.value.length
+        inputRef.current.value.length,
       );
     }
   }, [editing]);
@@ -101,12 +101,19 @@ function TodoItem({ item, setTodos }) {
 
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
-        todo.id === item.id ? { ...todo, todo_name: newName } : todo
-      )
+        todo.id === item.id ? { ...todo, todo_name: newName } : todo,
+      ),
     );
   };
 
   const handleDelete = async () => {
+    // ** Confirm deletion using bang and window.confirm. If not confirmed, return early. If confirmed, proceed with deletion. Uses a browser API to show a confirmation dialog to the user. **
+    if (
+      !window.confirm(`Are you sure you want to delete "${item.todo_name}"?`)
+    ) {
+      return;
+    }
+
     const { error } = await supabase.from("todos").delete().eq("id", item.id);
 
     if (error) {
