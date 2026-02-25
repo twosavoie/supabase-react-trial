@@ -25,7 +25,7 @@ function TodoInput({ fetchTodos, session }) {
       setTodo_name,
       setGoal,
       fetchTodos,
-      session.user.id
+      session.user.id,
     );
   };
   async function addTodo(
@@ -34,7 +34,7 @@ function TodoInput({ fetchTodos, session }) {
     setTodo_name,
     setGoal,
     fetchTodos,
-    userId
+    userId,
   ) {
     if (!todo_name.trim()) return;
     const { error } = await supabase
@@ -57,7 +57,7 @@ function TodoInput({ fetchTodos, session }) {
             value={todo_name}
             name="todo_name"
             id="todo_name"
-            placeholder="For instance, Relax with a K-Drama and a cup of cocoa"
+            placeholder="e.g., Relax with a K-Drama and a hot cocoa"
             onChange={(event) => setTodo_name(event.target.value)}
           />
         </label>

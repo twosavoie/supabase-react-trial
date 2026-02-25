@@ -24,9 +24,7 @@ export default function Header({ session }) {
 
   return (
     <header className="header">
-      {/* TODO: Maybe stack h1 and p */}
       <div className="header-logo">
-        {/* <h1>TiGu</h1> */}
         <h1>Pebli</h1>
         <p>The pebbles you collect become your path</p>
       </div>
@@ -36,11 +34,10 @@ export default function Header({ session }) {
           gap: "1rem",
         }}
       >
-        {/* TODO: Maybe replace "account" with user's image */}
         <button
           onClick={() => {
             setDialogContent(
-              <Account key={session.user.id} session={session} />
+              <Account key={session.user.id} session={session} />,
             );
             toggleDialog();
           }}

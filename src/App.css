@@ -1,18 +1,22 @@
 *,
 *::after,
 *::before {
+  /* * Global and reset styles */
   padding: 0;
   margin: 0;
   font-family: inherit;
-  /* * Per Chris Coyier */
+  /* Source: Chris Coyier */
   box-sizing: inherit;
-  /* * Respect user's color scheme preference  */
+  /* * Respect user's color scheme preference. Use light-dark to implement */
   color-scheme: light dark;
-  --custom-font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
-    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  --custom-bg-color: #1c173d;
-  /* * Josh Comeau's gradient calculator https://www.joshwcomeau.com/gradient-generator/ */
-  --custom-dark-bg-color-gradient: linear-gradient(0deg,
+  --custom-font-family: sans-serif;
+  /* * End Global and reset styles */
+
+  /* * Background colors */
+  --background-color: light-dark(#ffffff, #231c4b);
+  /* Source: Josh Comeau's gradient calculator https://www.joshwcomeau.com/gradient-generator/ */
+  /* * Used for dark color scheme */
+  /* --dark-gradient: linear-gradient(0deg,
       hsl(240, 14%, 1%) 0%,
       hsl(247deg 62% 10%) 16%,
       hsl(245deg 58% 11%) 24%,
@@ -27,17 +31,56 @@
       hsl(245deg 46% 15%) 70%,
       hsl(246deg 46% 16%) 76%,
       hsl(247deg 46% 16%) 84%,
-      hsl(248deg 45% 16%) 100%);
+      hsl(248deg 45% 16%) 100%); */
 
-  --darker-bg-color: #0c0828;
-  --custom-color: #f2e4e6;
-  /* ? Used in some declarations but was never defined. See if this color works and where */
-  --custom-color-secondary: #bbbbbb;
-  --color: #ffffff;
-  --custom-border: 1px solid #333;
-  --custom-wide-border: 3px solid #333;
-  --highlight-border: .5px solid #f493a4;
-  --custom-border-radius: 5px;
+  /* TODO Create light-dark color scheme */
+  /* * Input, buttons, and background of dialogs */
+  --dark-theme-bg-1: #1c173d;
+  /* * Input, todo items, and ?background of dialogs */
+  --dark-theme-bg-2: #0c0828;
+  /* todo background of main page in light theme */
+  --light-theme-bg-1: #ffffff;
+  /* todo Use for background of todo items and dialogs in light theme */
+  --light-theme-bg-2: #f9f7f6;
+
+  /* * Text colors */
+  /* * text of body, input, dialog, and buttons */
+  --dark-theme-text: #f2e4e6;
+  --light-theme-text: #00004d;
+  /* * text of disabled text */
+  --dark-theme-disabled-text: #bbbbbb;
+  /* todo check for contrast */
+  --light-theme-disabled-text: #999999;
+
+  /* * Fill colors - reuse text colors */
+  /* todo create variables for fill colors for light and dark themes. Or reuse the text colors since they're the same? */
+  /* --dark-theme-fill: #f2e4e6;
+  --light-theme-fill: #00004d; */
+
+  /* * Accent colors */
+  /* * border for todo item input and edit */
+  /* todo edit border Maybe do a narrow and wide border and then a separate color variable? */
+  /* border: 2px solid light-dark(black, white); */
+  /* --dark-theme-accent-1: .5px solid #f493a4; */
+  --accent-color-1: light-dark(#f36500, #f493a4);
+  /* --dark-theme-accent-1: #f493a4; */
+  /* --light-theme-accent-1: #f36500; */
+  --accent-color-2: light-dark(#f36500, #d7556c);
+  --accent-color-2-hover: light-dark(#ff6b00, #ed5e77);
+  /* --dark-theme-accent-2: #d7556c; */
+  /* --dark-theme-accent-2-hover: #ed5e77; */
+  /* --light-theme-accent-2: #f36500; */
+  /* --light-theme-accent-2-hover: #ff6b00; */
+
+  --accent-3: #333;
+
+  /* * Borders */
+  /* * input, card and button border */
+  --narrow-border: 1px solid;
+  /* * dialog border */
+  --wide-border: 3px solid;
+  /* * all border radius */
+  --border-radius: 5px;
 }
 
 html,
@@ -46,22 +89,25 @@ body {
   margin: 0;
   /* * Per Chris Coyier */
   box-sizing: border-box;
-  color: var(--custom-color);
   font-family: var(--custom-font-family);
-  background-color: var(--darker-bg-color);
-  background: var(--custom-dark-bg-color-gradient);
+  /* ? Gradient may not work with light-dark might need to use prefers-color-scheme */
+  background: var(--background-color);
+  /* background: var(--light-theme-bg-1); */
+  /* background: var(--dark-gradient); */
+  /* background: light-dark(var(--light-theme-bg-1), var(--dark-gradient)); */
   /* * Ensures the gradient remains fixed even with scrolling content */
   background-attachment: fixed;
-  /* ? needed */
-  background-size: cover;
+  /* ? needed will push */
+  /* background-size: cover; */
   font-family: var(--custom-font-family);
-  color: var(--custom-color);
+  color: light-dark(var(--light-theme-text), var(--dark-theme-text));
   display: flex;
   justify-content: center;
-  width: 100vw;
+  /* width: 100vw; */
   /* ? Does min-height allow the gradient to fill the whole screen? */
   min-height: 120vh;
   /* ? Or 100vh */
+  /* Todo: try both to see if it covers the notch */
   min-height: 100dvh;
 }
 
@@ -72,9 +118,9 @@ div#root {
 }
 
 .container {
-  /* ? need margins if using j-c:c? */
-  margin-left: auto;
-  margin-right: auto;
+  /* ? need margins if using j-c:c? push to check */
+  /* margin-left: auto; */
+  /* margin-right: auto; */
   display: flex;
   flex-flow: row wrap;
   gap: 40px;
@@ -114,12 +160,12 @@ header p {
 /* Form */
 .todo-input .todo-input-label {
   display: block;
-  color: var(--custom-color-secondary);
+  /* ? push */
+  /* color: var(--dark-theme-disabled-text); */
   font-size: 1rem;
-  /* text-transform: uppercase; */
   flex-grow: 1;
   /* ? */
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 
 .todo-input .count-input-label {
@@ -130,24 +176,14 @@ header p {
 
 input {
   width: 100%;
-  border-radius: var(--custom-border-radius);
-  border: var(--custom-border);
+  border-radius: var(--border-radius);
+  border: var(--narrow-border) var(--accent-3);
   padding: 8px;
   font-size: 1rem;
-  background-color: var(--custom-bg-color);
-  color: var(--custom-color);
+  background-color: light-dark(var(--light-theme-bg-1), var(--dark-theme-bg-1));
+  color: light-dark(var(--light-theme-text), var(--dark-theme-text));
   margin: 10px 0 0 0;
 }
-
-/* input:autofill,
-input:-webkit-autofill-strong-password,
-input:-webkit-autofill-strong-password-viewable,
-input:-webkit-autofill-and-obscured {
-/* ? Does this work? */
-/* * Doesn't seem to */
-/*  background-color: var(--custom-bg-color) !important;
-  color: var(--custom-color) !important;
-} */
 
 /* * hack to override webkit autofill background color */
 /* * From Google AI overview. Also see: https://stackoverflow.com/questions/41871618/how-to-change-safari-autofill-yellow-background-color */
@@ -156,42 +192,46 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px var(--custom-bg-color) inset !important;
-  -webkit-text-fill-color: var(--custom-color) !important;
+  -webkit-box-shadow: 0 0 0 30px light-dark(var(--light-theme-bg-1), var(--dark-theme-bg-1)) inset !important;
+  -webkit-text-fill-color: light-dark(var(--light-theme-text), var(--dark-theme-text)) !important;
 }
 
 input[disabled] {
-  color: var(--custom-color-secondary);
+  color: var(--dark-theme-disabled-text);
 }
 
-.form {
+/* ? Is this being applied? I don't see a class of form in the HTML? */
+/* .form {
   align-self: center;
   width: 97%;
   display: flex;
   align-items: flex-end;
   gap: 12px;
   margin-top: 38px;
-}
+} */
 
-.form input {
-  background-color: var(--darker-bg-color);
-  color: var(--color);
+/* ? Is this being applied? I don't see a class of form in the HTML? */
+/* .form input { */
+/* background-color: var(--dark-theme-bg-2); */
+/* color: var(--color);
+  color: red;
   width: 100%;
   height: 50px;
   outline: none;
   border: none;
-  border-radius: var(--custom-border-radius);
+  border-radius: var(--border-radius);
   padding: 12px;
   margin-top: 10px;
-}
+} */
 
-.form button {
+/* ? Is this being applied? I don't see a class of form in the HTML? */
+/* .form button {
   width: 10%;
   height: 50px;
-  border-radius: var(--custom-border-radius);
+  border-radius: var(--border-radius);
   background-color: #d7556c;
   border: none;
-}
+} */
 
 /* * Style messages for Auth */
 .success-message {
@@ -203,7 +243,7 @@ input[disabled] {
   border: 1px solid #c3e6cb;
   padding: 0.5em;
   margin-bottom: 1em;
-  border-radius: var(--custom-border-radius);
+  border-radius: var(--border-radius);
 }
 
 .error-message {
@@ -216,7 +256,7 @@ input[disabled] {
   border: 1px solid #f5c6cb;
   padding: 0.5em;
   margin-bottom: 1em;
-  border-radius: var(--custom-border-radius);
+  border-radius: var(--border-radius);
 }
 
 /* End Style messages for Auth */
@@ -244,10 +284,13 @@ input[disabled] {
   flex-flow: row wrap;
   align-items: center;
   width: 100%;
-  border: var(--highlight-border);
-  border-radius: var(--custom-border-radius);
+  /* * Example */
+  /* border: 2px solid light-dark(black, white); */
+  border: var(--narrow-border) var(--accent-color-1);
+  /* border: var(--dark-theme-accent-1); */
+  border-radius: var(--border-radius);
   font-size: 16px;
-  background-color: var(--darker-bg-color);
+  background-color: light-dark(var(--light-theme-bg-2), var(--dark-theme-bg-2));
   color: var(--color);
   padding: 12px 0;
 }
@@ -288,7 +331,7 @@ input[disabled] {
 .todo_items_left label {
   flex-grow: 1;
   border: none;
-  /* background-color: var(--darker-bg-color); */
+  /* background-color: var(--dark-theme-bg-2); */
   padding: 0.5rem 0;
   text-transform: initial;
 
@@ -299,16 +342,15 @@ input[disabled] {
   /* height: 20px; */
   margin-top: 0;
   margin-right: 8px;
-  accent-color: #d7556c;
-  /* accent-color: #ed5e77; */
-  /* accent-color: #ed4c68; */
-  /* accent-color: #ef657d; */
-  /* accent-color: #ed4e6a; */
+  /* todo create custom property for accent-color */
+  /* accent-color: #d7556c; */
+  accent-color: var(--accent-color-2);
 }
 
 .todo_items_left input[type=checkbox]:hover {
   /* filter: brightness(1.5); */
-  accent-color: #ed5e77;
+  /* todo create custom property for accent-color */
+  accent-color: var(--accent-color-2-hover);
 }
 
 .todo_items_left p.goal {
@@ -336,15 +378,16 @@ input[disabled] {
 
 .todo_items_right button svg {
   fill: #f2e4e6;
+  fill: light-dark(var(--light-theme-text), var(--dark-theme-text));
 }
 
 dialog {
-  background-color: var(--custom-bg-color);
-  color: var(--custom-color);
+  background-color: light-dark(var(--light-theme-bg-1), var(--dark-theme-bg-1));
+  color: light-dark(var(--light-theme-text), var(--dark-theme-text));
   width: 100%;
   margin: auto;
-  border: var(--custom-wide-border);
-  border-radius: var(--custom-border-radius);
+  border: var(--wide-border);
+  border-radius: var(--border-radius);
 }
 
 .account-form-widget h1 {
@@ -371,11 +414,12 @@ dialog {
 }
 
 dialog::backdrop {
-  background-color: var(--darker-bg-color);
+  background-color: light-dark(var(--light-theme-bg-2), var(--dark-theme-bg-2));
 }
 
 svg {
   fill: #f2e4e6;
+  fill: light-dark(var(--light-theme-text), var(--dark-theme-text));
 }
 
 .todo-input {
@@ -393,12 +437,12 @@ form {
 
 button,
 .button {
-  color: var(--custom-color);
-  border: var(--custom-border);
-  background-color: var(--custom-bg-color);
+  color: light-dark(var(--light-theme-text), var(--dark-theme-text));
+  border: var(--narrow-border);
+  background-color: light-dark(var(--light-theme-bg-1), var(--dark-theme-bg-1));
   display: inline-block;
   text-align: center;
-  border-radius: var(--custom-border-radius);
+  border-radius: var(--border-radius);
   padding: 0.5rem 1rem;
   cursor: pointer;
   text-align: center;
@@ -408,14 +452,14 @@ button,
 
 button.primary,
 .button.primary {
-  background-color: var(--custom-bg-color);
+  background-color: light-dark(--light-theme-bg-1, var(--dark-theme-bg-1));
 }
 
 /* Widgets */
 
 .card {
-  border: var(--custom-border);
-  border-radius: var(--custom-border-radius);
+  border: var(--narrow-border);
+  border-radius: var(--border-radius);
   display: flex;
   align-items: center;
 }
@@ -425,7 +469,7 @@ button.primary,
 }
 
 .avatar {
-  border-radius: var(--custom-border-radius);
+  border-radius: var(--border-radius);
   overflow: hidden;
   max-width: 100%;
 }
@@ -437,7 +481,7 @@ button.primary,
 .avatar.no-image {
   background-color: #333;
   border: 1px solid rgb(200, 200, 200);
-  border-radius: var(--custom-border-radius);
+  border-radius: var(--border-radius);
 }
 
 .mainHeader {
@@ -447,8 +491,8 @@ button.primary,
 }
 
 .avatarPlaceholder {
-  border: var(--custom-border);
-  border-radius: var(--custom-border-radius);
+  border: var(--narrow-border);
+  border-radius: var(--border-radius);
   width: 35px;
   height: 35px;
   background-color: rgba(255, 255, 255, 0.2);
@@ -629,7 +673,6 @@ button.primary,
   .todo-input .count-input-label {
     width: 20%;
     flex-grow: 0;
-    /* text-transform: uppercase; */
   }
 
   .todo-input {
