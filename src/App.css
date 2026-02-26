@@ -36,7 +36,6 @@
   /* todo work out a way to use a gradient even if it's with prefers-color-scheme instead of light-dark. Or maybe use light-dark for the solid colors and then use prefers-color-scheme for the gradient? */
   /* --background-color: light-dark(#ffffff, #1b1639); */
   --bg-color-1: light-dark(#ffffff, #1c173d);
-  --bg-color-1: light-dark(#ffffff, #0f0d21);
   --bg-color-1: light-dark(#ffffff, #15122f);
   /* --bg-color-2: light-dark(#f9f7f6, #0c0828); */
   --bg-color-2: light-dark(#ffffff, #0c0828);
