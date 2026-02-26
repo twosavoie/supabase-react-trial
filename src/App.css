@@ -39,6 +39,7 @@
   --bg-color-1: light-dark(#ffffff, #15122f);
   /* --bg-color-2: light-dark(#f9f7f6, #0c0828); */
   --bg-color-2: light-dark(#ffffff, #0c0828);
+  --bg-color-3: light-dark(#bce4f9, #0c0828);
 
   /* ? Possible gradient background */
   /* Try 1 */
@@ -47,6 +48,9 @@
   --my-gradient: linear-gradient(light-dark(#377a9000, hsl(248deg 45% 16%)), light-dark(#63bff040, hsl(240, 44%, 6%)));
 
   --my-gradient: linear-gradient(light-dark(#ffffff, hsl(248deg 45% 16%)), light-dark(#63bff040, hsl(240, 44%, 6%)));
+
+  /* * from a very translucent blue to a more opaque blue. */
+  --my-gradient: linear-gradient(light-dark(#63bff005, hsl(248deg 45% 16%)), light-dark(#63bff040, hsl(240, 44%, 6%)));
 
   /* --my-gradient: linear-gradient(light-dark(#ffffff, hsl(248deg 45% 16%)), light-dark(hsl(201, 82%, 66%), hsl(240, 44%, 6%))); */
 
@@ -61,16 +65,30 @@
 
   /* * Text colors */
   --text-color: light-dark(#00004d, #f2e4e6);
+  --text-color: light-dark(#09415e, #f2e4e6);
+  --text-color: light-dark(#0b4d70, #f2e4e6);
+  --text-color: light-dark(#0b1b70, #f2e4e6);
+  --text-color: light-dark(#09165f, #f2e4e6);
+  --text-color: light-dark(#07124d, #f2e4e6);
+
+
+
   --text-color-disabled: light-dark(#999999, #bbbbbb);
+  /* todo choose colors - the disabled ones look good? The chrome default is around #777777 */
+  --text-color-placeholder: light-dark(#999999, #bbbbbb);
 
   /* * Fill colors - reuse text colors */
   /* todo create variables for fill colors for light and dark themes. Or reuse the text colors since they're the same? */
 
   /* * Accent colors */
   --accent-color-1: light-dark(#f36500, #f493a4);
+  --accent-color-1: light-dark(#b84b12, #f493a4);
+  --accent-color-1: light-dark(#dc5a15, #f493a4);
+
+  /* todo based on new orange #f36500, choose new accents for checkbox? */
   --accent-color-2: light-dark(#f36500, #d7556c);
   --accent-color-2-hover: light-dark(#ff6b00, #ed5e77);
-  --accent-color-3: #333;
+  --accent-color-3: light-dark(#09415e, #333);
 
   /* * Borders */
   --extra-narrow-border: 0.5px solid;
@@ -101,7 +119,7 @@ body {
   color: var(--text-color);
   display: flex;
   justify-content: center;
-  /* width: 100vw; */
+  width: 100vw;
   /* ? Does min-height allow the gradient to fill the whole screen? */
   min-height: 120vh;
   /* ? Or 100vh */
@@ -282,7 +300,7 @@ input[disabled] {
   flex-flow: row wrap;
   align-items: center;
   width: 100%;
-  border: var(--extra-narrow-border) var(--accent-color-1);
+  border: var(--narrow-border) var(--accent-color-1);
   border-radius: var(--border-radius);
   font-size: 16px;
   background-color: var(--bg-color-2);
@@ -405,7 +423,7 @@ dialog {
 }
 
 dialog::backdrop {
-  background-color: var(--bg-color-2);
+  background-color: var(--bg-color-3);
 }
 
 svg {
