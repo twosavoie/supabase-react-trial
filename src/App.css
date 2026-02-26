@@ -33,12 +33,30 @@
       hsl(248deg 45% 16%) 100%); */
 
   /* * Backgrounds */
-  /* todo work out a way to use a gradient even if it's with prefers-color-scheme instead of light-dark. Or maybe use light-dark for the solid colors and then use prefers-color-scheme for the gradient? */
+  /* todo work out a way to use a gradient even if it's with prefers-color-scheme instead of light-dark. Or maybe use light-dark for the solid colors and then use prefers-color-scheme for the gradient? Maybe not - the gradient leaves a notch etc. while the color doesn't*/
   /* --background-color: light-dark(#ffffff, #1b1639); */
-  --bg-color-1: light-dark(#ffffff, #1c173d);
+  /* --bg-color-1: light-dark(#ffffff, #1c173d); */
   --bg-color-1: light-dark(#ffffff, #15122f);
   /* --bg-color-2: light-dark(#f9f7f6, #0c0828); */
   --bg-color-2: light-dark(#ffffff, #0c0828);
+
+  /* ? Possible gradient background */
+  /* Try 1 */
+  --my-gradient: linear-gradient(light-dark(#ffffff, hsl(248deg 45% 16%)), light-dark(#f7f7f7, hsl(240, 44%, 6%)));
+
+  --my-gradient: linear-gradient(light-dark(#377a9000, hsl(248deg 45% 16%)), light-dark(#63bff040, hsl(240, 44%, 6%)));
+
+  --my-gradient: linear-gradient(light-dark(#ffffff, hsl(248deg 45% 16%)), light-dark(#63bff040, hsl(240, 44%, 6%)));
+
+  /* --my-gradient: linear-gradient(light-dark(#ffffff, hsl(248deg 45% 16%)), light-dark(hsl(201, 82%, 66%), hsl(240, 44%, 6%))); */
+
+
+
+  /* OR */
+  /* Try 2 */
+  /* --color-start: light-dark(#ff7e5f, #6f0000); */
+  /* --color-end: light-dark(#feb47b, #1a1913); */
+
 
 
   /* * Text colors */
@@ -55,7 +73,7 @@
   --accent-color-3: #333;
 
   /* * Borders */
-  /* todo add an extra narrow border of .5px */
+  --extra-narrow-border: 0.5px solid;
   --narrow-border: 1px solid;
   --wide-border: 3px solid;
   --border-radius: 5px;
@@ -63,17 +81,22 @@
 
 html,
 body {
+  /* Try 1 */
+  background-image: var(--my-gradient);
+  /* Try 2 */
+  /* background-image: linear-gradient(var(--color-start), var(--color-end)); */
+
   padding: 0;
   margin: 0;
   /* * Per Chris Coyier */
   box-sizing: border-box;
   font-family: var(--custom-font-family);
   /* ? Gradient may not work with light-dark might need to use prefers-color-scheme */
-  background: var(--bg-color-1);
-  /* * Ensures the gradient remains fixed even with scrolling content */
+  /* background: var(--bg-color-1); */
+  /* * Ensures the gradient remains fixed even with scrolling content. ? If not using gradient, remove? */
   background-attachment: fixed;
   /* ? needed will push */
-  /* background-size: cover; */
+  background-size: cover;
   font-family: var(--custom-font-family);
   color: var(--text-color);
   display: flex;
@@ -259,7 +282,7 @@ input[disabled] {
   flex-flow: row wrap;
   align-items: center;
   width: 100%;
-  border: var(--narrow-border) var(--accent-color-1);
+  border: var(--extra-narrow-border) var(--accent-color-1);
   border-radius: var(--border-radius);
   font-size: 16px;
   background-color: var(--bg-color-2);
