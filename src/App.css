@@ -13,7 +13,6 @@
   /* * End Global and reset styles */
 
   /* * Background colors */
-  --background-color: light-dark(#ffffff, #231c4b);
   /* Source: Josh Comeau's gradient calculator https://www.joshwcomeau.com/gradient-generator/ */
   /* * Used for dark color scheme */
   /* --dark-gradient: linear-gradient(0deg,
@@ -33,53 +32,30 @@
       hsl(247deg 46% 16%) 84%,
       hsl(248deg 45% 16%) 100%); */
 
-  /* TODO Create light-dark color scheme */
-  /* * Input, buttons, and background of dialogs */
-  --dark-theme-bg-1: #1c173d;
-  /* * Input, todo items, and ?background of dialogs */
-  --dark-theme-bg-2: #0c0828;
-  /* todo background of main page in light theme */
-  --light-theme-bg-1: #ffffff;
-  /* todo Use for background of todo items and dialogs in light theme */
-  --light-theme-bg-2: #f9f7f6;
+  /* * Backgrounds */
+  /* todo work out a way to use a gradient even if it's with prefers-color-scheme instead of light-dark. Or maybe use light-dark for the solid colors and then use prefers-color-scheme for the gradient? */
+  /* --background-color: light-dark(#ffffff, #1b1639); */
+  --bg-color-1: light-dark(#ffffff, #1c173d);
+  /* --bg-color-2: light-dark(#f9f7f6, #0c0828); */
+  --bg-color-2: light-dark(#ffffff, #0c0828);
+
 
   /* * Text colors */
-  /* * text of body, input, dialog, and buttons */
-  --dark-theme-text: #f2e4e6;
-  --light-theme-text: #00004d;
-  /* * text of disabled text */
-  --dark-theme-disabled-text: #bbbbbb;
-  /* todo check for contrast */
-  --light-theme-disabled-text: #999999;
+  --text-color: light-dark(#00004d, #f2e4e6);
+  --text-color-disabled: light-dark(#999999, #bbbbbb);
 
   /* * Fill colors - reuse text colors */
   /* todo create variables for fill colors for light and dark themes. Or reuse the text colors since they're the same? */
-  /* --dark-theme-fill: #f2e4e6;
-  --light-theme-fill: #00004d; */
 
   /* * Accent colors */
-  /* * border for todo item input and edit */
-  /* todo edit border Maybe do a narrow and wide border and then a separate color variable? */
-  /* border: 2px solid light-dark(black, white); */
-  /* --dark-theme-accent-1: .5px solid #f493a4; */
   --accent-color-1: light-dark(#f36500, #f493a4);
-  /* --dark-theme-accent-1: #f493a4; */
-  /* --light-theme-accent-1: #f36500; */
   --accent-color-2: light-dark(#f36500, #d7556c);
   --accent-color-2-hover: light-dark(#ff6b00, #ed5e77);
-  /* --dark-theme-accent-2: #d7556c; */
-  /* --dark-theme-accent-2-hover: #ed5e77; */
-  /* --light-theme-accent-2: #f36500; */
-  /* --light-theme-accent-2-hover: #ff6b00; */
-
-  --accent-3: #333;
+  --accent-color-3: #333;
 
   /* * Borders */
-  /* * input, card and button border */
   --narrow-border: 1px solid;
-  /* * dialog border */
   --wide-border: 3px solid;
-  /* * all border radius */
   --border-radius: 5px;
 }
 
@@ -91,16 +67,13 @@ body {
   box-sizing: border-box;
   font-family: var(--custom-font-family);
   /* ? Gradient may not work with light-dark might need to use prefers-color-scheme */
-  background: var(--background-color);
-  /* background: var(--light-theme-bg-1); */
-  /* background: var(--dark-gradient); */
-  /* background: light-dark(var(--light-theme-bg-1), var(--dark-gradient)); */
+  background: var(--bg-color-1);
   /* * Ensures the gradient remains fixed even with scrolling content */
   background-attachment: fixed;
   /* ? needed will push */
   /* background-size: cover; */
   font-family: var(--custom-font-family);
-  color: light-dark(var(--light-theme-text), var(--dark-theme-text));
+  color: var(--text-color);
   display: flex;
   justify-content: center;
   /* width: 100vw; */
@@ -177,11 +150,11 @@ header p {
 input {
   width: 100%;
   border-radius: var(--border-radius);
-  border: var(--narrow-border) var(--accent-3);
+  border: var(--narrow-border) var(--accent-color-3);
   padding: 8px;
   font-size: 1rem;
-  background-color: light-dark(var(--light-theme-bg-1), var(--dark-theme-bg-1));
-  color: light-dark(var(--light-theme-text), var(--dark-theme-text));
+  background-color: var(--bg-color-1);
+  color: var(--text-color);
   margin: 10px 0 0 0;
 }
 
@@ -192,12 +165,12 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px light-dark(var(--light-theme-bg-1), var(--dark-theme-bg-1)) inset !important;
-  -webkit-text-fill-color: light-dark(var(--light-theme-text), var(--dark-theme-text)) !important;
+  -webkit-box-shadow: 0 0 0 30px var(--bg-color-1) inset !important;
+  -webkit-text-fill-color: var(--text-color) !important;
 }
 
 input[disabled] {
-  color: var(--dark-theme-disabled-text);
+  color: var(--text-color-disabled);
 }
 
 /* ? Is this being applied? I don't see a class of form in the HTML? */
@@ -284,14 +257,11 @@ input[disabled] {
   flex-flow: row wrap;
   align-items: center;
   width: 100%;
-  /* * Example */
-  /* border: 2px solid light-dark(black, white); */
   border: var(--narrow-border) var(--accent-color-1);
-  /* border: var(--dark-theme-accent-1); */
   border-radius: var(--border-radius);
   font-size: 16px;
-  background-color: light-dark(var(--light-theme-bg-2), var(--dark-theme-bg-2));
-  color: var(--color);
+  background-color: var(--bg-color-2);
+  color: var(--text-color);
   padding: 12px 0;
 }
 
@@ -313,7 +283,7 @@ input[disabled] {
 .todo_items_left {
   background-color: transparent;
   border: none;
-  color: var(--color);
+  color: var(--text-color);
   gap: 12px;
   font-size: 16px;
   width: 100%;
@@ -331,7 +301,6 @@ input[disabled] {
 .todo_items_left label {
   flex-grow: 1;
   border: none;
-  /* background-color: var(--dark-theme-bg-2); */
   padding: 0.5rem 0;
   text-transform: initial;
 
@@ -342,14 +311,11 @@ input[disabled] {
   /* height: 20px; */
   margin-top: 0;
   margin-right: 8px;
-  /* todo create custom property for accent-color */
-  /* accent-color: #d7556c; */
   accent-color: var(--accent-color-2);
 }
 
 .todo_items_left input[type=checkbox]:hover {
   /* filter: brightness(1.5); */
-  /* todo create custom property for accent-color */
   accent-color: var(--accent-color-2-hover);
 }
 
@@ -372,21 +338,21 @@ input[disabled] {
 
 .todo_items_right button {
   background-color: transparent;
-  color: var(--color);
+  color: var(--text-color);
   border: none;
 }
 
 .todo_items_right button svg {
   fill: #f2e4e6;
-  fill: light-dark(var(--light-theme-text), var(--dark-theme-text));
+  fill: var(--text-color);
 }
 
 dialog {
-  background-color: light-dark(var(--light-theme-bg-1), var(--dark-theme-bg-1));
-  color: light-dark(var(--light-theme-text), var(--dark-theme-text));
+  background-color: var(--bg-color-1);
+  color: var(--text-color);
   width: 100%;
   margin: auto;
-  border: var(--wide-border);
+  border: var(--wide-border) var(--accent-color-3);
   border-radius: var(--border-radius);
 }
 
@@ -414,12 +380,11 @@ dialog {
 }
 
 dialog::backdrop {
-  background-color: light-dark(var(--light-theme-bg-2), var(--dark-theme-bg-2));
+  background-color: var(--bg-color-2);
 }
 
 svg {
-  fill: #f2e4e6;
-  fill: light-dark(var(--light-theme-text), var(--dark-theme-text));
+  fill: var(--text-color);
 }
 
 .todo-input {
@@ -437,9 +402,9 @@ form {
 
 button,
 .button {
-  color: light-dark(var(--light-theme-text), var(--dark-theme-text));
-  border: var(--narrow-border);
-  background-color: light-dark(var(--light-theme-bg-1), var(--dark-theme-bg-1));
+  color: var(--text-color);
+  border: var(--narrow-border) var(--accent-color-3);
+  background-color: var(--bg-color-1);
   display: inline-block;
   text-align: center;
   border-radius: var(--border-radius);
@@ -452,13 +417,13 @@ button,
 
 button.primary,
 .button.primary {
-  background-color: light-dark(--light-theme-bg-1, var(--dark-theme-bg-1));
+  background-color: var(--bg-color-1);
 }
 
 /* Widgets */
 
 .card {
-  border: var(--narrow-border);
+  border: var(--narrow-border) var(--accent-color-3);
   border-radius: var(--border-radius);
   display: flex;
   align-items: center;
@@ -491,7 +456,7 @@ button.primary,
 }
 
 .avatarPlaceholder {
-  border: var(--narrow-border);
+  border: var(--narrow-border) var(--accent-color-3);
   border-radius: var(--border-radius);
   width: 35px;
   height: 35px;
