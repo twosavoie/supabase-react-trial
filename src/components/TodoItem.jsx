@@ -8,7 +8,14 @@ TodoItem.propTypes = {
   session: PropTypes.object,
   todos: PropTypes.array,
   setTodos: PropTypes.func.isRequired,
-  item: PropTypes.object.isRequired, // Add this line
+  item: PropTypes.shape({
+    id: PropTypes.number,
+    todo_name: PropTypes.string,
+    goal: PropTypes.number,
+    count: PropTypes.number,
+    completed: PropTypes.bool,
+    due_date: PropTypes.string, // incoming ISO date string (can be null)
+  }).isRequired,
 };
 
 // ? Would the check if goals >= count go here or in Counter.jsx? How would I trigger confetti from here? Should it all go in Counter.jsx?
@@ -19,6 +26,14 @@ function TodoItem({ item, setTodos }) {
   // console.log("TodoItem item.todo_name:", item.todo_name);
   const [editing, setEditing] = useState(false);
   const inputRef = useRef(null);
+
+  // derive some date-related state
+  const isOverdue =
+    item.due_date && !item.completed && new Date(item.due_date) < new Date();
+  // const finishedOnTime =
+  //   item.due_date &&
+  //   item.completed &&
+  //   new Date(item.due_date) >= new Date(item.updated_at || item.completed_at);
 
   // from ChatGPT
   async function completeTodo(id) {
@@ -167,6 +182,11 @@ function TodoItem({ item, setTodos }) {
               </span>
             </label>
             {item.goal > 0 && <p className="goal">Goal: {item.goal}</p>}
+            {item.due_date && (
+              <p className={"due-date" + (isOverdue ? " overdue" : "")}>
+                Due: {new Date(item.due_date).toLocaleDateString()}
+              </p>
+            )}
           </div>
           {/* TODO: Add a ternary to check if count equals what was specified and if so confetti and todo item is crossed out by calling completeTodo functions */}
           <div className="todo_items_right">

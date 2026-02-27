@@ -16,34 +16,46 @@ TodoInput.propTypes = {
 function TodoInput({ fetchTodos, session }) {
   const [todo_name, setTodo_name] = useState("");
   const [goal, setGoal] = useState(0);
-  // TODO: add a "By:" date
+  const [dueDate, setDueDate] = useState(""); // new state for the "by" date
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     await addTodo(
       todo_name,
       goal,
+      dueDate,
       setTodo_name,
       setGoal,
+      setDueDate,
       fetchTodos,
       session.user.id,
     );
   };
+
   async function addTodo(
     todo_name,
     goal,
+    dueDate,
     setTodo_name,
     setGoal,
+    setDueDate,
     fetchTodos,
     userId,
   ) {
     if (!todo_name.trim()) return;
-    const { error } = await supabase
-      .from("todos")
-      .insert([{ todo_name, user_id: userId, goal: goal ? Number(goal) : 0 }]);
+    const { error } = await supabase.from("todos").insert([
+      {
+        todo_name,
+        user_id: userId,
+        goal: goal ? Number(goal) : 0,
+        due_date: dueDate || null,
+      },
+    ]);
     if (error) console.error("Error inserting todo:", error);
     else {
       setTodo_name("");
       setGoal(0);
+      setDueDate("");
       fetchTodos();
     }
   }
@@ -69,6 +81,16 @@ function TodoInput({ fetchTodos, session }) {
             name="goal"
             id="goal"
             onChange={(event) => setGoal(event.target.value)}
+          />
+        </label>
+        <label htmlFor="due-date" className="date-input-label">
+          Complete by:
+          <input
+            type="date"
+            value={dueDate}
+            name="due-date"
+            id="due-date"
+            onChange={(event) => setDueDate(event.target.value)}
           />
         </label>
         <button>
