@@ -390,6 +390,7 @@ input[disabled] {
   fill: var(--text-color);
 }
 
+
 dialog {
   background-color: var(--bg-color-1);
   color: var(--text-color);
@@ -397,6 +398,9 @@ dialog {
   margin: auto;
   border: var(--wide-border) var(--accent-color-3);
   border-radius: var(--border-radius);
+  /* ? Horizontal scroll for the account, but not the about dialog? Could be because more content creates a vertical scrollbar. This fixes it but ? Feels hacky. Try removing if the content is reduced so that they isn't a vertical scroll */
+  overflow-x: hidden;
+  /* max-width: 100%; */
 }
 
 .account-form-widget h1 {
