@@ -13,7 +13,7 @@ TodoInput.propTypes = {
 
 function TodoInput({ fetchTodos, session }) {
   const [todo_name, setTodo_name] = useState("");
-  const [goal, setGoal] = useState(0);
+  const [goal, setGoal] = useState("");
   const [daysToComplete, setDaysToComplete] = useState("");
 
   // Source: https://claude.ai/share/44716456-b609-4ac6-a10a-3ed916cb6fad
@@ -54,14 +54,14 @@ function TodoInput({ fetchTodos, session }) {
       {
         todo_name,
         user_id: userId,
-        goal: goal ? Number(goal) : 0,
+        goal: goal && goal > 0 ? Number(goal) : 0,
         due_date: dueDate || null,
       },
     ]);
     if (error) console.error("Error inserting todo:", error);
     else {
       setTodo_name("");
-      setGoal(0);
+      setGoal("");
       setDueDate("");
       fetchTodos();
     }
@@ -87,12 +87,14 @@ function TodoInput({ fetchTodos, session }) {
             value={goal}
             name="goal"
             id="goal"
+            min="0"
+            placeholder="e.g., 7"
             onChange={(event) => setGoal(event.target.value)}
           />
         </label>
         {/* Used for days to complete */}
         <label htmlFor="days-to-complete" className="date-input-label">
-          Complete within (days):
+          Over # of days:
           <input
             type="number"
             value={daysToComplete}
