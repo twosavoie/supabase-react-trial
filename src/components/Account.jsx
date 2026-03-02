@@ -72,10 +72,7 @@ export default function Account({ session }) {
   return (
     <div className="account-form-widget">
       <h1>Account</h1>
-      <p>
-        Great news! You don&apos;t need to complete any of this information to
-        use Pebli.
-      </p>
+      <p>Completing this form is totally optional. You do you! 🙂</p>
       <form onSubmit={updateProfile} className="form-widget">
         <div className="account-form-widget-elements">
           <label htmlFor="email">Email</label>

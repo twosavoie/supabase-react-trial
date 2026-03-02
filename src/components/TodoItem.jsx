@@ -156,12 +156,14 @@ function TodoItem({ item, setTodos }) {
                 {item?.todo_name}
               </span>
             </label>
-            {item.goal > 0 && <p className="goal">Goal: {item.goal}</p>}
-            {item.due_date && (
-              <p className={"due-date" + (isOverdue ? " overdue" : "")}>
-                By: {new Date(item.due_date).toLocaleDateString()}
-              </p>
-            )}
+            <div className="goal-due-date">
+              {item.goal > 0 && <p className="goal">Goal: {item.goal}</p>}
+              {item.due_date && (
+                <p className={"due-date" + (isOverdue ? " overdue" : "")}>
+                  By: {new Date(item.due_date).toLocaleDateString()}
+                </p>
+              )}
+            </div>
           </div>
           <div className="todo_items_right">
             <Counter

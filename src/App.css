@@ -30,6 +30,7 @@
   --accent-color-2: light-dark(#f36500, #d7556c);
   --accent-color-2-hover: light-dark(#ff6b00, #ed5e77);
   --accent-color-3: light-dark(#09415e, #333);
+  /* ? #484747 for dark accent instead of #333 */
 
   /* * Borders */
   --narrow-border: 1px solid;
@@ -208,6 +209,8 @@ input[disabled] {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* ? */
+  flex-flow: row wrap;
   padding: 0 1rem;
 }
 
@@ -247,8 +250,17 @@ input[disabled] {
 .todo_items_left p.goal {
   /* ? */
   /* flex-basis: 55%; */
-  flex-basis: 30%;
+  /* flex-basis: 30%; */
   text-align: right;
+}
+
+.todo_items_left .goal-due-date {
+  display: flex;
+  /* flex-direction: column; */
+  /* align-items: flex-end; */
+  justify-content: flex-end;
+  gap: 10px;
+  /* width: 50%; */
 }
 
 .todo_items_right {
@@ -291,7 +303,7 @@ dialog {
 }
 
 .account-form-widget p {
-  margin: 20px;
+  margin: 20px 0;
   text-align: center;
 }
 
@@ -518,6 +530,20 @@ button.primary,
     flex-wrap: nowrap;
   }
 
+  .todo_items_left .goal-due-date {
+    width: 50%;
+  }
+
+  .todo_items_left,
+  .todo_items_right {
+    flex-wrap: nowrap;
+    /* justify-content: space-between; */
+  }
+
+  /* .goal-due-date {
+    align-items: flex-end;
+  } */
+
   /* TODO: Test on an iPad mini to see if this is the correct media query of if it should be moved to the 1000px media query */
   .sign-in-input {
     width: 60%;
@@ -598,6 +624,10 @@ button.primary,
     width: 60%;
   }
 
+  .todo_items_left .goal-due-date {
+    width: 80%;
+  }
+
   .todo_items_left p.goal {
     text-align: right;
   }
@@ -636,6 +666,10 @@ button.primary,
 
   .todo_list {
     width: 60%;
+  }
+
+  .todo_items_left .goal-due-date {
+    width: 50%;
   }
 }
 
