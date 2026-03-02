@@ -109,7 +109,6 @@ export default function Account({ session }) {
         />
 
         <div className="account-form-widget-elements account-form-buttons">
-          {/* TODO: Add message that account has been updated */}
           <button
             className="button block primary"
             type="submit"
@@ -126,16 +125,6 @@ export default function Account({ session }) {
             Sign Out
           </button>
         </div>
-
-        {/* <div className="account-form-widget-elements">
-          <button
-            className="button block"
-            type="button"
-            onClick={() => supabase.auth.signOut()}
-          >
-            Sign Out
-          </button>
-        </div> */}
       </form>
     </div>
   );

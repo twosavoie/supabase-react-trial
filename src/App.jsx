@@ -31,7 +31,6 @@ function App() {
   }
 
   return (
-    // * there was a style={{ padding: "50px 0 100px 0" }} on the container before
     <div className="container">
       {!session ? (
         <Auth />
@@ -39,19 +38,12 @@ function App() {
         <>
           <Header key={session.user.id} session={session} />
           <TodoInput
-            // key={session.user.id}
             session={session}
             todos={todos}
             setTodos={setTodos}
             fetchTodos={fetchTodos}
           />
-          <TodoList
-            // key={session.user.id}
-            // session={session}
-            todos={todos}
-            setTodos={setTodos}
-            fetchTodos={fetchTodos}
-          />
+          <TodoList todos={todos} setTodos={setTodos} fetchTodos={fetchTodos} />
         </>
       )}
     </div>

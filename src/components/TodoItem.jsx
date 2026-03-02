@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-// import "../App.css";
 import PropTypes from "prop-types";
 import Counter from "./Counter";
 import { supabase } from "../supabaseClient";
@@ -14,28 +13,17 @@ TodoItem.propTypes = {
     goal: PropTypes.number,
     count: PropTypes.number,
     completed: PropTypes.bool,
-    due_date: PropTypes.string, // incoming ISO date string (can be null)
+    due_date: PropTypes.string,
   }).isRequired,
 };
 
-// ? Would the check if goals >= count go here or in Counter.jsx? How would I trigger confetti from here? Should it all go in Counter.jsx?
 function TodoItem({ item, setTodos }) {
-  // ? Does item include goal?
-  // console.log("TodoItem item:", item);
-  // console.log("TodoItem item.goal:", item.goal);
-  // console.log("TodoItem item.todo_name:", item.todo_name);
   const [editing, setEditing] = useState(false);
   const inputRef = useRef(null);
 
-  // derive some date-related state
   const isOverdue =
     item.due_date && !item.completed && new Date(item.due_date) < new Date();
-  // const finishedOnTime =
-  //   item.due_date &&
-  //   item.completed &&
-  //   new Date(item.due_date) >= new Date(item.updated_at || item.completed_at);
 
-  // from ChatGPT
   async function completeTodo(id) {
     const updatedStatus = !item.completed;
 
@@ -49,7 +37,6 @@ function TodoItem({ item, setTodos }) {
       return;
     }
 
-    // Update local state for instant UI feedback
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
         todo.id === id ? { ...todo, completed: updatedStatus } : todo,
@@ -57,14 +44,11 @@ function TodoItem({ item, setTodos }) {
     );
   }
 
-  // Automatically complete todo when count >= goal and not already completed. If count < goal, mark incomplete
-  // * Can also cross off and uncross off an item. If the count changes this useEffect runs again and recrosses off the item if the count is >= goal. Not sure how I feel about this.
   useEffect(() => {
     if (typeof item.goal === "number" && item.goal > 0) {
       if (item.count >= item.goal && !item.completed) {
         completeTodo(item.id);
       } else if (item.count < item.goal && item.completed) {
-        // Mark as incomplete if count drops below goal
         completeTodo(item.id);
       }
     }
@@ -78,8 +62,6 @@ function TodoItem({ item, setTodos }) {
   useEffect(() => {
     if (editing && inputRef.current) {
       inputRef.current.focus();
-      // position the cursor at the end of the text
-      // ? Why twice?
       inputRef.current.setSelectionRange(
         inputRef.current.value.length,
         inputRef.current.value.length,
@@ -88,11 +70,9 @@ function TodoItem({ item, setTodos }) {
   }, [editing]);
   const handleInputSubmit = async (event) => {
     event.preventDefault();
-    // Update Supabase after editing todo
     await saveEditedTodo();
   };
   const handleInputBlur = async () => {
-    // Update Supabase after editing todo
     await saveEditedTodo();
   };
 
@@ -122,7 +102,6 @@ function TodoItem({ item, setTodos }) {
   };
 
   const handleDelete = async () => {
-    // ** Confirm deletion using bang and window.confirm. If not confirmed, return early. If confirmed, proceed with deletion. Uses a browser API to show a confirmation dialog to the user. **
     if (
       !window.confirm(`Are you sure you want to delete "${item.todo_name}"?`)
     ) {
@@ -136,7 +115,6 @@ function TodoItem({ item, setTodos }) {
       return;
     }
 
-    // Remove it locally for fast UI feedback
     setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== item.id));
   };
 
@@ -149,7 +127,6 @@ function TodoItem({ item, setTodos }) {
               ref={inputRef}
               type="text"
               name="edit-todo"
-              // defaultValue={item?.title}
               defaultValue={item?.todo_name}
               onBlur={handleInputBlur}
               onChange={handleInputChange}
@@ -172,8 +149,6 @@ function TodoItem({ item, setTodos }) {
                     ? {
                         textDecoration: "line-through",
                         textDecorationThickness: "3px",
-                        // textDecorationColor: "#fbd8df",
-                        // ? Add confetti component here?
                       }
                     : {}
                 }
@@ -188,7 +163,6 @@ function TodoItem({ item, setTodos }) {
               </p>
             )}
           </div>
-          {/* TODO: Add a ternary to check if count equals what was specified and if so confetti and todo item is crossed out by calling completeTodo functions */}
           <div className="todo_items_right">
             <Counter
               todoId={item.id}
@@ -231,7 +205,6 @@ function TodoItem({ item, setTodos }) {
                     fillRule="nonzero"
                   />
                 </svg>
-                {/* </div> */}
               </button>
             </div>
           </div>

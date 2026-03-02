@@ -5,8 +5,8 @@ import PropTypes from "prop-types";
 Counter.propTypes = {
   session: PropTypes.object,
   todos: PropTypes.array,
-  todoId: PropTypes.number.isRequired, // Add this line
-  initialCount: PropTypes.number, // Add this line
+  todoId: PropTypes.number.isRequired,
+  initialCount: PropTypes.number,
   setTodos: PropTypes.func.isRequired,
   fetchTodos: PropTypes.func.isRequired,
 };
@@ -18,7 +18,6 @@ function Counter({ todoId, initialCount, setTodos }) {
     const newCount = count + 1;
     setCount(newCount);
 
-    // ✅ Update Supabase
     const { error } = await supabase
       .from("todos")
       .update({ count: newCount })
@@ -29,11 +28,10 @@ function Counter({ todoId, initialCount, setTodos }) {
       return;
     }
 
-    // ✅ Update local state
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
-        todo.id === todoId ? { ...todo, count: newCount } : todo
-      )
+        todo.id === todoId ? { ...todo, count: newCount } : todo,
+      ),
     );
   };
 
@@ -41,7 +39,6 @@ function Counter({ todoId, initialCount, setTodos }) {
     const newCount = count - 1;
     setCount(newCount);
 
-    // ✅ Update Supabase
     const { error } = await supabase
       .from("todos")
       .update({ count: newCount })
@@ -52,22 +49,15 @@ function Counter({ todoId, initialCount, setTodos }) {
       return;
     }
 
-    // ✅ Update local state
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
-        todo.id === todoId ? { ...todo, count: newCount } : todo
-      )
+        todo.id === todoId ? { ...todo, count: newCount } : todo,
+      ),
     );
   };
 
   return (
     <>
-      {/* <p>Count:</p> */}
-      {/* <div className="card">
-        <p>{count}</p>
-        <button onClick={incrementCount}>+</button>
-        <button onClick={decrementCount}>-</button>
-      </div> */}
       <fieldset className="card">
         <legend className="visually-hidden">Counter for this todo</legend>
         <p aria-live="polite">{count}</p>
