@@ -159,7 +159,7 @@ function TodoItem({ item, setTodos }) {
             {item.goal > 0 && <p className="goal">Goal: {item.goal}</p>}
             {item.due_date && (
               <p className={"due-date" + (isOverdue ? " overdue" : "")}>
-                Due: {new Date(item.due_date).toLocaleDateString()}
+                By: {new Date(item.due_date).toLocaleDateString()}
               </p>
             )}
           </div>
