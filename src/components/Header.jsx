@@ -35,6 +35,7 @@ export default function Header({ session }) {
         }}
       >
         <button
+          className="button"
           onClick={() => {
             setDialogContent(
               <Account key={session.user.id} session={session} />,
@@ -45,6 +46,7 @@ export default function Header({ session }) {
           Account
         </button>
         <button
+          className="button"
           onClick={() => {
             setDialogContent(<About />);
             toggleDialog();

@@ -1,6 +1,4 @@
 import { useState } from "react";
-// import "../App.css";
-// import Counter from "./Counter";
 import { supabase } from "../supabaseClient";
 import PropTypes from "prop-types";
 
@@ -16,13 +14,9 @@ TodoInput.propTypes = {
 function TodoInput({ fetchTodos, session }) {
   const [todo_name, setTodo_name] = useState("");
   const [goal, setGoal] = useState(0);
-  // Used for days to complete
   const [daysToComplete, setDaysToComplete] = useState("");
-  // Was used when input field was date
-  // const [dueDate, setDueDate] = useState(""); // new state for the "by" date
 
   // Source: https://claude.ai/share/44716456-b609-4ac6-a10a-3ed916cb6fad
-  // Used for days to complete - date is at midnight on the date
   const calcDueDate = (days) => {
     if (!days || days <= 0) return null;
     const date = new Date();
@@ -30,19 +24,8 @@ function TodoInput({ fetchTodos, session }) {
     return date.toISOString().split("T")[0]; // "YYYY-MM-DD"
   };
 
-  // Used for days to complete at 11:59pm on the due date - not shown in db, use other suggestions if you want a human-readable date in the db
-  // const calcDueDate = (days) => {
-  //   if (!days || days <= 0) return null;
-  //   const date = new Date();
-  //   date.setDate(date.getDate() + Number(days));
-  //   // Set to 11:59 PM in the user's local time
-  //   date.setHours(23, 59, 0, 0);
-  //   return date.toISOString(); // Converts to UTC, but preserves the intent
-  // };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // Used for days to complete
     const dueDate = calcDueDate(daysToComplete);
     await addTodo(
       todo_name,
@@ -50,10 +33,7 @@ function TodoInput({ fetchTodos, session }) {
       dueDate,
       setTodo_name,
       setGoal,
-      // Used for days to complete
       () => setDaysToComplete(""),
-      // Was used when input field was date
-      // setDueDate,
       fetchTodos,
       session.user.id,
     );
@@ -123,18 +103,7 @@ function TodoInput({ fetchTodos, session }) {
             onChange={(event) => setDaysToComplete(event.target.value)}
           />
         </label>
-        {/* Was used when input field was date */}
-        {/* <label htmlFor="due-date" className="date-input-label">
-          Complete by:
-          <input
-            type="date"
-            value={dueDate}
-            name="due-date"
-            id="due-date"
-            onChange={(event) => setDueDate(event.target.value)}
-          />
-        </label> */}
-        <button>
+        <button className="button">
           <span className="visually-hidden">Submit</span>
           <svg
             clipRule="evenodd"

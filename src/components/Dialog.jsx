@@ -8,7 +8,6 @@ const Dialog = forwardRef(({ children, toggleDialog }, ref) => {
   };
 
   return (
-    // TODO: Make it so that a user can't close the modal by clicking the padding inside.
     <dialog
       ref={ref}
       onClick={(e) => {
@@ -19,7 +18,9 @@ const Dialog = forwardRef(({ children, toggleDialog }, ref) => {
     >
       <div className="dialog-content">
         {children}
-        <button onClick={toggleDialog}>Close</button>
+        <button className="button" onClick={toggleDialog}>
+          Close
+        </button>
       </div>
     </dialog>
   );

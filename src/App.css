@@ -13,85 +13,25 @@
   /* * End Global and reset styles */
 
   /* * Background colors */
-  /* Source: Josh Comeau's gradient calculator https://www.joshwcomeau.com/gradient-generator/ */
-  /* * Used for dark color scheme */
-  /* --dark-gradient: linear-gradient(0deg,
-      hsl(240, 14%, 1%) 0%,
-      hsl(247deg 62% 10%) 16%,
-      hsl(245deg 58% 11%) 24%,
-      hsl(244deg 55% 11%) 30%,
-      hsl(243deg 53% 12%) 35%,
-      hsl(242deg 51% 12%) 40%,
-      hsl(242deg 50% 13%) 45%,
-      hsl(242deg 48% 13%) 50%,
-      hsl(243deg 48% 14%) 55%,
-      hsl(244deg 47% 14%) 60%,
-      hsl(244deg 47% 15%) 65%,
-      hsl(245deg 46% 15%) 70%,
-      hsl(246deg 46% 16%) 76%,
-      hsl(247deg 46% 16%) 84%,
-      hsl(248deg 45% 16%) 100%); */
-
-  /* * Backgrounds */
-  /* todo work out a way to use a gradient even if it's with prefers-color-scheme instead of light-dark. Or maybe use light-dark for the solid colors and then use prefers-color-scheme for the gradient? Maybe not - the gradient leaves a notch etc. while the color doesn't*/
-  /* --background-color: light-dark(#ffffff, #1b1639); */
-  /* --bg-color-1: light-dark(#ffffff, #1c173d); */
   --bg-color-1: light-dark(#ffffff, #15122f);
-  /* --bg-color-2: light-dark(#f9f7f6, #0c0828); */
   --bg-color-2: light-dark(#ffffff, #0c0828);
   --bg-color-3: light-dark(#bce4f9, #0c0828);
-
-  /* ? Possible gradient background */
-  /* Try 1 */
-  --my-gradient: linear-gradient(light-dark(#ffffff, hsl(248deg 45% 16%)), light-dark(#f7f7f7, hsl(240, 44%, 6%)));
-
-  --my-gradient: linear-gradient(light-dark(#377a9000, hsl(248deg 45% 16%)), light-dark(#63bff040, hsl(240, 44%, 6%)));
-
-  --my-gradient: linear-gradient(light-dark(#ffffff, hsl(248deg 45% 16%)), light-dark(#63bff040, hsl(240, 44%, 6%)));
-
-  /* * from a very translucent blue to a more opaque blue. */
+  --bg-color-4: light-dark(#f2fafe, #0c0828);
   --my-gradient: linear-gradient(light-dark(#63bff005, hsl(248deg 45% 16%)), light-dark(#63bff040, hsl(240, 44%, 6%)));
 
-  /* --my-gradient: linear-gradient(light-dark(#ffffff, hsl(248deg 45% 16%)), light-dark(hsl(201, 82%, 66%), hsl(240, 44%, 6%))); */
-
-
-
-  /* OR */
-  /* Try 2 */
-  /* --color-start: light-dark(#ff7e5f, #6f0000); */
-  /* --color-end: light-dark(#feb47b, #1a1913); */
-
-
-
   /* * Text colors */
-  --text-color: light-dark(#00004d, #f2e4e6);
-  --text-color: light-dark(#09415e, #f2e4e6);
-  --text-color: light-dark(#0b4d70, #f2e4e6);
-  --text-color: light-dark(#0b1b70, #f2e4e6);
-  --text-color: light-dark(#09165f, #f2e4e6);
   --text-color: light-dark(#07124d, #f2e4e6);
-
-
-
   --text-color-disabled: light-dark(#999999, #bbbbbb);
   /* todo choose colors - the disabled ones look good? The chrome default is around #777777 */
   --text-color-placeholder: light-dark(#999999, #bbbbbb);
 
-  /* * Fill colors - reuse text colors */
-  /* todo create variables for fill colors for light and dark themes. Or reuse the text colors since they're the same? */
-
   /* * Accent colors */
-  --accent-color-1: light-dark(#f36500, #f493a4);
-  --accent-color-1: light-dark(#b84b12, #f493a4);
   --accent-color-1: light-dark(#dc5a15, #f493a4);
-
-  /* todo based on new orange #f36500, choose new accents for checkbox? */
   --accent-color-2: light-dark(#f36500, #d7556c);
   --accent-color-2-hover: light-dark(#ff6b00, #ed5e77);
   --accent-color-3: light-dark(#09415e, #333);
 
   /* * Borders */
-  --extra-narrow-border: 0.5px solid;
   --narrow-border: 1px solid;
   --wide-border: 3px solid;
   --border-radius: 5px;
@@ -99,31 +39,20 @@
 
 html,
 body {
-  /* Try 1 */
   background-image: var(--my-gradient);
-  /* Try 2 */
-  /* background-image: linear-gradient(var(--color-start), var(--color-end)); */
-
   padding: 0;
   margin: 0;
   /* * Per Chris Coyier */
   box-sizing: border-box;
   font-family: var(--custom-font-family);
-  /* ? Gradient may not work with light-dark might need to use prefers-color-scheme */
-  /* background: var(--bg-color-1); */
-  /* * Ensures the gradient remains fixed even with scrolling content. ? If not using gradient, remove? */
+  /* * Ensures the gradient remains fixed even with scrolling content */
   background-attachment: fixed;
-  /* ? needed will push */
   background-size: cover;
   font-family: var(--custom-font-family);
   color: var(--text-color);
   display: flex;
   justify-content: center;
   width: 100vw;
-  /* ? Does min-height allow the gradient to fill the whole screen? */
-  min-height: 120vh;
-  /* ? Or 100vh */
-  /* Todo: try both to see if it covers the notch */
   min-height: 100dvh;
 }
 
@@ -134,9 +63,6 @@ div#root {
 }
 
 .container {
-  /* ? need margins if using j-c:c? push to check */
-  /* margin-left: auto; */
-  /* margin-right: auto; */
   display: flex;
   flex-flow: row wrap;
   gap: 40px;
@@ -146,6 +72,11 @@ div#root {
 
 button {
   cursor: pointer;
+}
+
+button:hover {
+  text-decoration: underline;
+  text-decoration-color: inherit;
 }
 
 header {
@@ -176,12 +107,9 @@ header p {
 /* Form */
 .todo-input .todo-input-label {
   display: block;
-  /* ? push */
-  /* color: var(--dark-theme-disabled-text); */
   font-size: 1rem;
   flex-grow: 1;
-  /* ? */
-  /* margin-bottom: 10px; */
+  margin-bottom: 10px;
 }
 
 .todo-input .count-input-label {
@@ -202,8 +130,7 @@ input {
 }
 
 /* * hack to override webkit autofill background color */
-/* * From Google AI overview. Also see: https://stackoverflow.com/questions/41871618/how-to-change-safari-autofill-yellow-background-color */
-
+/* Source: From Google AI overview. Also see: https://stackoverflow.com/questions/41871618/how-to-change-safari-autofill-yellow-background-color */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -216,45 +143,9 @@ input[disabled] {
   color: var(--text-color-disabled);
 }
 
-/* ? Is this being applied? I don't see a class of form in the HTML? */
-/* .form {
-  align-self: center;
-  width: 97%;
-  display: flex;
-  align-items: flex-end;
-  gap: 12px;
-  margin-top: 38px;
-} */
-
-/* ? Is this being applied? I don't see a class of form in the HTML? */
-/* .form input { */
-/* background-color: var(--dark-theme-bg-2); */
-/* color: var(--color);
-  color: red;
-  width: 100%;
-  height: 50px;
-  outline: none;
-  border: none;
-  border-radius: var(--border-radius);
-  padding: 12px;
-  margin-top: 10px;
-} */
-
-/* ? Is this being applied? I don't see a class of form in the HTML? */
-/* .form button {
-  width: 10%;
-  height: 50px;
-  border-radius: var(--border-radius);
-  background-color: #d7556c;
-  border: none;
-} */
-
 /* * Style messages for Auth */
 .success-message {
-  /* * */
-  color: #155724;
   color: #0b2812;
-  background: #d4edda;
   background: #dbe8de;
   border: 1px solid #c3e6cb;
   padding: 0.5em;
@@ -263,11 +154,7 @@ input[disabled] {
 }
 
 .error-message {
-  /* * */
-  color: #721c24;
   color: #401015;
-  /* color: #2d0b0f; */
-  background: #f8d7da;
   background: #f2dee0;
   border: 1px solid #f5c6cb;
   padding: 0.5em;
@@ -285,8 +172,6 @@ input[disabled] {
   align-items: center;
   align-content: center;
   align-self: center;
-  /* ? */
-  /* margin-top: 27px; */
   margin-top: 17px;
   margin-bottom: 27px;
   gap: 27px;
@@ -335,9 +220,6 @@ input[disabled] {
 
 .todo_items_left label {
   display: inline-flex;
-  /* display: inline;
-  display: block;
-  display: flex; */
   align-items: center;
 }
 
@@ -346,19 +228,16 @@ input[disabled] {
   border: none;
   padding: 0.5rem 0;
   text-transform: initial;
-
 }
 
 .todo_items_left input[type="checkbox"] {
   width: 20px;
-  /* height: 20px; */
   margin-top: 0;
   margin-right: 8px;
   accent-color: var(--accent-color-2);
 }
 
 .todo_items_left input[type=checkbox]:hover {
-  /* filter: brightness(1.5); */
   accent-color: var(--accent-color-2-hover);
 }
 
@@ -390,7 +269,6 @@ input[disabled] {
   fill: var(--text-color);
 }
 
-
 dialog {
   background-color: var(--bg-color-1);
   color: var(--text-color);
@@ -398,9 +276,8 @@ dialog {
   margin: auto;
   border: var(--wide-border) var(--accent-color-3);
   border-radius: var(--border-radius);
-  /* ? Horizontal scroll for the account, but not the about dialog? Could be because more content creates a vertical scrollbar. This fixes it but ? Feels hacky. Try removing if the content is reduced so that they isn't a vertical scroll */
+  /* * Removes horizontal scroll due to vertical scrollbar */
   overflow-x: hidden;
-  /* max-width: 100%; */
 }
 
 .account-form-widget h1 {
@@ -460,6 +337,10 @@ button,
   text-align: center;
   font-size: 1rem;
   text-transform: uppercase;
+}
+
+.button:hover {
+  background-color: var(--bg-color-4);
 }
 
 button.primary,
@@ -574,13 +455,17 @@ button.primary,
   align-items: center;
   justify-content: center;
   border: none;
+  /* todo choose colors for light mode */
   background-color: #444444;
+  background-color: var(--bg-color-3);
   text-transform: none !important;
   transition: all 0.2s ease;
 }
 
 .form-widget .button:hover {
+  /* todo choose colors for light mode */
   background-color: #2a2a2a;
+  background-color: var(--bg-color-4);
 }
 
 .form-widget .button>.loader {
