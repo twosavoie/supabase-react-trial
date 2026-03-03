@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { supabase } from "./supabaseClient";
 import Auth from "./Auth";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import TodoInput from "./components/TodoInput.jsx";
 import TodoList from "./components/TodoList.jsx";
 
@@ -35,8 +36,9 @@ function App() {
       {!session ? (
         <Auth />
       ) : (
-        <>
-          <Header key={session.user.id} session={session} />
+        <div className="app-ui">
+          {/* <Header key={session.user.id} session={session} /> */}
+          <Header />
           <TodoInput
             session={session}
             todos={todos}
@@ -44,7 +46,8 @@ function App() {
             fetchTodos={fetchTodos}
           />
           <TodoList todos={todos} setTodos={setTodos} fetchTodos={fetchTodos} />
-        </>
+          <Footer key={session.user.id} session={session} />
+        </div>
       )}
     </div>
   );
