@@ -303,7 +303,7 @@ footer {
 
 .footer-container {
   display: flex;
-  gap: 1rem;
+  gap: 60px;
 }
 
 dialog {

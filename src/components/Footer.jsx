@@ -5,11 +5,11 @@ import About from "./About";
 import PropTypes from "prop-types";
 import Dialog from "./Dialog";
 
-export default function Header({ session }) {
+export default function Footer({ session }) {
   const [dialogContent, setDialogContent] = useState(null);
   const dialogRef = useRef(null);
 
-  Header.propTypes = {
+  Footer.propTypes = {
     session: PropTypes.object.isRequired,
   };
 
