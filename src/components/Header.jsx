@@ -1,34 +1,42 @@
-import { useState, useRef } from "react";
+// import { useState, useRef } from "react";
 // import { supabase } from "../supabaseClient";
-import Account from "./Account";
-import About from "./About";
+// import Account from "./Account";
+// import About from "./About";
 import PropTypes from "prop-types";
-import Dialog from "./Dialog";
+// import Dialog from "./Dialog";
 
-export default function Header({ session }) {
-  const [dialogContent, setDialogContent] = useState(null);
-  const dialogRef = useRef(null);
+// export default function Header({ session }) {
+//   // const [dialogContent, setDialogContent] = useState(null);
+//   // const dialogRef = useRef(null);
+
+//   Header.propTypes = {
+//     session: PropTypes.object.isRequired,
+//   };
+
+export default function Header() {
+  // const [dialogContent, setDialogContent] = useState(null);
+  // const dialogRef = useRef(null);
 
   Header.propTypes = {
     session: PropTypes.object.isRequired,
   };
 
-  function toggleDialog() {
-    if (!dialogRef.current) {
-      return;
-    }
-    dialogRef.current.hasAttribute("open")
-      ? dialogRef.current.close()
-      : dialogRef.current.showModal();
-  }
+  // function toggleDialog() {
+  //   if (!dialogRef.current) {
+  //     return;
+  //   }
+  //   dialogRef.current.hasAttribute("open")
+  //     ? dialogRef.current.close()
+  //     : dialogRef.current.showModal();
+  // }
 
   return (
     <header className="header">
       <div className="header-logo">
         <h1>Pebli</h1>
-        <p>The pebbles you collect become your path</p>
+        <p>The pebbles I collect become my path</p>
       </div>
-      <div
+      {/* <div
         style={{
           display: "flex",
           gap: "1rem",
@@ -57,7 +65,7 @@ export default function Header({ session }) {
         <Dialog toggleDialog={toggleDialog} ref={dialogRef}>
           {dialogContent}
         </Dialog>
-      </div>
+      </div> */}
     </header>
   );
 }

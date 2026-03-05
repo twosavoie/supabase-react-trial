@@ -68,6 +68,7 @@ function TodoItem({ item, setTodos }) {
       );
     }
   }, [editing]);
+
   const handleInputSubmit = async (event) => {
     event.preventDefault();
     await saveEditedTodo();
