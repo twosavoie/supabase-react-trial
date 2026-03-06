@@ -101,7 +101,7 @@ export default function TodoEdit({ item, setTodos, onClose }) {
             />
           </label>
           <label htmlFor="goal" className="count-input-label">
-            Update Your Goal:
+            New Goal:
             <input
               type="number"
               value={goal}
