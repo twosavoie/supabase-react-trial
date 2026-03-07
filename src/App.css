@@ -111,18 +111,20 @@ header {
 
 .header-logo {
   width: 100%;
+  /* ? */
+  width: 90%;
 }
 
 header h1 {
   width: 100%;
-  text-align: center;
+  /* text-align: center; */
   padding-bottom: 10px;
   font-family: var(--display-font-family);
 }
 
 header p {
   width: 100%;
-  text-align: center;
+  /* text-align: center; */
 }
 
 /* Form */
@@ -326,11 +328,16 @@ input[disabled] {
   display: flex;
 }
 
-
 .todo_items_right button {
   background-color: transparent;
   color: var(--text-color);
   border: none;
+}
+
+.todo_items_right .card button:hover {
+  text-decoration: none;
+  /* color: var(--accent-color-1); */
+  transform: scale(1.5);
 }
 
 .todo_items_right button svg {
@@ -360,12 +367,12 @@ dialog {
 
 .account-form-widget h1 {
   width: 100%;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .account-form-widget p {
   margin: 20px 0;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .account-form-widget button {
@@ -501,9 +508,14 @@ button.primary,
 .about-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   gap: 20px;
+  padding: 20px;
+}
+
+.about-container h1 {
+  /* text-align: center; */
 }
 
 .about-container p {
