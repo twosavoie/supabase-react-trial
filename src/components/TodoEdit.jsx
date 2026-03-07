@@ -108,6 +108,7 @@ export default function TodoEdit({ item, setTodos, fetchTodos, onClose }) {
             <input
               ref={inputRef}
               type="text"
+              id="todo_name"
               name="edit-todo"
               value={todo_name}
               onChange={(event) => setTodo_name(event.target.value)}
@@ -117,6 +118,7 @@ export default function TodoEdit({ item, setTodos, fetchTodos, onClose }) {
             New Goal:
             <input
               type="number"
+              id="goal"
               value={goal}
               name="edit-goal"
               onChange={(event) => setGoal(event.target.value)}
@@ -131,6 +133,7 @@ export default function TodoEdit({ item, setTodos, fetchTodos, onClose }) {
             Over # of days:
             <input
               type="number"
+              id="days-to-complete"
               name="edit-days-to-complete"
               value={daysToComplete}
               onChange={(event) => {
@@ -147,6 +150,7 @@ export default function TodoEdit({ item, setTodos, fetchTodos, onClose }) {
             Due date:
             <input
               type="date"
+              id="due-date"
               name="edit-due-date"
               value={dueDate}
               onChange={(e) => {
