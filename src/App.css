@@ -134,7 +134,10 @@ header p {
 }
 
 .todo-input .count-input-label,
-.date-input-label {
+.date-input-label,
+.edit-count-input-label,
+.edit-date-input-label,
+.edit-day-count-input-label {
   width: 75%;
   /* ? */
   width: 30%;
@@ -200,8 +203,10 @@ input[disabled] {
   gap: 27px;
 }
 
-.todo_item,
-.edit-form input {
+.todo_item
+
+/*.edit-form input */
+  {
   display: flex;
   justify-content: space-between;
   justify-content: center;
@@ -216,11 +221,19 @@ input[disabled] {
   padding: 12px 0;
 }
 
-.edit-form input {
+/* .edit-form input {
   outline: transparent;
   width: calc(100% - 14px);
   height: calc(100% - 12px);
   border: transparent;
+} */
+
+.todo-edit-form {
+  display: flex;
+  /* justify-content: flex-start; */
+  /* flex-flow: row wrap;
+  gap: 12px; */
+  align-items: flex-end;
 }
 
 .todo_items_left,
@@ -565,6 +578,14 @@ button.primary,
     flex-wrap: nowrap;
   }
 
+  .todo-edit-form {
+    flex-wrap: wrap;
+  }
+
+  .edit-todo-input-label {
+    width: 100%;
+  }
+
   .todo_items_left .goal-due-date {
     width: 50%;
   }
@@ -645,6 +666,21 @@ button.primary,
 
   .todo-input {
     width: 75%;
+  }
+
+  .todo-edit-form {
+    /* justify-content: flex-start; */
+  }
+
+  .edit-todo-input-label {
+    width: 100%;
+  }
+
+  .edit-count-input-label,
+  .edit-date-input-label,
+  .edit-day-count-input-label {
+    width: 32%;
+    flex-grow: 0;
   }
 
   .todo_list {

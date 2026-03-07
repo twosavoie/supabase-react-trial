@@ -102,8 +102,8 @@ export default function TodoEdit({ item, setTodos, fetchTodos, onClose }) {
   return (
     <div className="todo-edit-form-widget">
       <div className="edit-todo-input">
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="todo_name" className="todo-input-label">
+        <form className="todo-edit-form" onSubmit={handleSubmit}>
+          <label htmlFor="todo_name" className="edit-todo-input-label">
             Click here to update todo:
             <input
               ref={inputRef}
@@ -113,7 +113,7 @@ export default function TodoEdit({ item, setTodos, fetchTodos, onClose }) {
               onChange={(event) => setTodo_name(event.target.value)}
             />
           </label>
-          <label htmlFor="goal" className="count-input-label">
+          <label htmlFor="goal" className="edit-count-input-label">
             New Goal:
             <input
               type="number"
@@ -124,7 +124,10 @@ export default function TodoEdit({ item, setTodos, fetchTodos, onClose }) {
           </label>
 
           {/* Used for days to complete */}
-          <label htmlFor="days-to-complete" className="date-input-label">
+          <label
+            htmlFor="days-to-complete"
+            className="edit-day-count-input-label"
+          >
             Over # of days:
             <input
               type="number"
@@ -140,7 +143,7 @@ export default function TodoEdit({ item, setTodos, fetchTodos, onClose }) {
 
           {/* direct due date input */}
           {/* * Making the dueDate directly editable required multiple changes because dates are tricky considering time zones and the fact that the backend stores them in ISO format. If issues, may revert to the previous version where the dueDate was editable only by changing the daysToComplete field, which was simpler but less user-friendly. */}
-          <label htmlFor="due-date" className="date-input-label">
+          <label htmlFor="due-date" className="edit-date-input-label">
             Due date:
             <input
               type="date"
@@ -153,9 +156,9 @@ export default function TodoEdit({ item, setTodos, fetchTodos, onClose }) {
               }}
             />
           </label>
-          <div className="submit-edit-button">
-            <button type="submit">Update Todo</button>
-          </div>
+          {/* <div className="submit-edit-button"> */}
+          <button type="submit">Update Todo</button>
+          {/* </div> */}
         </form>
       </div>
     </div>
