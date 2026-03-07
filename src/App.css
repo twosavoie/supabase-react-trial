@@ -145,6 +145,19 @@ header p {
   font-size: 1rem;
 }
 
+.edit-todo-input-label {
+  width: 100%;
+}
+
+.edit-count-input-label,
+.edit-day-count-input-label {
+  width: 40%;
+}
+
+.edit-date-input-label {
+  width: 100%;
+}
+
 input {
   width: 100%;
   border-radius: var(--border-radius);
@@ -584,6 +597,13 @@ button.primary,
 
   .edit-todo-input-label {
     width: 100%;
+  }
+
+  .edit-count-input-label,
+  .edit-date-input-label,
+  .edit-day-count-input-label {
+    width: 32%;
+    flex-grow: 0;
   }
 
   .todo_items_left .goal-due-date {
