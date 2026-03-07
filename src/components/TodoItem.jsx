@@ -9,6 +9,7 @@ TodoItem.propTypes = {
   session: PropTypes.object,
   todos: PropTypes.array,
   setTodos: PropTypes.func.isRequired,
+  fetchTodos: PropTypes.func.isRequired,
   item: PropTypes.shape({
     id: PropTypes.number,
     todo_name: PropTypes.string,
@@ -19,13 +20,31 @@ TodoItem.propTypes = {
   }).isRequired,
 };
 
-function TodoItem({ item, setTodos }) {
+function TodoItem({ item, setTodos, fetchTodos }) {
   const [dialogContent, setDialogContent] = useState(null);
   const dialogRef = useRef(null);
   // const inputRef = useRef(null);
 
+  // Parse YYYY-MM-DD string as local date (not UTC) to avoid timezone shifts
+  function parseLocalDate(dateStr) {
+    if (!dateStr) return null;
+    const parts = dateStr.split("T")[0].split("-");
+    return new Date(
+      parseInt(parts[0]),
+      parseInt(parts[1]) - 1,
+      parseInt(parts[2]),
+    );
+  }
+
+  // ? Needed for current functionality? Keeping for now. I don't plan to mark items overdue but may be a good idea
   const isOverdue =
-    item.due_date && !item.completed && new Date(item.due_date) < new Date();
+    item.due_date &&
+    !item.completed &&
+    parseLocalDate(item.due_date) < new Date();
+  // const finishedOnTime =
+  //   item.due_date &&
+  //   item.completed &&
+  //   new Date(item.due_date) >= new Date(item.updated_at || item.completed_at);
 
   async function completeTodo(id) {
     const updatedStatus = !item.completed;
@@ -112,7 +131,7 @@ function TodoItem({ item, setTodos }) {
             {item.goal > 0 && <p className="goal">Goal: {item.goal}</p>}
             {item.due_date && (
               <p className={"due-date" + (isOverdue ? " overdue" : "")}>
-                By: {new Date(item.due_date).toLocaleDateString()}
+                By: {parseLocalDate(item.due_date).toLocaleDateString()}
               </p>
             )}
           </div>
@@ -131,6 +150,7 @@ function TodoItem({ item, setTodos }) {
                     key={item.id}
                     item={item}
                     setTodos={setTodos}
+                    fetchTodos={fetchTodos}
                     onClose={toggleDialog}
                   />,
                 );

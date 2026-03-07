@@ -9,7 +9,6 @@
   box-sizing: inherit;
   /* * Respect user's color scheme preference. Use light-dark to implement */
   color-scheme: light dark;
-  --custom-font-family: sans-serif;
   /* * End Global and reset styles */
 
   /* * Background colors */
@@ -36,6 +35,12 @@
   --narrow-border: 1px solid;
   --wide-border: 3px solid;
   --border-radius: 5px;
+
+  /* * Fonts */
+  --display-font-family: "Comfortaa", sans-serif;
+  /* --body-font-family: "Quicksand", sans-serif; */
+  --body-font-family: "Mulish", sans-serif;
+  --custom-font-family: sans-serif;
 }
 
 html,
@@ -49,12 +54,14 @@ body {
   /* * Ensures the gradient remains fixed even with scrolling content */
   background-attachment: fixed;
   background-size: cover;
-  font-family: var(--custom-font-family);
+  font-family: var(--body-font-family);
   color: var(--text-color);
   display: flex;
   justify-content: center;
   width: 100vw;
   min-height: 100dvh;
+  /* ? */
+  scroll-behavior: smooth;
 }
 
 /* Grid */
@@ -110,6 +117,7 @@ header h1 {
   width: 100%;
   text-align: center;
   padding-bottom: 10px;
+  font-family: var(--display-font-family);
 }
 
 header p {
@@ -223,6 +231,13 @@ input[disabled] {
   /* ? */
   flex-flow: row wrap;
   padding: 0 1rem;
+}
+
+
+
+.dialog-content .submit-edit-button button {
+  margin: 0;
+  padding: 1rem;
 }
 
 .todo_items_left {

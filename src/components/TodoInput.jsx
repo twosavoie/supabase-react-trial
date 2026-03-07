@@ -20,7 +20,8 @@ function TodoInput({ fetchTodos, session }) {
   const calcDueDate = (days) => {
     if (!days || days <= 0) return null;
     const date = new Date();
-    date.setDate(date.getDate() + Number(days));
+    // inclusive calculation: 1 day -> today
+    date.setDate(date.getDate() + Number(days) - 1);
     return date.toISOString().split("T")[0]; // "YYYY-MM-DD"
   };
 

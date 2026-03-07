@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 TodoEdit.propTypes = {
   todos: PropTypes.array,
   setTodos: PropTypes.func.isRequired,
+  fetchTodos: PropTypes.func,
   onClose: PropTypes.func,
   item: PropTypes.shape({
     id: PropTypes.number,
@@ -16,7 +17,7 @@ TodoEdit.propTypes = {
   }).isRequired,
 };
 
-export default function TodoEdit({ item, setTodos, onClose }) {
+export default function TodoEdit({ item, setTodos, fetchTodos, onClose }) {
   // const [loading, setLoading] = useState(true);
   const inputRef = useRef(null);
 
@@ -24,17 +25,24 @@ export default function TodoEdit({ item, setTodos, onClose }) {
     if (!dueDate) {
       return "";
     }
+    // strip time portion if present
+    const dateOnly = dueDate.split("T")[0];
     const today = new Date();
-    const due = new Date(dueDate);
+    const due = new Date(dateOnly);
     const diffTime = due - today;
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    return diffDays > 0 ? diffDays : "";
+    // convert difference back to inclusive days count
+    const days = diffDays + 1;
+    return days > 0 ? days : "";
   }
 
   const [todo_name, setTodo_name] = useState(item?.todo_name || "");
   const [goal, setGoal] = useState(item?.goal || "");
+  // ensure the due date is in YYYY-MM-DD format for the <input type="date">
+  const formattedDue = item?.due_date ? item.due_date.split("T")[0] : "";
+  const [dueDate, setDueDate] = useState(formattedDue);
   const [daysToComplete, setDaysToComplete] = useState(
-    calcDaysFromDueDate(item?.due_date),
+    calcDaysFromDueDate(formattedDue),
   );
 
   useEffect(() => {
@@ -45,7 +53,7 @@ export default function TodoEdit({ item, setTodos, onClose }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const dueDate = calcDueDate(daysToComplete);
+    // use the current dueDate state (computed either directly or via daysToComplete)
     await updateTodo(item.id, todo_name, goal, dueDate);
   };
 
@@ -54,7 +62,8 @@ export default function TodoEdit({ item, setTodos, onClose }) {
       return null;
     }
     const dueDate = new Date();
-    dueDate.setDate(dueDate.getDate() + Number(days));
+    // subtract 1 so that 1 day means today, 2 means tomorrow, etc.
+    dueDate.setDate(dueDate.getDate() + Number(days) - 1);
     return dueDate.toISOString().split("T")[0];
   }
 
@@ -79,6 +88,10 @@ export default function TodoEdit({ item, setTodos, onClose }) {
       setTodos((prevTodos) =>
         prevTodos.map((todo) => (todo.id === id ? data[0] : todo)),
       );
+      // Refresh full list to ensure other fields (like due_date) are in sync
+      if (fetchTodos) {
+        fetchTodos();
+      }
       // Close the dialog after successful update
       if (onClose) {
         onClose();
@@ -88,7 +101,7 @@ export default function TodoEdit({ item, setTodos, onClose }) {
 
   return (
     <div className="todo-edit-form-widget">
-      <div className="todo-input">
+      <div className="edit-todo-input">
         <form onSubmit={handleSubmit}>
           <label htmlFor="todo_name" className="todo-input-label">
             Click here to update todo:
@@ -101,7 +114,7 @@ export default function TodoEdit({ item, setTodos, onClose }) {
             />
           </label>
           <label htmlFor="goal" className="count-input-label">
-            Update Your Goal:
+            New Goal:
             <input
               type="number"
               value={goal}
@@ -109,6 +122,7 @@ export default function TodoEdit({ item, setTodos, onClose }) {
               onChange={(event) => setGoal(event.target.value)}
             />
           </label>
+
           {/* Used for days to complete */}
           <label htmlFor="days-to-complete" className="date-input-label">
             Over # of days:
@@ -116,10 +130,30 @@ export default function TodoEdit({ item, setTodos, onClose }) {
               type="number"
               name="edit-days-to-complete"
               value={daysToComplete}
-              onChange={(event) => setDaysToComplete(event.target.value)}
+              onChange={(event) => {
+                const val = event.target.value;
+                setDaysToComplete(val);
+                setDueDate(calcDueDate(val) || "");
+              }}
             />
           </label>
-          <div className="submit-button">
+
+          {/* direct due date input */}
+          {/* * Making the dueDate directly editable required multiple changes because dates are tricky considering time zones and the fact that the backend stores them in ISO format. If issues, may revert to the previous version where the dueDate was editable only by changing the daysToComplete field, which was simpler but less user-friendly. */}
+          <label htmlFor="due-date" className="date-input-label">
+            Due date:
+            <input
+              type="date"
+              name="edit-due-date"
+              value={dueDate}
+              onChange={(e) => {
+                const val = e.target.value;
+                setDueDate(val);
+                setDaysToComplete(calcDaysFromDueDate(val));
+              }}
+            />
+          </label>
+          <div className="submit-edit-button">
             <button type="submit">Update Todo</button>
           </div>
         </form>
