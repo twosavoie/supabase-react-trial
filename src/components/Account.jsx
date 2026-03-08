@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 export default function Account({ session }) {
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState(null);
+  const [motivation, setMotivation] = useState(null);
   const [website, setWebsite] = useState(null);
   const [avatar_url, setAvatarUrl] = useState(null);
 
@@ -21,7 +22,7 @@ export default function Account({ session }) {
 
       const { data, error } = await supabase
         .from("profiles")
-        .select(`username, website, avatar_url`)
+        .select(`username, motivation, website, avatar_url`)
         .eq("id", user.id)
         .single();
 
@@ -30,6 +31,7 @@ export default function Account({ session }) {
           console.warn(error);
         } else if (data) {
           setUsername(data.username);
+          setMotivation(data.motivation);
           setWebsite(data.website);
           setAvatarUrl(data.avatar_url);
         }
@@ -54,6 +56,7 @@ export default function Account({ session }) {
     const updates = {
       id: user.id,
       username,
+      motivation,
       website,
       avatar_url: avatarUrl,
       updated_at: new Date(),
@@ -89,6 +92,16 @@ export default function Account({ session }) {
           />
         </div>
         <div className="account-form-widget-elements">
+          <label htmlFor="motivation">My motivational message</label>
+          <input
+            id="motivation"
+            type="text"
+            value={motivation || ""}
+            maxLength="100"
+            onChange={(e) => setMotivation(e.target.value)}
+          />
+        </div>
+        {/* <div className="account-form-widget-elements">
           <label htmlFor="website">Website</label>
           <input
             id="website"
@@ -96,7 +109,7 @@ export default function Account({ session }) {
             value={website || ""}
             onChange={(e) => setWebsite(e.target.value)}
           />
-        </div>
+        </div> */}
         <Avatar
           url={avatar_url}
           size={150}

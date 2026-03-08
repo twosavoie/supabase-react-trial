@@ -160,6 +160,11 @@ header p {
   width: 100%;
 }
 
+/* ? Safari on iOS doesn't respect the width of the date input, so this is a hack to make it look better. Need to test on other browsers. Currently takes up the 20px of padding on the right. The screen is approx 291px wide. 20/291 = 6.9% */
+.edit-date-input-label input {
+  width: 93%;
+}
+
 input {
   width: 100%;
   border-radius: var(--border-radius);
@@ -389,7 +394,8 @@ dialog {
 }
 
 dialog::backdrop {
-  background-color: var(--bg-color-3);
+  /* ? */
+  background-color: var(--bg-color-4);
 }
 
 svg {
@@ -520,6 +526,16 @@ button.primary,
 
 .about-container p {
   text-align: left;
+}
+
+.about-container ul {
+  padding-left: 20px;
+  list-style-type: square;
+}
+
+.about-tagline {
+  font-size: 1.25rem;
+  /* font-style: italic; */
 }
 
 .dialog-content {
