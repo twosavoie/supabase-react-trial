@@ -34,7 +34,7 @@ export default function Header() {
     <header className="header">
       <div className="header-logo">
         <h1>Pebli</h1>
-        <p>The pebbles I collect become my path</p>
+        <p>Track progress, not perfection, because little wins count.</p>
       </div>
       {/* <div
         style={{
