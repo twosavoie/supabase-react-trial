@@ -72,6 +72,7 @@ function App() {
             setTodos={setTodos}
             fetchTodos={fetchTodos}
           />
+          {/* ? works on save but not on refresh. The autocomplete comment: Need to add fetchTodos to useEffect in TodoList.jsx and pass fetchTodos as a prop from App.jsx to TodoList.jsx Not sure if I need this */}
           <p>Hello, {user.username}</p>
           {user.motivation && <p className="motivation">{user.motivation}</p>}
           <TodoList todos={todos} setTodos={setTodos} fetchTodos={fetchTodos} />
