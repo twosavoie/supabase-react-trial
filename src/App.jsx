@@ -6,10 +6,21 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import TodoInput from "./components/TodoInput.jsx";
 import TodoList from "./components/TodoList.jsx";
+import PropTypes from "prop-types";
 
 function App() {
   const [session, setSession] = useState(null);
   const [todos, setTodos] = useState([]);
+  const [user, setUser] = useState(null);
+
+  App.propTypes = {
+    session: PropTypes.object,
+    todos: PropTypes.array,
+    user: PropTypes.object,
+    setUser: PropTypes.func.isRequired,
+    setTodos: PropTypes.func.isRequired,
+    fetchTodos: PropTypes.func.isRequired,
+  };
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
@@ -31,6 +42,22 @@ function App() {
     else setTodos(data);
   }
 
+  async function fetchUser() {
+    if (!session) return;
+    const { data, error } = await supabase
+      .from("profiles")
+      .select("*")
+      .eq("id", session.user.id)
+      .single();
+    if (error) console.error("Error fetching user profile:", error);
+    else setUser(data);
+  }
+
+  useEffect(() => {
+    fetchTodos();
+    fetchUser();
+  }, [session]);
+
   return (
     <div className="container">
       {!session ? (
@@ -45,7 +72,8 @@ function App() {
             setTodos={setTodos}
             fetchTodos={fetchTodos}
           />
-
+          <p>Hello, {user.username}</p>
+          {user.motivation && <p className="motivation">{user.motivation}</p>}
           <TodoList todos={todos} setTodos={setTodos} fetchTodos={fetchTodos} />
           <Footer key={session.user.id} session={session} />
         </div>
