@@ -124,7 +124,7 @@ export default function Account({ session }) {
             type="submit"
             disabled={loading}
           >
-            {loading ? "Loading ..." : "Update"}
+            {loading ? "Loading ..." : "Update Account"}
           </button>
           {/* * adding button here */}
           <button

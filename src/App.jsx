@@ -45,6 +45,7 @@ function App() {
             setTodos={setTodos}
             fetchTodos={fetchTodos}
           />
+
           <TodoList todos={todos} setTodos={setTodos} fetchTodos={fetchTodos} />
           <Footer key={session.user.id} session={session} />
         </div>

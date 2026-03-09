@@ -37,6 +37,7 @@ function TodoItem({ item, setTodos, fetchTodos }) {
   }
 
   // ? Needed for current functionality? Keeping for now. I don't plan to mark items overdue but may be a good idea
+  // ? Instead of marking isOverdue, could reduce the opacity of the due date text if it's past due and not completed
   const isOverdue =
     item.due_date &&
     !item.completed &&
