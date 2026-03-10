@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { supabase } from "./supabaseClient";
 import Auth from "./Auth";
 import Header from "./components/Header";
@@ -20,7 +20,7 @@ function App() {
     });
   }, []);
 
-  async function fetchTodos() {
+  const fetchTodos = useCallback(async () => {
     if (!session) return;
     const { data, error } = await supabase
       .from("todos")
@@ -29,7 +29,7 @@ function App() {
       .order("created_at", { ascending: true });
     if (error) console.error("Error fetching todos:", error);
     else setTodos(data);
-  }
+  }, [session]); // Only re-create if session changes
 
   return (
     <div className="container">
