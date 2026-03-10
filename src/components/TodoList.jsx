@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import TodoItem from "./TodoItem";
 import PropTypes from "prop-types";
 
@@ -9,12 +9,10 @@ TodoList.propTypes = {
   fetchTodos: PropTypes.func.isRequired,
 };
 
-function TodoList({ todos, setTodos, fetchTodos }) {
+function TodoList({ todos, setTodos }) {
   console.log("TodoList todos:", todos);
-  useEffect(() => {
-    fetchTodos();
-  }, []);
 
+  // no fetchTodos call in useEffect
   return (
     <ol className="todo_list">
       {todos.map((item) => (
@@ -23,7 +21,6 @@ function TodoList({ todos, setTodos, fetchTodos }) {
           item={item}
           todos={item.todo_name}
           setTodos={setTodos}
-          fetchTodos={fetchTodos}
         />
       ))}
     </ol>

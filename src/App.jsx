@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { supabase } from "./supabaseClient";
 import Auth from "./Auth";
 import Header from "./components/Header";
@@ -8,19 +8,21 @@ import TodoInput from "./components/TodoInput.jsx";
 import TodoList from "./components/TodoList.jsx";
 import PropTypes from "prop-types";
 
+App.propTypes = {
+  session: PropTypes.object,
+  todos: PropTypes.array,
+  user: PropTypes.object,
+  setUser: PropTypes.func.isRequired,
+  setTodos: PropTypes.func.isRequired,
+  fetchTodos: PropTypes.func.isRequired,
+};
+
 function App() {
   const [session, setSession] = useState(null);
   const [todos, setTodos] = useState([]);
   const [user, setUser] = useState(null);
+  // const [loadingProfile, setLoadingProfile] = useState(true);
 
-  App.propTypes = {
-    session: PropTypes.object,
-    todos: PropTypes.array,
-    user: PropTypes.object,
-    setUser: PropTypes.func.isRequired,
-    setTodos: PropTypes.func.isRequired,
-    fetchTodos: PropTypes.func.isRequired,
-  };
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
@@ -31,7 +33,7 @@ function App() {
     });
   }, []);
 
-  async function fetchTodos() {
+  const fetchTodos = useCallback(async () => {
     if (!session) return;
     const { data, error } = await supabase
       .from("todos")
@@ -40,10 +42,13 @@ function App() {
       .order("created_at", { ascending: true });
     if (error) console.error("Error fetching todos:", error);
     else setTodos(data);
-  }
+  }, [session]); // Only re-create if session changes
 
-  async function fetchUser() {
-    if (!session) return;
+  const fetchUser = useCallback(async () => {
+    if (!session) {
+      setUser(null);
+      return;
+    }
     const { data, error } = await supabase
       .from("profiles")
       .select("*")
@@ -51,12 +56,12 @@ function App() {
       .single();
     if (error) console.error("Error fetching user profile:", error);
     else setUser(data);
-  }
+  }, [session]);
 
   useEffect(() => {
     fetchTodos();
     fetchUser();
-  }, [session]);
+  }, [fetchTodos, fetchUser]); // Re-run when either fetchTodos or fetchUser changes
 
   return (
     <div className="container">
@@ -73,8 +78,32 @@ function App() {
             fetchTodos={fetchTodos}
           />
           {/* ? works on save but not on refresh. The autocomplete comment: Need to add fetchTodos to useEffect in TodoList.jsx and pass fetchTodos as a prop from App.jsx to TodoList.jsx Not sure if I need this */}
-          <p>Hello, {user.username}</p>
-          {user.motivation && <p className="motivation">{user.motivation}</p>}
+          {/* <p>Hello, {user.username}</p>
+          {user.motivation && <p className="motivation">{user.motivation}</p>} */}
+          {/* <p>Hello, {user?.username || "Friend"}</p>
+          {user?.motivation && <p className="motivation">{user.motivation}</p>} */}
+          {/* {user ? (
+            <>
+              <p>Hello, {user.username}</p>
+              {user.motivation && (
+                <p className="motivation">{user.motivation}</p>
+              )}
+            </>
+          ) : (
+            <p>Loading profile…</p>
+          )} */}
+          {/* <p>Hello, {user?.username ?? "Friend"}</p>
+          {user?.motivation && <p className="motivation">{user.motivation}</p>} */}
+          {user ? (
+            <>
+              <p>Hello, {user.username}</p>
+              {user.motivation && (
+                <p className="motivation">{user.motivation}</p>
+              )}
+            </>
+          ) : (
+            <p>Loading profile...</p>
+          )}
           <TodoList todos={todos} setTodos={setTodos} fetchTodos={fetchTodos} />
           <Footer key={session.user.id} session={session} />
         </div>
