@@ -120,7 +120,7 @@ function TodoItem({ item, setTodos, fetchTodos }) {
                 item.completed
                   ? {
                       textDecoration: "line-through",
-                      textDecorationThickness: "3px",
+                      textDecorationThickness: "1px",
                     }
                   : {}
               }
@@ -130,6 +130,7 @@ function TodoItem({ item, setTodos, fetchTodos }) {
           </label>
           <div className="goal-due-date">
             {item.goal > 0 && <p className="goal">Goal: {item.goal}</p>}
+            {/* Adds the class "overdue" to the due date if it's past due and not completed. Maybe reduce the opacity to indicate it's overdue  */}
             {item.due_date && (
               <p className={"due-date" + (isOverdue ? " overdue" : "")}>
                 By: {parseLocalDate(item.due_date).toLocaleDateString()}
