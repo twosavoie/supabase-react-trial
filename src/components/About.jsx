@@ -1,105 +1,91 @@
 export default function About() {
   return (
     <div className="about-container">
-      {/* eslint-disable-next-line react/no-unescaped-entities */}
-      {/* <p>
-        <span className="about-tagline">Progress without pressure. </span>
-        Pebli is a supportive todo list and goal tracker designed for real life.
-      </p> */}
-      {/* <p>
-        Pebli is a supportive todo list and goal tracker designed for real life.
-        Celebrate your wins. Skip the guilt. Keep moving forward.
-      </p> */}
       <h1>About Pebli</h1>
       <p>
         Pebli started with a simple idea: productivity tools should support you,
-        not judge you. And they should be packed with the features you actually
-        want to use — without overwhelming you with options you don’t.
+        not judge you. Tools should be packed with features you actually find
+        useful. And they shouldn’t overwhelm you with the pressure to be
+        perfect. Because being perfect is just not a sustainable goal.
       </p>
       <p>
-        As as adult, I’ve seen the value of making progress instead of looking
-        for perfection. Let’s say I want to start a new habit - writing a novel,
-        learning a new language, learning a new skill. Rarely do I do it every
-        single day. Sometimes I do it a few times a week. Sometimes I do it once
-        and then forget about it for a while. But that’s just how life works!
-        And I wanted a habit tracker that could keep up with how I decide to
-        live my life — whether that’s completing a task once, completing a task
-        every day, or completing a task 3 times in a week.
+        I’ve always liked the idea of to-do lists and activity trackers, but
+        most aren’t designed to help me keep track of my progress towards a goal
+        that’s important to me. Most trackers assume I do the same things every
+        day in a never-ending streak that goes on forever and forever. But my
+        life doesn’t work like that.
       </p>
       <p>
-        I’ve always liked todo lists and activity trackers, but most of them
-        didn’t really fit my life. Many assume you’ll do the same things every
-        day, a never ending streak that goes on forever.
-      </p>
-      {/* <p>
-        And if you fall behind, the app reminds you… and reminds you… and
-        reminds you again.
-      </p> */}
-      <p>
-        But life doesn’t work like that. And I wanted a habit tracker that could
-        keep up with how I decide to live my life — whether that’s completing a
-        task once, completing a task every day, or completing a task 3 times in
-        a week.
+        I wanted a habit tracker that could keep up with how I live my life.
+        Let’s say I want to start a new habit - to write a novel, learn a new
+        language, or become a better pie baker. Rarely would I do it every
+        single day - what would I do with all of those pies! I wanted a habit
+        tracker that could keep up with how I live my life — whether that’s
+        completing a task once, every day, or 3 times in a week..
       </p>
       <p>
-        Pebli was built for busy adults who want to get things done and build
-        better habits. With Pebli, you can keep track of When you complete a
-        todo or take another step towards building a habit, Pebli celebrates
-        with you!
+        Pebli was built for busy adults like me who want to get things done and
+        build better habits. With Pebli, you can keep track of when you complete
+        a task or take another small step towards building a habit. And as you
+        take those small steps, Pebli celebrates with you!
       </p>
-      {/* <p>  — without adding more pressure or negativity. If you miss something, it simply moves on. No guilt. No nagging.</p> */}
       <h2>Ways You Can Use Pebli</h2>
       <p>
-        Pebli supports several simple ways to track tasks, habits, and goals:
+        Pebli supports several simple ways to track tasks, habits, and goals.
+        Let’s say you want to build a meditation habit:{" "}
       </p>
       <p>
         <b>Todo List</b>
         <br />
-        Add tasks and check them off as you go.
+        At its core, Pebli is a simple to-do list. Add “Meditation” to your list
+        and check it off when you’ve completed it. Yeah you! 🎉{" "}
       </p>
       <p>
         <b>Activity Counter</b>
         <br />
-        Track how many times you’ve done something. Great for building
-        awareness. You can count up or down.
+        Counters are great for building awareness. Count the number of times you
+        meditate over a week or two to see where you’re starting from.
       </p>
       <p>
         <b>Goal Tracking</b>
         <br />
-        Set a goal for how many times you want to do something and track your
-        progress.
+        Set a goal for how many times you want to meditate and track your
+        progress. “Meditation” will be checked off automatically when you reach
+        your goal.
       </p>
       <p>
         <b>Flexible Scheduling</b>
         <br />
-        Plan to do something a certain number of times within a set number of
-        days or by a specific date. No pressure! If you miss something, it
-        simply moves on. No guilt. No nagging.
+        This is what sets Pebli apart from other habit apps that only track
+        streaks. Set a reasonable goal to meditate 3 times over the next 7 days.
+        No pressure! If life gets in the way and you miss your goal date, Pebli
+        greys out the due date and simply moves on. No guilt. No nagging. (The
+        goal date can always be updated if you wish.) When you do reach your
+        goal, Pebli will celebrate with you 🙂.
       </p>
       <p>
         <b>Streak Tracking</b>
-        <br /> Keep a daily streak going for habits you want to maintain.
+        <br /> And if streak tracking is your thing, Pebli will also work for
+        you. Just set the goal and days to complete to the same number.
       </p>
       <p>
         Instead of forcing you into one system, Pebli is designed to be flexible
-        and adaptable, so you can use it in whatever way works best for you.
+        and adaptable. Use it however works best for you.
       </p>
       <h2>Why the Name Pebli?</h2>
       <p>
         When I was little, I loved collecting small found objects like pretty
-        pebbles, shells, and acorns. Each one felt like a tiny treasure worth
-        keeping.
+        pebbles and shells. Each one felt like a tiny treasure worth keeping.
       </p>
       <p>
-        Pebli is built around a similar idea. Progress isn’t achieved in one big
-        moment — every small action is like a pebble added to the path you’re
-        building. One by one, they come together to form something meaningful.
+        Pebli is a symbol of the idea that progress is more important than
+        perfection and progress isn’t achieved in one big, perfect moment. Every
+        small action you take is like gathering a pebble you add to your life’s
+        path. One by one, each tiny treasure collected comes together to form
+        something beautiful and meaningful. Pebli helps you notice and celebrate
+        your small wins — because they’re what move you forward.
       </p>
-      <p>
-        Pebli helps you notice and celebrate those small wins — because they’re
-        what move you forward.
-      </p>
-      <p>Small steps matter. Pebli just helps you keep track of them.</p>
+      <p>Small steps matter. Pebli can help you keep track of them.</p>
     </div>
   );
 }

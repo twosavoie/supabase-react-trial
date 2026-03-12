@@ -23,6 +23,7 @@
   --text-color-disabled: light-dark(#999999, #bbbbbb);
   /* todo choose colors - the disabled ones look good? The chrome default is around #777777 */
   --text-color-placeholder: light-dark(#999999, #bbbbbb);
+  /* --text-color-reduced-opacity: light-dark(#07124d50, #f2e4e650); */
 
   /* * Accent colors */
   --accent-color-1: light-dark(#dc5a15, #f493a4);
@@ -97,6 +98,10 @@ button {
 button:hover {
   text-decoration: underline;
   text-decoration-color: inherit;
+}
+
+.overdue {
+  opacity: 0.6;
 }
 
 header {
