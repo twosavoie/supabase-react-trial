@@ -520,9 +520,9 @@ button.primary,
   padding: 20px;
 }
 
-.about-container h1 {
-  /* text-align: center; */
-}
+/* .about-container h1 {
+  text-align: center;
+} */
 
 .about-container p {
   text-align: left;
@@ -716,9 +716,9 @@ button.primary,
     width: 75%;
   }
 
-  .todo-edit-form {
-    /* justify-content: flex-start; */
-  }
+  /* .todo-edit-form {
+    justify-content: flex-start;
+  } */
 
   .edit-todo-input-label {
     width: 100%;
