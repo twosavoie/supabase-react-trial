@@ -104,6 +104,12 @@ button:hover {
   opacity: 0.6;
 }
 
+/* * ChatGPT suggested adding a focus class to the todo item when it's a focus todo, and then styling that class here. */
+.focus {
+  border-left: 4px solid #6abf69;
+  background: #f7fff7;
+}
+
 header {
   display: flex;
   align-items: center;
