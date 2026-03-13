@@ -36,7 +36,7 @@ function TodoItem({ item, setTodos, fetchTodos }) {
     );
   }
 
-  // ? Styling is set so that past due dates' opacity is 50%. However,f is past due and then completed the due date returns to 100% opacity.
+  // ? Styling is set so that past due dates' opacity is 50%. However, if is past due and then completed the due date returns to 100% opacity.
   // ? Could remove  !item.completed &&  if would prefer to keep at 50% opacity
   const isOverdue =
     item.due_date &&

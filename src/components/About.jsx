@@ -15,8 +15,7 @@ export default function About() {
       </p> */}
       <p>
         Most trackers assume I do the same things every day in a never-ending
-        streak that goes on forever and forever. But my life doesn’t work like
-        that.
+        streak that goes on forever. But my life doesn’t work like that.
       </p>
       {/* <p>
         I wanted a habit tracker that could keep up with how I live my life.
@@ -24,15 +23,15 @@ export default function About() {
       <p>
         Let’s say I want to start a new habit to... write a novel, learn a new
         language, or become a better pie baker. Rarely would I do it every
-        single day (what would I do with all of those pies!) I wanted a habit
-        tracker that could keep up with how I set goals — whether that’s
+        single day (what would I do with all of those pies!) I want a habit
+        tracker that can keep up with how I set goals — whether that’s
         completing a task once, every day, or 3 times in a week.
       </p>
       <p>
         Pebli was built for busy adults like me who want to get things done and
         build better habits. With Pebli, you can keep track of when you complete
-        a task or take another small step towards building a habit. And as you
-        achieve your goals, Pebli celebrates with you!
+        a task or take a small step towards building a habit. And as you achieve
+        your goals, Pebli celebrates with you!
       </p>
       <h2>Ways You Can Use Pebli</h2>
       <p>
@@ -43,13 +42,13 @@ export default function About() {
         <b>Todo List</b>
         <br />
         At its core, Pebli is a simple to-do list. Add “Meditation” to your list
-        and check it off when you’ve completed it. Yeah you! 🎉
+        and check it off when you’re finished. Yeah you! 🎉
       </p>
       <p>
         <b>Activity Counter</b>
         <br />
         Counters are great for building awareness. Count the number of times you
-        meditate over a week or two to see where you’re starting from.
+        meditate over a week or two to see how often you already meditate.
       </p>
       <p>
         <b>Goal Tracking</b>
@@ -62,11 +61,10 @@ export default function About() {
         <b>Flexible Scheduling</b>
         <br />
         This is what sets Pebli apart from other apps that only track streaks.
-        Set a reasonable goal to meditate 3 times over the next 7 days. No
-        pressure! If life gets in the way and you miss your goal date, Pebli
-        fades the date and simply moves on. No guilt. No nagging. (Or you can
-        update the date anytime.) When you do reach your goal, Pebli will
-        celebrate with you 🙂.
+        Set a reasonable goal to meditate 3 times over the next 7 days. If life
+        gets in the way and you miss your goal date, Pebli fades the date and
+        simply moves on. No guilt. No nagging. (Or you can edit the date
+        anytime.) When you do reach your goal, Pebli will celebrate with you 🙂.
       </p>
       <p>
         <b>Streak Tracking</b>
@@ -80,11 +78,11 @@ export default function About() {
       <h2>Why the Name Pebli?</h2>
       <p>
         When I was little, I loved collecting small found objects like pretty
-        pebbles and shells. Each one felt like a tiny treasure worth keeping.
+        pebbles and shells. Each one felt like a tiny treasure.
       </p>
       <p>
         Pebli is a symbol of the idea that progress is more important than
-        perfection and that progress isn’t achieved in one big, perfect moment.
+        perfection and that progress isn’t achieved in one big, dramatic moment.
         Every small action you take is like gathering a pebble you add to your
         life’s path. One by one, each tiny treasure collected comes together to
         form something beautiful and meaningful. Pebli helps you notice and
