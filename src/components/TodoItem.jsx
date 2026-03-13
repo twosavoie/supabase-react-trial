@@ -36,12 +36,14 @@ function TodoItem({ item, setTodos, fetchTodos }) {
     );
   }
 
-  // ? Needed for current functionality? Keeping for now. I don't plan to mark items overdue but may be a good idea
-  // ? Instead of marking isOverdue, could reduce the opacity of the due date text if it's past due and not completed
+  // ? Styling is set so that past due dates' opacity is 50%. However,f is past due and then completed the due date returns to 100% opacity.
+  // ? Could remove  !item.completed &&  if would prefer to keep at 50% opacity
   const isOverdue =
     item.due_date &&
     !item.completed &&
     parseLocalDate(item.due_date) < new Date();
+
+  // * Commenting for now. Ready to implement when I add a feature to celebrate a finished todo. May not want to worry if it was completed on time though? Or maybe extra celebration if it was completed on time?
   // const finishedOnTime =
   //   item.due_date &&
   //   item.completed &&
