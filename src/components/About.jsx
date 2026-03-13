@@ -8,37 +8,42 @@ export default function About() {
         useful. And they shouldn’t overwhelm you with the pressure to be
         perfect. Because being perfect is just not a sustainable goal.
       </p>
-      <p>
+      {/* <p>
         I’ve always liked the idea of to-do lists and activity trackers, but
         most aren’t designed to help me keep track of my progress towards a goal
-        that’s important to me. Most trackers assume I do the same things every
-        day in a never-ending streak that goes on forever and forever. But my
-        life doesn’t work like that.
-      </p>
+        that’s important to me.
+      </p> */}
       <p>
+        Most trackers assume I do the same things every day in a never-ending
+        streak that goes on forever and forever. But my life doesn’t work like
+        that.
+      </p>
+      {/* <p>
         I wanted a habit tracker that could keep up with how I live my life.
-        Let’s say I want to start a new habit - to write a novel, learn a new
+      </p> */}
+      <p>
+        Let’s say I want to start a new habit to... write a novel, learn a new
         language, or become a better pie baker. Rarely would I do it every
-        single day - what would I do with all of those pies! I wanted a habit
-        tracker that could keep up with how I live my life — whether that’s
-        completing a task once, every day, or 3 times in a week..
+        single day (what would I do with all of those pies!) I wanted a habit
+        tracker that could keep up with how I set goals — whether that’s
+        completing a task once, every day, or 3 times in a week.
       </p>
       <p>
         Pebli was built for busy adults like me who want to get things done and
         build better habits. With Pebli, you can keep track of when you complete
         a task or take another small step towards building a habit. And as you
-        take those small steps, Pebli celebrates with you!
+        achieve your goals, Pebli celebrates with you!
       </p>
       <h2>Ways You Can Use Pebli</h2>
       <p>
         Pebli supports several simple ways to track tasks, habits, and goals.
-        Let’s say you want to build a meditation habit:{" "}
+        Let’s say you want to build a meditation habit:
       </p>
       <p>
         <b>Todo List</b>
         <br />
         At its core, Pebli is a simple to-do list. Add “Meditation” to your list
-        and check it off when you’ve completed it. Yeah you! 🎉{" "}
+        and check it off when you’ve completed it. Yeah you! 🎉
       </p>
       <p>
         <b>Activity Counter</b>
@@ -56,16 +61,16 @@ export default function About() {
       <p>
         <b>Flexible Scheduling</b>
         <br />
-        This is what sets Pebli apart from other habit apps that only track
-        streaks. Set a reasonable goal to meditate 3 times over the next 7 days.
-        No pressure! If life gets in the way and you miss your goal date, Pebli
-        greys out the due date and simply moves on. No guilt. No nagging. (The
-        goal date can always be updated if you wish.) When you do reach your
-        goal, Pebli will celebrate with you 🙂.
+        This is what sets Pebli apart from other apps that only track streaks.
+        Set a reasonable goal to meditate 3 times over the next 7 days. No
+        pressure! If life gets in the way and you miss your goal date, Pebli
+        fades the date and simply moves on. No guilt. No nagging. (Or you can
+        update the date anytime.) When you do reach your goal, Pebli will
+        celebrate with you 🙂.
       </p>
       <p>
         <b>Streak Tracking</b>
-        <br /> And if streak tracking is your thing, Pebli will also work for
+        <br /> If streak tracking <i>is</i> your thing, Pebli will also work for
         you. Just set the goal and days to complete to the same number.
       </p>
       <p>
@@ -79,11 +84,11 @@ export default function About() {
       </p>
       <p>
         Pebli is a symbol of the idea that progress is more important than
-        perfection and progress isn’t achieved in one big, perfect moment. Every
-        small action you take is like gathering a pebble you add to your life’s
-        path. One by one, each tiny treasure collected comes together to form
-        something beautiful and meaningful. Pebli helps you notice and celebrate
-        your small wins — because they’re what move you forward.
+        perfection and that progress isn’t achieved in one big, perfect moment.
+        Every small action you take is like gathering a pebble you add to your
+        life’s path. One by one, each tiny treasure collected comes together to
+        form something beautiful and meaningful. Pebli helps you notice and
+        celebrate your small wins — because they’re what move you forward.
       </p>
       <p>Small steps matter. Pebli can help you keep track of them.</p>
     </div>
