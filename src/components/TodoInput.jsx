@@ -67,6 +67,7 @@ function TodoInput({ fetchTodos, session }) {
       fetchTodos();
     }
   }
+
   return (
     <div className="todo-input">
       <form onSubmit={handleSubmit}>
