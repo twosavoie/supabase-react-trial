@@ -63,6 +63,9 @@ body {
   min-height: 100dvh;
   /* ? */
   scroll-behavior: smooth;
+  /* ? Does this change the color of the cursor or do I need to add it to the text area? */
+  caret-color: var(--accent-color-1);
+  /* caret-shape: block; */
 }
 
 /* Grid */
