@@ -35,6 +35,8 @@
   /* * Borders */
   --narrow-border: 1px solid;
   --wide-border: 3px solid;
+  /* ? Is 1 pixel better? 2? It's difficult to tell in DevTools but 3 doesn't look like what I want on my phone. */
+  --wide-border: 1px solid;
   --border-radius: 5px;
 
   /* * Fonts */
@@ -101,6 +103,11 @@ button {
 button:hover {
   text-decoration: underline;
   text-decoration-color: inherit;
+}
+
+/* Source: https://piccalil.li/blog/an-in-depth-guide-to-customising-lists-with-css/ */
+ul {
+  padding-inline-start: 1lh;
 }
 
 .overdue {
