@@ -19,3 +19,7 @@ Thanks so much to these awesome folks:
 [Coding in Public YouTube video](https://www.youtube.com/watch?v=YwHJMlvZRCc) was amazing. Very little modification was needed to create two modals.
 <br>
 [Krina Sardhara's blog post (at DhiWise)](https://www.dhiwise.com/post/solution-for-children-is-missing-in-props-validation-in) did an excellent job explaining the props validation error.
+<br>
+[Make PWA](https://progressier.com/pwa-manifest-generator)
+[Make PWA](https://web.dev/articles/add-manifest#:~:text=Note:%20Operating%20systems%20usually%20expect,icons%20to%20fit%20the%20device.)
+[Make PWA](https://web.dev/articles/maskable-icon#:~:text=with%20your%20team.-,How%20do%20I%20adopt%20maskable%20icons?,app%20Editor.)

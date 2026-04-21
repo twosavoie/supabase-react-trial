@@ -35,6 +35,8 @@
   /* * Borders */
   --narrow-border: 1px solid;
   --wide-border: 3px solid;
+  /* ? Is 1 pixel better? 2? It's difficult to tell in DevTools but 3 doesn't look like what I want on my phone. */
+  --wide-border: 1px solid;
   --border-radius: 5px;
 
   /* * Fonts */
@@ -63,6 +65,9 @@ body {
   min-height: 100dvh;
   /* ? */
   scroll-behavior: smooth;
+  /* ? Does this change the color of the cursor or do I need to add it to the text area? */
+  caret-color: var(--accent-color-1);
+  /* caret-shape: block; */
 }
 
 /* Grid */
@@ -98,6 +103,11 @@ button {
 button:hover {
   text-decoration: underline;
   text-decoration-color: inherit;
+}
+
+/* Source: https://piccalil.li/blog/an-in-depth-guide-to-customising-lists-with-css/ */
+ul {
+  padding-inline-start: 1lh;
 }
 
 .overdue {
