@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../supabaseClient";
-import Avatar from "../Avatar";
+import Avatar from "./Avatar";
 import PropTypes from "prop-types";
 
 export default function Account({ session }) {
