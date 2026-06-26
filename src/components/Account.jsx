@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../supabaseClient";
 import Avatar from "../Avatar";
+import Theme from "./Theme";
 import PropTypes from "prop-types";
 
 export default function Account({ session }) {
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState(null);
   const [motivation, setMotivation] = useState(null);
-  const [website, setWebsite] = useState(null);
+  const [theme, setTheme] = useState("light-dark");
   const [avatar_url, setAvatarUrl] = useState(null);
 
   Account.propTypes = {
@@ -22,7 +23,7 @@ export default function Account({ session }) {
 
       const { data, error } = await supabase
         .from("profiles")
-        .select(`username, motivation, website, avatar_url`)
+        .select(`username, motivation, theme, avatar_url`)
         .eq("id", user.id)
         .single();
 
@@ -32,7 +33,7 @@ export default function Account({ session }) {
         } else if (data) {
           setUsername(data.username);
           setMotivation(data.motivation);
-          setWebsite(data.website);
+          setTheme(data.theme);
           setAvatarUrl(data.avatar_url);
         }
       }
@@ -57,7 +58,7 @@ export default function Account({ session }) {
       id: user.id,
       username,
       motivation,
-      website,
+      theme,
       avatar_url: avatarUrl,
       updated_at: new Date(),
     };
@@ -101,15 +102,7 @@ export default function Account({ session }) {
             onChange={(e) => setMotivation(e.target.value)}
           />
         </div>
-        {/* <div className="account-form-widget-elements">
-          <label htmlFor="website">Website</label>
-          <input
-            id="website"
-            type="url"
-            value={website || ""}
-            onChange={(e) => setWebsite(e.target.value)}
-          />
-        </div> */}
+        <Theme session={session} />
         <Avatar
           url={avatar_url}
           size={150}

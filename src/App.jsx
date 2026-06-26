@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import TodoInput from "./components/TodoInput.jsx";
 import TodoList from "./components/TodoList.jsx";
+import Theme from "./components/Theme.jsx";
 
 function App() {
   const [session, setSession] = useState(null);
@@ -45,8 +46,8 @@ function App() {
             setTodos={setTodos}
             fetchTodos={fetchTodos}
           />
-
           <TodoList todos={todos} setTodos={setTodos} fetchTodos={fetchTodos} />
+          <Theme session={session} />
           <Footer key={session.user.id} session={session} />
         </div>
       )}

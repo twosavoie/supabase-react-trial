@@ -1,4 +1,5 @@
 *,
+:root,
 *::after,
 *::before {
   /* * Global and reset styles */
@@ -413,6 +414,119 @@ dialog {
 
 .account-form-widget button {
   margin: 20px 0;
+}
+
+.theme-color-picker__colors {
+  border: var(--narrow-border) var(--accent-color-3);
+  border-radius: var(--border-radius);
+  display: flex;
+  justify-content: space-between;
+  /* padding: 10px; */
+  width: 100%;
+  border-radius: var(--border-radius);
+  border: var(--narrow-border) var(--accent-color-3);
+  padding: 8px;
+  font-size: 1rem;
+  background-color: var(--bg-color-1);
+  color: var(--text-color);
+  margin: 10px 0 0 0;
+}
+
+input[type="radio"] {
+  margin: 10px;
+}
+
+.theme-color-picker input[type="radio"] {
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  outline: 3px solid var(--radio-color, currentColor);
+  outline-offset: 3px;
+  border-radius: 50%;
+}
+
+.theme-color-picker input[type="radio"]:checked {
+  background-color: var(--radio-color);
+}
+
+.theme-color-picker input[type="radio"]#light-dark {
+  --radio-color: #ffffff;
+}
+
+.theme-color-picker input[type="radio"]#light {
+  --radio-color: #bce4f9;
+}
+
+.theme-color-picker input[type="radio"]#blue {
+  --radio-color: #63bff0;
+}
+
+.theme-color-picker input[type="radio"]#green {
+  --radio-color: #639858;
+}
+
+.theme-color-picker input[type="radio"]#dark {
+  --radio-color: #09415e;
+}
+
+/* TODO: Update declarations to match the ones used to set global colors */
+/* ? Are these to work with JS and local storage? Also, do I need JS to use React? And what will change if I use a db instead? */
+/*.light {
+  --bg-color-1: #ffffff;
+  --bg-color-2: #ffffff;
+  --bg-color-3: #bce4f9;
+  --bg-color-4: #f2fafe;
+  --my-gradient: linear-gradient(#63bff005, #63bff040);
+  --text-color: #07124d;
+  --text-color-disabled: #999999;
+  --text-color-placeholder: #999999;
+  --accent-color-1: #dc5a15;
+  --accent-color-2: #f36500;
+  --accent-color-2-hover: #ff6b00;
+  --accent-color-3: #09415e;
+} */
+
+/* Theme variable overrides when using data-theme attribute and root classes */
+/* :root[data-theme="light-dark"], */
+:root[data-theme="light"],
+/* :root.theme-light-dark, */
+:root.theme-light {
+  --bg-color-1: #ffffff;
+  --bg-color-2: #ffffff;
+  --bg-color-3: #bce4f9;
+  --bg-color-4: #f2fafe;
+  --my-gradient: linear-gradient(#63bff005, #63bff040);
+  --text-color: #07124d;
+  --text-color-disabled: #999999;
+  --text-color-placeholder: #999999;
+  --accent-color-1: #dc5a15;
+  --accent-color-2: #f36500;
+  --accent-color-2-hover: #ff6b00;
+  --accent-color-3: #09415e;
+}
+
+:root[data-theme="blue"],
+:root.theme-blue {
+  --my-gradient: linear-gradient(#bce4f9, #63bff040);
+  --bg-color-2: hsl(209 50% 100%);
+  --text-color: #07124d;
+  --clr-heading: #07124d;
+}
+
+:root[data-theme="green"],
+:root.theme-green {
+  --my-gradient: linear-gradient(hsl(110, 27%, 96%), hsl(109 50% 90%));
+  --bg-color-2: hsl(109 50% 100%);
+  --text-color: hsl(111, 88%, 3%);
+  --clr-heading: hsl(111, 88%, 3%);
+}
+
+:root[data-theme="dark"],
+:root.theme-dark {
+  --my-gradient: linear-gradient(hsl(248, 47%, 54%), hsl(240, 44%, 6%));
+  --bg-color-2: hsl(209 50% 5%);
+  --text-color: #f2e4e6;
+  --clr-heading: #f2e4e6;
 }
 
 .dialog-content {
