@@ -11,6 +11,22 @@
   color-scheme: light dark;
   /* * End Global and reset styles */
 
+  /* * Fallback colors for older browsers that don't support light-dark */
+  --bg-color-1: #ffffff;
+  --bg-color-2: #ffffff;
+  --bg-color-3: #bce4f9;
+  --bg-color-4: #f2fafe;
+  --my-gradient: linear-gradient(#63bff005, #63bff040);
+  --text-color: #07124d;
+  --text-color-disabled: #999999;
+  --text-color-placeholder: #999999;
+  --accent-color-1: #dc5a15;
+  --accent-color-2: #f36500;
+  --accent-color-2-hover: #ff6b00;
+  --accent-color-3: #09415e;
+  /* * End Fallback colors for older browsers that don't support light-dark */
+
+  /* * Global variables */
   /* * Background colors */
   --bg-color-1: light-dark(#ffffff, #15122f);
   --bg-color-2: light-dark(#ffffff, #0c0828);
