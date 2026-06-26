@@ -47,7 +47,7 @@ function App() {
             fetchTodos={fetchTodos}
           />
           <TodoList todos={todos} setTodos={setTodos} fetchTodos={fetchTodos} />
-          <Theme session={session} />
+          <Theme key={session.user.id} session={session} />
           <Footer key={session.user.id} session={session} />
         </div>
       )}
