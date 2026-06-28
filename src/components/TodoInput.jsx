@@ -70,7 +70,7 @@ function TodoInput({ fetchTodos, session }) {
 
   return (
     <div className="todo-input">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="input-form-layout">
         <label htmlFor="todo_name" className="todo-input-label">
           Click here to add a new todo:
           <input

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { supabase } from "../supabaseClient";
 import Avatar from "./Avatar";
 import PropTypes from "prop-types";
+import Theme from "./Theme";
 
 export default function Account({ session }) {
   const [loading, setLoading] = useState(true);
@@ -76,7 +77,7 @@ export default function Account({ session }) {
     <div className="account-form-widget">
       <h1>Account</h1>
       <p>Completing this form is totally optional. You do you! 🙂</p>
-      <form onSubmit={updateProfile} className="form-widget">
+      <form onSubmit={updateProfile} className="form-widget form-layout">
         <div className="account-form-widget-elements">
           <label htmlFor="email">Email</label>
           <input id="email" type="text" value={session.user.email} disabled />
@@ -101,15 +102,7 @@ export default function Account({ session }) {
             onChange={(e) => setMotivation(e.target.value)}
           />
         </div>
-        {/* <div className="account-form-widget-elements">
-          <label htmlFor="website">Website</label>
-          <input
-            id="website"
-            type="url"
-            value={website || ""}
-            onChange={(e) => setWebsite(e.target.value)}
-          />
-        </div> */}
+        <Theme key={session.user.id} session={session} />
         <Avatar
           url={avatar_url}
           size={150}
