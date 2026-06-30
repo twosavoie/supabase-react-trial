@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import { supabase } from "../supabaseClient";
 import Avatar from "./Avatar";
 import PropTypes from "prop-types";
-import Theme from "./Theme";
+// import Theme from "./Theme";
 
 export default function Account({ session }) {
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState(null);
   const [motivation, setMotivation] = useState(null);
-  const [website, setWebsite] = useState(null);
+  const [theme, setTheme] = useState("light-dark");
   const [avatar_url, setAvatarUrl] = useState(null);
 
   Account.propTypes = {
@@ -23,7 +23,7 @@ export default function Account({ session }) {
 
       const { data, error } = await supabase
         .from("profiles")
-        .select(`username, motivation, website, avatar_url`)
+        .select(`username, motivation, theme, avatar_url`)
         .eq("id", user.id)
         .single();
 
@@ -33,7 +33,7 @@ export default function Account({ session }) {
         } else if (data) {
           setUsername(data.username);
           setMotivation(data.motivation);
-          setWebsite(data.website);
+          setTheme(data.theme);
           setAvatarUrl(data.avatar_url);
         }
       }
@@ -58,7 +58,7 @@ export default function Account({ session }) {
       id: user.id,
       username,
       motivation,
-      website,
+      theme,
       avatar_url: avatarUrl,
       updated_at: new Date(),
     };
@@ -102,7 +102,71 @@ export default function Account({ session }) {
             onChange={(e) => setMotivation(e.target.value)}
           />
         </div>
-        <Theme key={session.user.id} session={session} />
+        {/* <Theme theme={theme} /> */}
+        <div className="theme-color-picker account-form-widget-elements">
+          <label>Pick a color scheme</label>
+          <div className="theme-color-picker__colors">
+            <label htmlFor="light-dark" className="visually-hidden">
+              Light-Dark theme
+            </label>
+            <input
+              type="radio"
+              name="theme"
+              id="light-dark"
+              defaultChecked={theme === "light-dark"}
+              // onChange={(e) => setTheme(e.target.value)}
+              onChange={() => setTheme("light-dark")}
+            />
+
+            <label htmlFor="light" className="visually-hidden">
+              Light theme
+            </label>
+            <input
+              type="radio"
+              id="light"
+              name="theme"
+              checked={theme === "light"}
+              // onChange={(e) => setTheme(e.target.value)}
+              onChange={() => setTheme("light")}
+            />
+
+            <label htmlFor="blue" className="visually-hidden">
+              Blue theme
+            </label>
+            <input
+              type="radio"
+              id="blue"
+              name="theme"
+              checked={theme === "blue"}
+              // onChange={(e) => setTheme(e.target.value)}
+              onChange={() => setTheme("blue")}
+            />
+
+            <label htmlFor="green" className="visually-hidden">
+              Green theme
+            </label>
+            <input
+              type="radio"
+              id="green"
+              name="theme"
+              checked={theme === "green"}
+              // onChange={(e) => setTheme(e.target.value)}
+              onChange={() => setTheme("green")}
+            />
+
+            <label htmlFor="dark" className="visually-hidden">
+              Dark theme
+            </label>
+            <input
+              type="radio"
+              id="dark"
+              name="theme"
+              checked={theme === "dark"}
+              // onChange={(e) => setTheme(e.target.value)}
+              onChange={() => setTheme("dark")}
+            />
+          </div>
+        </div>
         <Avatar
           url={avatar_url}
           size={150}

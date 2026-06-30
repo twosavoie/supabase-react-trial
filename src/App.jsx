@@ -6,7 +6,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import TodoInput from "./components/TodoInput.jsx";
 import TodoList from "./components/TodoList.jsx";
-import Theme from "./components/xTheme.jsx";
+import Theme from "./components/Theme.jsx";
 
 function App() {
   const [session, setSession] = useState(null);
@@ -49,7 +49,7 @@ function App() {
 
           <TodoList todos={todos} setTodos={setTodos} fetchTodos={fetchTodos} />
           <form className="theme-form">
-            <Theme key={session.user.id} session={session} />
+            <Theme session={session} />
           </form>
           <Footer key={session.user.id} session={session} />
         </div>

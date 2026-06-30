@@ -413,185 +413,6 @@ dialog {
   /* text-align: center; */
 }
 
-/* * Color theme pickers */
-/* TODO: Check class names and styling - refer to themes branch */
-.theme-color-picker__colors {
-  border: var(--narrow-border) var(--accent-color-3);
-  border-radius: var(--border-radius);
-  display: flex;
-  justify-content: space-between;
-  /* padding: 10px; */
-  width: 100%;
-  border-radius: var(--border-radius);
-  border: var(--narrow-border) var(--accent-color-3);
-  padding: 8px;
-  font-size: 1rem;
-  background-color: var(--bg-color-1);
-  color: var(--text-color);
-  margin: 10px 0 0 0;
-}
-
-/* input[type="radio"] {
-  margin: 10px;
-} */
-
-.theme-color-picker__colors input[type="radio"] {
-  appearance: none;
-  width: 1rem;
-  height: 1rem;
-  outline: 3px solid var(--radio-color, currentColor);
-  outline-offset: 3px;
-  border-radius: 50%;
-  margin: 10px;
-}
-
-.theme-color-picker__colors input[type="radio"]:checked {
-  background-color: var(--radio-color);
-}
-
-.theme-color-picker__colors input[type="radio"]#light-dark {
-  --radio-color: #666363;
-}
-
-.theme-color-picker__colors input[type="radio"]#light {
-  --radio-color: #ffffff;
-}
-
-.theme-color-picker__colors input[type="radio"]#blue {
-  --radio-color: #63bff0;
-}
-
-.theme-color-picker__colors input[type="radio"]#green {
-  --radio-color: #639858;
-}
-
-.theme-color-picker__colors input[type="radio"]#dark {
-  --radio-color: hsl(248, 40%, 41%);
-}
-
-.light {
-  --bg-color-1: #ffffff;
-  --bg-color-2: #ffffff;
-  --bg-color-3: #bce4f9;
-  --bg-color-4: #f2fafe;
-  --my-gradient: linear-gradient(#63bff005, #63bff040);
-  --text-color: #07124d;
-  --text-color-disabled: #999999;
-  --text-color-placeholder: #999999;
-  --accent-color-1: #dc5a15;
-  --accent-color-2: #f36500;
-  --accent-color-2-hover: #ff6b00;
-  --accent-color-3: #09415e;
-}
-
-.blue {
-  --bg-color-1: #a09dea;
-  --bg-color-2: #a09dea;
-  --bg-color-3: #a09dea;
-  --bg-color-4: #a09dea;
-  --my-gradient: linear-gradient(#63bff005, #63bff040);
-  --text-color: #07124d;
-  --text-color-disabled: #999999;
-  --text-color-placeholder: #999999;
-  --accent-color-1: #09415e;
-  --accent-color-2: #09415e;
-  --accent-color-2-hover: #09415e;
-  --accent-color-3: #09415e;
-}
-
-.green {
-  --bg-color-1: #91e76a;
-  --bg-color-2: #91e76a;
-  --bg-color-3: #91e76a;
-  --bg-color-4: #91e76a;
-  --my-gradient: linear-gradient(#63bff005, #63bff040);
-  --text-color: #07124d;
-  --text-color-disabled: #999999;
-  --text-color-placeholder: #999999;
-  --accent-color-1: #3d602d;
-  --accent-color-2: #3d602d;
-  --accent-color-2-hover: #3d602d;
-  --accent-color-3: #3d602d;
-}
-
-.dark {
-  --bg-color-1: #15122f;
-  --bg-color-2: #0c0828;
-  --bg-color-3: #0c0828;
-  --bg-color-4: #0c0828;
-  --my-gradient: linear-gradient(#63bff040, hsl(240, 44%, 6%));
-  --text-color: #f2e4e6;
-  --text-color-disabled: #bbbbbb;
-  --text-color-placeholder: #bbbbbb;
-  --accent-color-1: #f493a4;
-  --accent-color-2: #d7556c;
-  --accent-color-2-hover: #ed5e77;
-  --accent-color-3: #333;
-}
-
-:root:has(#light:checked) {
-  --bg-color-1: #ffffff;
-  --bg-color-2: #ffffff;
-  --bg-color-3: #bce4f9;
-  --bg-color-4: #f2fafe;
-  --my-gradient: linear-gradient(#63bff005, #63bff040);
-  --text-color: #07124d;
-  --text-color-disabled: #999999;
-  --text-color-placeholder: #999999;
-  --accent-color-1: #dc5a15;
-  --accent-color-2: #f36500;
-  --accent-color-2-hover: #ff6b00;
-  --accent-color-3: #09415e;
-}
-
-:root:has(#blue:checked) {
-  --bg-color-1: #a09dea;
-  --bg-color-2: #a09dea;
-  --bg-color-3: #a09dea;
-  --bg-color-4: #a09dea;
-  --my-gradient: linear-gradient(#63bff005, #63bff040);
-  --text-color: #07124d;
-  --text-color-disabled: #999999;
-  --text-color-placeholder: #999999;
-  --accent-color-1: #09415e;
-  --accent-color-2: #09415e;
-  --accent-color-2-hover: #09415e;
-  --accent-color-3: #09415e;
-}
-
-:root:has(#green:checked) {
-  --bg-color-1: #91e76a;
-  --bg-color-2: #91e76a;
-  --bg-color-3: #91e76a;
-  --bg-color-4: #91e76a;
-  --my-gradient: linear-gradient(#63bff005, #63bff040);
-  --text-color: #07124d;
-  --text-color-disabled: #999999;
-  --text-color-placeholder: #999999;
-  --accent-color-1: #3d602d;
-  --accent-color-2: #3d602d;
-  --accent-color-2-hover: #3d602d;
-  --accent-color-3: #3d602d;
-}
-
-:root:has(#dark:checked) {
-  --bg-color-1: #15122f;
-  --bg-color-2: #0c0828;
-  --bg-color-3: #0c0828;
-  --bg-color-4: #0c0828;
-  --my-gradient: linear-gradient(#63bff040, hsl(240, 44%, 6%));
-  --text-color: #f2e4e6;
-  --text-color-disabled: #bbbbbb;
-  --text-color-placeholder: #bbbbbb;
-  --accent-color-1: #f493a4;
-  --accent-color-2: #d7556c;
-  --accent-color-2-hover: #ed5e77;
-  --accent-color-3: #333;
-}
-
-/* * End Color theme pickers */
-
-
 .account-form-widget button {
   margin: 20px 0;
 }
@@ -996,8 +817,8 @@ button.primary,
   }
 
   .app-ui .theme-color-picker {
-    width: 50%;
-    width: 90%;
+    /* width: 50%;
+    width: 90%; */
     width: 75%;
   }
 }
@@ -1077,3 +898,184 @@ button.primary,
     width: 35%;
   }
 }
+
+/* * Color theme pickers */
+/* TODO: Check class names and styling - refer to themes branch */
+.theme-color-picker__colors {
+  border: var(--narrow-border) var(--accent-color-3);
+  border-radius: var(--border-radius);
+  display: flex;
+  justify-content: space-between;
+  /* padding: 10px; */
+  width: 100%;
+  border-radius: var(--border-radius);
+  border: var(--narrow-border) var(--accent-color-3);
+  padding: 8px;
+  font-size: 1rem;
+  background-color: var(--bg-color-1);
+  color: var(--text-color);
+  margin: 10px 0 0 0;
+}
+
+/* input[type="radio"] {
+  margin: 10px;
+} */
+
+.theme-color-picker__colors input[type="radio"] {
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  /* * Use the radio color, but if no radio color currentColor will set the color as the text color. This may be why the light-dark radio button is the color it is when I try a gradient */
+  outline: 3px solid var(--radio-color, currentColor);
+  outline-offset: 3px;
+  border-radius: 50%;
+  margin: 10px;
+}
+
+.theme-color-picker__colors input[type="radio"]:checked {
+  background-color: var(--radio-color);
+}
+
+.theme-color-picker__colors input[type="radio"]#light-dark {
+  --radio-color: #666363;
+}
+
+.theme-color-picker__colors input[type="radio"]#light {
+  --radio-color: #ffffff;
+}
+
+.theme-color-picker__colors input[type="radio"]#blue {
+  --radio-color: #63bff0;
+}
+
+.theme-color-picker__colors input[type="radio"]#green {
+  --radio-color: #639858;
+}
+
+.theme-color-picker__colors input[type="radio"]#dark {
+  --radio-color: hsl(248, 40%, 41%);
+}
+
+.light {
+  --bg-color-1: #ffffff;
+  --bg-color-2: #ffffff;
+  --bg-color-3: #bce4f9;
+  --bg-color-4: #f2fafe;
+  --my-gradient: linear-gradient(#63bff005, #63bff040);
+  --text-color: #07124d;
+  --text-color-disabled: #999999;
+  --text-color-placeholder: #999999;
+  --accent-color-1: #dc5a15;
+  --accent-color-2: #f36500;
+  --accent-color-2-hover: #ff6b00;
+  --accent-color-3: #09415e;
+}
+
+.blue {
+  --bg-color-1: #a09dea;
+  --bg-color-2: #a09dea;
+  --bg-color-3: #a09dea;
+  --bg-color-4: #a09dea;
+  --my-gradient: linear-gradient(#63bff005, #63bff040);
+  --text-color: #07124d;
+  --text-color-disabled: #999999;
+  --text-color-placeholder: #999999;
+  --accent-color-1: #09415e;
+  --accent-color-2: #09415e;
+  --accent-color-2-hover: #09415e;
+  --accent-color-3: #09415e;
+}
+
+.green {
+  --bg-color-1: #91e76a;
+  --bg-color-2: #91e76a;
+  --bg-color-3: #91e76a;
+  --bg-color-4: #91e76a;
+  --my-gradient: linear-gradient(#63bff005, #63bff040);
+  --text-color: #07124d;
+  --text-color-disabled: #999999;
+  --text-color-placeholder: #999999;
+  --accent-color-1: #3d602d;
+  --accent-color-2: #3d602d;
+  --accent-color-2-hover: #3d602d;
+  --accent-color-3: #3d602d;
+}
+
+.dark {
+  --bg-color-1: #15122f;
+  --bg-color-2: #0c0828;
+  --bg-color-3: #0c0828;
+  --bg-color-4: #0c0828;
+  --my-gradient: linear-gradient(#63bff040, hsl(240, 44%, 6%));
+  --text-color: #f2e4e6;
+  --text-color-disabled: #bbbbbb;
+  --text-color-placeholder: #bbbbbb;
+  --accent-color-1: #f493a4;
+  --accent-color-2: #d7556c;
+  --accent-color-2-hover: #ed5e77;
+  --accent-color-3: #333;
+}
+
+:root:has(#light:checked) {
+  /* * A tester to see if the has is working */
+  /* font-size: 2rem; */
+  --bg-color-1: #ffffff;
+  --bg-color-2: #ffffff;
+  --bg-color-3: #bce4f9;
+  --bg-color-4: #f2fafe;
+  --my-gradient: linear-gradient(#63bff005, #63bff040);
+  --text-color: #07124d;
+  --text-color-disabled: #999999;
+  --text-color-placeholder: #999999;
+  --accent-color-1: #dc5a15;
+  --accent-color-2: #f36500;
+  --accent-color-2-hover: #ff6b00;
+  --accent-color-3: #09415e;
+}
+
+:root:has(#blue:checked) {
+  --bg-color-1: #a09dea;
+  --bg-color-2: #a09dea;
+  --bg-color-3: #a09dea;
+  --bg-color-4: #a09dea;
+  --my-gradient: linear-gradient(#63bff005, #63bff040);
+  --text-color: #07124d;
+  --text-color-disabled: #999999;
+  --text-color-placeholder: #999999;
+  --accent-color-1: #09415e;
+  --accent-color-2: #09415e;
+  --accent-color-2-hover: #09415e;
+  --accent-color-3: #09415e;
+}
+
+:root:has(#green:checked) {
+  --bg-color-1: #91e76a;
+  --bg-color-2: #91e76a;
+  --bg-color-3: #91e76a;
+  --bg-color-4: #91e76a;
+  --my-gradient: linear-gradient(#63bff005, #63bff040);
+  --text-color: #07124d;
+  --text-color-disabled: #999999;
+  --text-color-placeholder: #999999;
+  --accent-color-1: #3d602d;
+  --accent-color-2: #3d602d;
+  --accent-color-2-hover: #3d602d;
+  --accent-color-3: #3d602d;
+}
+
+:root:has(#dark:checked) {
+  --bg-color-1: #15122f;
+  --bg-color-2: #0c0828;
+  --bg-color-3: #0c0828;
+  --bg-color-4: #0c0828;
+  --my-gradient: linear-gradient(#63bff040, hsl(240, 44%, 6%));
+  --text-color: #f2e4e6;
+  --text-color-disabled: #bbbbbb;
+  --text-color-placeholder: #bbbbbb;
+  --accent-color-1: #f493a4;
+  --accent-color-2: #d7556c;
+  --accent-color-2-hover: #ed5e77;
+  --accent-color-3: #333;
+}
+
+/* * End Color theme pickers */
