@@ -30,6 +30,7 @@ export default function Theme({ session }) {
           setSelectedTheme(data.theme);
         }
       }
+      console.log("1", selectedTheme);
 
       // setLoading(false);
     }
@@ -39,12 +40,14 @@ export default function Theme({ session }) {
     return () => {
       ignore = true;
     };
-  }, [session]);
+  }, [session, selectedTheme]);
 
   async function updateProfile(theme) {
     const { user } = session;
 
     setSelectedTheme(theme);
+    // Will not log since the change to theme only happens aftter the function completes its run
+    console.log("2", selectedTheme);
 
     const updates = {
       id: user.id,
@@ -58,6 +61,8 @@ export default function Theme({ session }) {
       alert(error.message);
     }
   }
+
+  console.log("3", selectedTheme);
 
   return (
     <div className="theme-color-picker account-form-widget-elements">
@@ -81,6 +86,7 @@ export default function Theme({ session }) {
         <input
           type="radio"
           id="light"
+          className="light"
           name="theme"
           value="light"
           checked={selectedTheme === "light"}

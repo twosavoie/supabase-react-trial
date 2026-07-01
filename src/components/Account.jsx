@@ -114,7 +114,6 @@ export default function Account({ session }) {
               name="theme"
               id="light-dark"
               defaultChecked={theme === "light-dark"}
-              // onChange={(e) => setTheme(e.target.value)}
               onChange={() => setTheme("light-dark")}
             />
 
@@ -126,7 +125,6 @@ export default function Account({ session }) {
               id="light"
               name="theme"
               checked={theme === "light"}
-              // onChange={(e) => setTheme(e.target.value)}
               onChange={() => setTheme("light")}
             />
 
@@ -138,7 +136,6 @@ export default function Account({ session }) {
               id="blue"
               name="theme"
               checked={theme === "blue"}
-              // onChange={(e) => setTheme(e.target.value)}
               onChange={() => setTheme("blue")}
             />
 
@@ -150,7 +147,6 @@ export default function Account({ session }) {
               id="green"
               name="theme"
               checked={theme === "green"}
-              // onChange={(e) => setTheme(e.target.value)}
               onChange={() => setTheme("green")}
             />
 
@@ -162,7 +158,6 @@ export default function Account({ session }) {
               id="dark"
               name="theme"
               checked={theme === "dark"}
-              // onChange={(e) => setTheme(e.target.value)}
               onChange={() => setTheme("dark")}
             />
           </div>

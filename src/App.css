@@ -956,7 +956,8 @@ button.primary,
   --radio-color: hsl(248, 40%, 41%);
 }
 
-.light {
+/* ? Classes were part of tutorial as a fallback for browsers that don't support :has(). May not include and just go with the :has() method. Or I may include to support older browsers. */
+/* .light {
   --bg-color-1: #ffffff;
   --bg-color-2: #ffffff;
   --bg-color-3: #bce4f9;
@@ -1014,11 +1015,9 @@ button.primary,
   --accent-color-2: #d7556c;
   --accent-color-2-hover: #ed5e77;
   --accent-color-3: #333;
-}
-
+} */
+/* Also tried using .light and :root:has(.light:checked) and .light:checked */
 :root:has(#light:checked) {
-  /* * A tester to see if the has is working */
-  /* font-size: 2rem; */
   --bg-color-1: #ffffff;
   --bg-color-2: #ffffff;
   --bg-color-3: #bce4f9;
