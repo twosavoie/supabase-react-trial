@@ -2,9 +2,105 @@ import { useState, useEffect } from "react";
 import { supabase } from "../supabaseClient";
 import PropTypes from "prop-types";
 
+function getStoredTheme() {
+  if (typeof window === "undefined") {
+    return "light-dark";
+  }
+
+  try {
+    return window.localStorage.getItem("theme") || "light-dark";
+  } catch {
+    return "light-dark";
+  }
+}
+
+function persistTheme(theme) {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  try {
+    window.localStorage.setItem("theme", theme);
+  } catch {
+    // Ignore storage errors
+  }
+}
+
+const themeValues = {
+  "light-dark": {
+    "--bg-color-1": "#ffffff",
+    "--bg-color-2": "#ffffff",
+    "--bg-color-3": "#bce4f9",
+    "--bg-color-4": "#f2fafe",
+    "--my-gradient": "linear-gradient(#63bff005, #63bff040)",
+    "--text-color": "#07124d",
+    "--text-color-disabled": "#999999",
+    "--text-color-placeholder": "#999999",
+    "--accent-color-1": "#dc5a15",
+    "--accent-color-2": "#f36500",
+    "--accent-color-2-hover": "#ff6b00",
+    "--accent-color-3": "#09415e",
+  },
+  light: {
+    "--bg-color-1": "#ffffff",
+    "--bg-color-2": "#ffffff",
+    "--bg-color-3": "#bce4f9",
+    "--bg-color-4": "#f2fafe",
+    "--my-gradient": "linear-gradient(#63bff005, #63bff040)",
+    "--text-color": "#07124d",
+    "--text-color-disabled": "#999999",
+    "--text-color-placeholder": "#999999",
+    "--accent-color-1": "#dc5a15",
+    "--accent-color-2": "#f36500",
+    "--accent-color-2-hover": "#ff6b00",
+    "--accent-color-3": "#09415e",
+  },
+  blue: {
+    "--bg-color-1": "#a09dea",
+    "--bg-color-2": "#a09dea",
+    "--bg-color-3": "#a09dea",
+    "--bg-color-4": "#a09dea",
+    "--my-gradient": "linear-gradient(#63bff005, #63bff040)",
+    "--text-color": "#07124d",
+    "--text-color-disabled": "#999999",
+    "--text-color-placeholder": "#999999",
+    "--accent-color-1": "#09415e",
+    "--accent-color-2": "#09415e",
+    "--accent-color-2-hover": "#09415e",
+    "--accent-color-3": "#09415e",
+  },
+  green: {
+    "--bg-color-1": "#91e76a",
+    "--bg-color-2": "#91e76a",
+    "--bg-color-3": "#91e76a",
+    "--bg-color-4": "#91e76a",
+    "--my-gradient": "linear-gradient(#63bff005, #63bff040)",
+    "--text-color": "#07124d",
+    "--text-color-disabled": "#999999",
+    "--text-color-placeholder": "#999999",
+    "--accent-color-1": "#3d602d",
+    "--accent-color-2": "#3d602d",
+    "--accent-color-2-hover": "#3d602d",
+    "--accent-color-3": "#3d602d",
+  },
+  dark: {
+    "--bg-color-1": "#15122f",
+    "--bg-color-2": "#0c0828",
+    "--bg-color-3": "#0c0828",
+    "--bg-color-4": "#0c0828",
+    "--my-gradient": "linear-gradient(#63bff040, hsl(240, 44%, 6%))",
+    "--text-color": "#f2e4e6",
+    "--text-color-disabled": "#bbbbbb",
+    "--text-color-placeholder": "#bbbbbb",
+    "--accent-color-1": "#f493a4",
+    "--accent-color-2": "#d7556c",
+    "--accent-color-2-hover": "#ed5e77",
+    "--accent-color-3": "#333",
+  },
+};
+
 export default function Theme({ session }) {
-  // const [loading, setLoading] = useState(true);
-  const [selectedTheme, setSelectedTheme] = useState("light-dark");
+  const [selectedTheme, setSelectedTheme] = useState(() => getStoredTheme());
 
   Theme.propTypes = {
     session: PropTypes.object.isRequired,
@@ -13,26 +109,31 @@ export default function Theme({ session }) {
 
   useEffect(() => {
     let ignore = false;
+
     async function getProfile() {
-      // setLoading(true);
-      const { user } = session;
+      if (!session?.user?.id) {
+        return;
+      }
+
+      const storedTheme = getStoredTheme();
+      if (storedTheme) {
+        setSelectedTheme(storedTheme);
+      }
 
       const { data, error } = await supabase
         .from("profiles")
-        .select(`theme`)
-        .eq("id", user.id)
+        .select("theme")
+        .eq("id", session.user.id)
         .single();
 
       if (!ignore) {
         if (error) {
           console.warn(error);
-        } else if (data) {
+        } else if (data?.theme) {
           setSelectedTheme(data.theme);
+          persistTheme(data.theme);
         }
       }
-      console.log("1", selectedTheme);
-
-      // setLoading(false);
     }
 
     getProfile();
@@ -40,17 +141,43 @@ export default function Theme({ session }) {
     return () => {
       ignore = true;
     };
-  }, [session, selectedTheme]);
+  }, [session]);
+
+  useEffect(() => {
+    persistTheme(selectedTheme);
+
+    if (typeof document !== "undefined") {
+      const root = document.documentElement;
+      const values = themeValues[selectedTheme] || themeValues["light-dark"];
+
+      root.dataset.theme = selectedTheme;
+
+      root.classList.remove(
+        "theme-light-dark",
+        "theme-light",
+        "theme-blue",
+        "theme-green",
+        "theme-dark",
+      );
+
+      root.classList.add(`theme-${selectedTheme}`);
+
+      Object.entries(values).forEach(([property, value]) => {
+        root.style.setProperty(property, value);
+      });
+    }
+  }, [selectedTheme]);
 
   async function updateProfile(theme) {
-    const { user } = session;
+    if (!session?.user?.id) {
+      return;
+    }
 
     setSelectedTheme(theme);
-    // Will not log since the change to theme only happens aftter the function completes its run
-    console.log("2", selectedTheme);
+    persistTheme(theme);
 
     const updates = {
-      id: user.id,
+      id: session.user.id,
       theme,
       updated_at: new Date(),
     };
@@ -61,8 +188,6 @@ export default function Theme({ session }) {
       alert(error.message);
     }
   }
-
-  console.log("3", selectedTheme);
 
   return (
     <div className="theme-color-picker account-form-widget-elements">
@@ -76,7 +201,7 @@ export default function Theme({ session }) {
           name="theme"
           id="light-dark"
           value="light-dark"
-          defaultChecked={selectedTheme === "light-dark"}
+          checked={selectedTheme === "light-dark"}
           onChange={() => updateProfile("light-dark")}
         />
 

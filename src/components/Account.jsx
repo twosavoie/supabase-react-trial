@@ -4,11 +4,108 @@ import Avatar from "./Avatar";
 import PropTypes from "prop-types";
 // import Theme from "./Theme";
 
+function getStoredTheme() {
+  if (typeof window === "undefined") {
+    return "light-dark";
+  }
+
+  try {
+    return window.localStorage.getItem("theme") || "light-dark";
+  } catch {
+    return "light-dark";
+  }
+}
+
+function persistTheme(theme) {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  try {
+    window.localStorage.setItem("theme", theme);
+  } catch {
+    // Ignore storage errors
+  }
+}
+
+const themeValues = {
+  "light-dark": {
+    "--bg-color-1": "#ffffff",
+    "--bg-color-2": "#ffffff",
+    "--bg-color-3": "#bce4f9",
+    "--bg-color-4": "#f2fafe",
+    "--my-gradient": "linear-gradient(#63bff005, #63bff040)",
+    "--text-color": "#07124d",
+    "--text-color-disabled": "#999999",
+    "--text-color-placeholder": "#999999",
+    "--accent-color-1": "#dc5a15",
+    "--accent-color-2": "#f36500",
+    "--accent-color-2-hover": "#ff6b00",
+    "--accent-color-3": "#09415e",
+  },
+  light: {
+    "--bg-color-1": "#ffffff",
+    "--bg-color-2": "#ffffff",
+    "--bg-color-3": "#bce4f9",
+    "--bg-color-4": "#f2fafe",
+    "--my-gradient": "linear-gradient(#63bff005, #63bff040)",
+    "--text-color": "#07124d",
+    "--text-color-disabled": "#999999",
+    "--text-color-placeholder": "#999999",
+    "--accent-color-1": "#dc5a15",
+    "--accent-color-2": "#f36500",
+    "--accent-color-2-hover": "#ff6b00",
+    "--accent-color-3": "#09415e",
+  },
+  blue: {
+    "--bg-color-1": "#a09dea",
+    "--bg-color-2": "#a09dea",
+    "--bg-color-3": "#a09dea",
+    "--bg-color-4": "#a09dea",
+    "--my-gradient": "linear-gradient(#63bff005, #63bff040)",
+    "--text-color": "#07124d",
+    "--text-color-disabled": "#999999",
+    "--text-color-placeholder": "#999999",
+    "--accent-color-1": "#09415e",
+    "--accent-color-2": "#09415e",
+    "--accent-color-2-hover": "#09415e",
+    "--accent-color-3": "#09415e",
+  },
+  green: {
+    "--bg-color-1": "#91e76a",
+    "--bg-color-2": "#91e76a",
+    "--bg-color-3": "#91e76a",
+    "--bg-color-4": "#91e76a",
+    "--my-gradient": "linear-gradient(#63bff005, #63bff040)",
+    "--text-color": "#07124d",
+    "--text-color-disabled": "#999999",
+    "--text-color-placeholder": "#999999",
+    "--accent-color-1": "#3d602d",
+    "--accent-color-2": "#3d602d",
+    "--accent-color-2-hover": "#3d602d",
+    "--accent-color-3": "#3d602d",
+  },
+  dark: {
+    "--bg-color-1": "#15122f",
+    "--bg-color-2": "#0c0828",
+    "--bg-color-3": "#0c0828",
+    "--bg-color-4": "#0c0828",
+    "--my-gradient": "linear-gradient(#63bff040, hsl(240, 44%, 6%))",
+    "--text-color": "#f2e4e6",
+    "--text-color-disabled": "#bbbbbb",
+    "--text-color-placeholder": "#bbbbbb",
+    "--accent-color-1": "#f493a4",
+    "--accent-color-2": "#d7556c",
+    "--accent-color-2-hover": "#ed5e77",
+    "--accent-color-3": "#333",
+  },
+};
+
 export default function Account({ session }) {
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState(null);
   const [motivation, setMotivation] = useState(null);
-  const [theme, setTheme] = useState("light-dark");
+  const [theme, setTheme] = useState(() => getStoredTheme());
   const [avatar_url, setAvatarUrl] = useState(null);
 
   Account.propTypes = {
@@ -33,8 +130,9 @@ export default function Account({ session }) {
         } else if (data) {
           setUsername(data.username);
           setMotivation(data.motivation);
-          setTheme(data.theme);
+          setTheme(data.theme || getStoredTheme());
           setAvatarUrl(data.avatar_url);
+          persistTheme(data.theme || getStoredTheme());
         }
       }
 
@@ -47,6 +145,31 @@ export default function Account({ session }) {
       ignore = true;
     };
   }, [session]);
+
+  useEffect(() => {
+    persistTheme(theme);
+
+    if (typeof document !== "undefined") {
+      const root = document.documentElement;
+      const values = themeValues[theme] || themeValues["light-dark"];
+
+      root.dataset.theme = theme;
+
+      root.classList.remove(
+        "theme-light-dark",
+        "theme-light",
+        "theme-blue",
+        "theme-green",
+        "theme-dark",
+      );
+
+      root.classList.add(`theme-${theme}`);
+
+      Object.entries(values).forEach(([property, value]) => {
+        root.style.setProperty(property, value);
+      });
+    }
+  }, [theme]);
 
   async function updateProfile(event, avatarUrl) {
     event.preventDefault();
@@ -113,7 +236,7 @@ export default function Account({ session }) {
               type="radio"
               name="theme"
               id="light-dark"
-              defaultChecked={theme === "light-dark"}
+              checked={theme === "light-dark"}
               onChange={() => setTheme("light-dark")}
             />
 

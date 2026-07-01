@@ -1017,7 +1017,10 @@ button.primary,
   --accent-color-3: #333;
 } */
 /* Also tried using .light and :root:has(.light:checked) and .light:checked */
-:root:has(#light:checked) {
+:root[data-theme="light-dark"],
+:root.theme-light-dark,
+:root[data-theme="light"],
+:root.theme-light {
   --bg-color-1: #ffffff;
   --bg-color-2: #ffffff;
   --bg-color-3: #bce4f9;
@@ -1032,7 +1035,8 @@ button.primary,
   --accent-color-3: #09415e;
 }
 
-:root:has(#blue:checked) {
+:root[data-theme="blue"],
+:root.theme-blue {
   --bg-color-1: #a09dea;
   --bg-color-2: #a09dea;
   --bg-color-3: #a09dea;
@@ -1047,7 +1051,8 @@ button.primary,
   --accent-color-3: #09415e;
 }
 
-:root:has(#green:checked) {
+:root[data-theme="green"],
+:root.theme-green {
   --bg-color-1: #91e76a;
   --bg-color-2: #91e76a;
   --bg-color-3: #91e76a;
@@ -1062,7 +1067,8 @@ button.primary,
   --accent-color-3: #3d602d;
 }
 
-:root:has(#dark:checked) {
+:root[data-theme="dark"],
+:root.theme-dark {
   --bg-color-1: #15122f;
   --bg-color-2: #0c0828;
   --bg-color-3: #0c0828;
