@@ -9,7 +9,7 @@
   /* Source: Chris Coyier */
   box-sizing: inherit;
   /* * Respect user's color scheme preference. Use light-dark to implement */
-  color-scheme: light dark;
+  /* color-scheme: light dark; */
   /* * End Global and reset styles */
   /* TODO: Remove extra CSS rules for themes */
   /* * Fallback colors for older browsers that don't support light-dark */
@@ -30,24 +30,24 @@
 
   /* * Global variables */
   /* * Background colors */
-  --bg-color-1: light-dark(#ffffff, #15122f);
+  /* --bg-color-1: light-dark(#ffffff, #15122f);
   --bg-color-2: light-dark(#ffffff, #0c0828);
   --bg-color-3: light-dark(#bce4f9, #0c0828);
   --bg-color-4: light-dark(#f2fafe, #0c0828);
-  --my-gradient: linear-gradient(light-dark(#63bff005, hsl(248deg 45% 16%)), light-dark(#63bff040, hsl(240, 44%, 6%)));
+  --my-gradient: linear-gradient(light-dark(#63bff005, hsl(248deg 45% 16%)), light-dark(#63bff040, hsl(240, 44%, 6%))); */
 
   /* * Text colors */
-  --text-color: light-dark(#07124d, #f2e4e6);
-  --text-color-disabled: light-dark(#999999, #bbbbbb);
+  /* --text-color: light-dark(#07124d, #f2e4e6);
+  --text-color-disabled: light-dark(#999999, #bbbbbb); */
   /* todo choose colors - the disabled ones look good? The chrome default is around #777777 */
-  --text-color-placeholder: light-dark(#999999, #bbbbbb);
+  /* --text-color-placeholder: light-dark(#999999, #bbbbbb); */
   /* --text-color-reduced-opacity: light-dark(#07124d50, #f2e4e650); */
 
   /* * Accent colors */
-  --accent-color-1: light-dark(#dc5a15, #f493a4);
+  /* --accent-color-1: light-dark(#dc5a15, #f493a4);
   --accent-color-2: light-dark(#f36500, #d7556c);
   --accent-color-2-hover: light-dark(#ff6b00, #ed5e77);
-  --accent-color-3: light-dark(#09415e, #333);
+  --accent-color-3: light-dark(#09415e, #333); */
   /* ? #484747 for dark accent instead of #333 */
 
   /* * Borders */
@@ -209,6 +209,10 @@ input {
   margin: 10px 0 0 0;
 }
 
+input[type="radio"] {
+  border: var(--narrow-border) var(--radio-color, currentColor);
+}
+
 /* * hack to override webkit autofill background color */
 /* Source: From Google AI overview. Also see: https://stackoverflow.com/questions/41871618/how-to-change-safari-autofill-yellow-background-color */
 input:-webkit-autofill,
@@ -328,16 +332,43 @@ input[disabled] {
   text-transform: initial;
 }
 
+/* ? Change background color of unchecked checkbox */
 .todo_items_left input[type="checkbox"] {
   width: 20px;
+  /* width: 8px; */
   margin-top: 0;
   margin-right: 8px;
+  /* appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none; */
+  /* height: 20px; */
+  /* border-radius: 50%; */
+  /* border: var(--narrow-border) var(--accent-color-1);
+  background-color: var(--bg-color-1);
+  /* background-color: var(--bg-color-1); */
   accent-color: var(--accent-color-2);
 }
 
 .todo_items_left input[type=checkbox]:hover {
   accent-color: var(--accent-color-2-hover);
+  /* background-color: var(--accent-color-2-hover); */
 }
+
+/* .todo_items_left input[type="checkbox"]:checked {
+  background-color: var(--accent-color-2);
+} */
+
+/* input[type="checkbox"]:checked::before {
+  content: "✔";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  /* Color of the check mark */
+/* font-size: 14px;
+} */
+/* ? End Change background color of unchecked checkbox */
 
 .todo_items_left p.goal {
   /* ? */
@@ -941,7 +972,7 @@ button.primary,
 }
 
 .theme-color-picker__colors input[type="radio"]#light {
-  --radio-color: #ffffff;
+  --radio-color: #bce4f9;
 }
 
 .theme-color-picker__colors input[type="radio"]#blue {
@@ -949,7 +980,7 @@ button.primary,
 }
 
 .theme-color-picker__colors input[type="radio"]#green {
-  --radio-color: #639858;
+  --radio-color: #3e733b;
 }
 
 .theme-color-picker__colors input[type="radio"]#dark {
@@ -1021,7 +1052,7 @@ button.primary,
 :root.theme-light-dark,
 body[data-theme="light-dark"],
 body.theme-light-dark, */
-:root[data-theme="light"],
+/* :root[data-theme="light"],
 :root.theme-light,
 body[data-theme="light"],
 body.theme-light {
@@ -1091,6 +1122,6 @@ body.theme-dark {
   --accent-color-2: #d7556c;
   --accent-color-2-hover: #ed5e77;
   --accent-color-3: #333;
-}
+} */
 
 /* * End Color theme pickers */
