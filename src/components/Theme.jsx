@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { supabase } from "../supabaseClient";
 import PropTypes from "prop-types";
 
+// ? Why only local storage? Why not also use cookies? Because cookies are sent with every request, which is unnecessary for a theme. Local storage is only accessible on the client side, which is where the theme is applied. Cookies would be useful if we wanted to persist the theme across different devices or browsers, but for now, local storage is sufficient. (auto note...) Why not use a context provider for the theme? Because the theme is applied globally to the document root and body, and we don't need to pass it down through the component tree. Using a context provider would add unnecessary complexity. (auto note...)
 function getStoredTheme() {
   if (typeof window === "undefined") {
     return "light-dark";
@@ -26,13 +27,18 @@ function persistTheme(theme) {
   }
 }
 
+// ? Consider using CSS variables for theme values instead of hardcoding them in JavaScript. This would allow for easier theming and customization without needing to change the JavaScript code. (auto note... but I tried this and it didn't work because the CSS variables would need to be defined in the CSS file, and we want to be able to change them dynamically based on the selected theme. So for now, we'll keep the theme values in JavaScript.)
+// TODO: Update colors for each theme to be more visually distinct and accessible. Consider using a color palette generator to ensure good contrast and readability. (auto note...)
 const themeValues = {
+  // TODO: Add light dark CSS to "light-dark" theme.
   "light-dark": {
     "--bg-color-1": "#ffffff",
     "--bg-color-2": "#ffffff",
     "--bg-color-3": "#bce4f9",
     "--bg-color-4": "#f2fafe",
-    "--my-gradient": "linear-gradient(#63bff040, hsl(240, 44%, 6%))",
+    // "--my-gradient": "linear-gradient(#63bff040, hsl(240, 44%, 6%))",
+    "--my-gradient":
+      "linear-gradient(light-dark(#63bff005, hsl(248deg 45% 16%)), light-dark(#63bff040, hsl(240, 44%, 6%)))",
     "--text-color": "#07124d",
     "--text-color-disabled": "#999999",
     "--text-color-placeholder": "#999999",
@@ -109,6 +115,7 @@ function applyTheme(themeName) {
   const values = themeValues[themeName] || themeValues["light-dark"];
 
   root.dataset.theme = themeName;
+  // TODO: Do I need remove and add? Does classList.add() automatically remove the previous class? I think it does, but I want to be sure. Should I just use classList.replace() instead? Or is it better to remove and add? I think it's better to remove and add, because if the class doesn't exist, then classList.replace() will throw an error. So it's safer to remove and add. (auto note...)
   root.classList.remove(
     "theme-light-dark",
     "theme-light",
@@ -164,7 +171,7 @@ export default function Theme({ session }) {
         .select("theme")
         .eq("id", session.user.id)
         .single();
-
+      // * This is where the theme stored in the database is retrieved. If it exists, it will be used to set the selected theme. If not, the stored theme from local storage will be used. This ensures that the user's preferred theme is applied consistently across sessions and devices. (auto note...but also me)
       if (!ignore) {
         if (error) {
           console.warn(error);
@@ -209,6 +216,7 @@ export default function Theme({ session }) {
     }
   }
 
+  // ? Need defaultChecked on light-dark? Or is checked sufficient? I think checked is sufficient, because the selectedTheme state is initialized to the stored theme, which defaults to light-dark if nothing is stored. So the light-dark radio button will be checked by default. (auto note...)
   return (
     <div className="theme-color-picker account-form-widget-elements">
       <label>Pick a color scheme</label>

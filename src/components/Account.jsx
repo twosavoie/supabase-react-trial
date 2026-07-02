@@ -4,6 +4,7 @@ import Avatar from "./Avatar";
 import PropTypes from "prop-types";
 // import Theme from "./Theme";
 
+// TODO: Remove the theme picker from the account form and move it to a separate settings page. The theme picker is currently in the account form, but it would be better to have it in a dedicated settings page where users can customize their preferences without cluttering the account form. (auto note...and me)
 function getStoredTheme() {
   if (typeof window === "undefined") {
     return "light-dark";

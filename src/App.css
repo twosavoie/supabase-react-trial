@@ -11,10 +11,10 @@
   /* * Respect user's color scheme preference. Use light-dark to implement */
   color-scheme: light dark;
   /* * End Global and reset styles */
-
+  /* TODO: Remove extra CSS rules for themes */
   /* * Fallback colors for older browsers that don't support light-dark */
   /* ? Fallback needed for browsers that don't support CSS variables? */
-  --bg-color-1: #ffffff;
+  /* --bg-color-1: #ffffff;
   --bg-color-2: #ffffff;
   --bg-color-3: #bce4f9;
   --bg-color-4: #f2fafe;
@@ -25,7 +25,7 @@
   --accent-color-1: #dc5a15;
   --accent-color-2: #f36500;
   --accent-color-2-hover: #ff6b00;
-  --accent-color-3: #09415e;
+  --accent-color-3: #09415e; */
   /* * End Fallback colors for older browsers that don't support light-dark */
 
   /* * Global variables */
