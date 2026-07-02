@@ -34,7 +34,7 @@ const themeValues = {
     "--bg-color-2": "#ffffff",
     "--bg-color-3": "#bce4f9",
     "--bg-color-4": "#f2fafe",
-    "--my-gradient": "linear-gradient(#63bff005, #63bff040)",
+    "--my-gradient": "linear-gradient(#63bff040, hsl(240, 44%, 6%))",
     "--text-color": "#07124d",
     "--text-color-disabled": "#999999",
     "--text-color-placeholder": "#999999",
@@ -62,7 +62,7 @@ const themeValues = {
     "--bg-color-2": "#a09dea",
     "--bg-color-3": "#a09dea",
     "--bg-color-4": "#a09dea",
-    "--my-gradient": "linear-gradient(#63bff005, #63bff040)",
+    "--my-gradient": "linear-gradient(#81a4f1, #2362eb)",
     "--text-color": "#07124d",
     "--text-color-disabled": "#999999",
     "--text-color-placeholder": "#999999",
@@ -76,7 +76,7 @@ const themeValues = {
     "--bg-color-2": "#91e76a",
     "--bg-color-3": "#91e76a",
     "--bg-color-4": "#91e76a",
-    "--my-gradient": "linear-gradient(#63bff005, #63bff040)",
+    "--my-gradient": "linear-gradient(#18ef6040, #0a622740)",
     "--text-color": "#07124d",
     "--text-color-disabled": "#999999",
     "--text-color-placeholder": "#999999",
@@ -90,7 +90,7 @@ const themeValues = {
     "--bg-color-2": "#0c0828",
     "--bg-color-3": "#0c0828",
     "--bg-color-4": "#0c0828",
-    "--my-gradient": "linear-gradient(#63bff040, hsl(240, 44%, 6%))",
+    "--my-gradient": "linear-gradient(#1818ec, #babaf2)",
     "--text-color": "#f2e4e6",
     "--text-color-disabled": "#bbbbbb",
     "--text-color-placeholder": "#bbbbbb",
@@ -255,6 +255,7 @@ export default function Account({ session }) {
               type="radio"
               name="theme"
               id="light-dark"
+              value="light-dark"
               checked={theme === "light-dark"}
               onChange={() => setTheme("light-dark")}
             />
@@ -266,6 +267,7 @@ export default function Account({ session }) {
               type="radio"
               id="light"
               name="theme"
+              value="light"
               checked={theme === "light"}
               onChange={() => setTheme("light")}
             />
@@ -277,6 +279,7 @@ export default function Account({ session }) {
               type="radio"
               id="blue"
               name="theme"
+              value="blue"
               checked={theme === "blue"}
               onChange={() => setTheme("blue")}
             />
@@ -288,6 +291,7 @@ export default function Account({ session }) {
               type="radio"
               id="green"
               name="theme"
+              value="green"
               checked={theme === "green"}
               onChange={() => setTheme("green")}
             />
@@ -299,6 +303,7 @@ export default function Account({ session }) {
               type="radio"
               id="dark"
               name="theme"
+              value="dark"
               checked={theme === "dark"}
               onChange={() => setTheme("dark")}
             />
