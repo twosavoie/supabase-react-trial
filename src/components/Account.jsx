@@ -101,6 +101,45 @@ const themeValues = {
   },
 };
 
+function applyTheme(themeName) {
+  if (typeof document === "undefined") {
+    return;
+  }
+
+  const root = document.documentElement;
+  const body = document.body;
+  const values = themeValues[themeName] || themeValues["light-dark"];
+
+  root.dataset.theme = themeName;
+  root.classList.remove(
+    "theme-light-dark",
+    "theme-light",
+    "theme-blue",
+    "theme-green",
+    "theme-dark",
+  );
+  root.classList.add(`theme-${themeName}`);
+
+  if (body) {
+    body.dataset.theme = themeName;
+    body.classList.remove(
+      "theme-light-dark",
+      "theme-light",
+      "theme-blue",
+      "theme-green",
+      "theme-dark",
+    );
+    body.classList.add(`theme-${themeName}`);
+  }
+
+  Object.entries(values).forEach(([property, value]) => {
+    root.style.setProperty(property, value);
+    if (body) {
+      body.style.setProperty(property, value);
+    }
+  });
+}
+
 export default function Account({ session }) {
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState(null);
@@ -148,27 +187,7 @@ export default function Account({ session }) {
 
   useEffect(() => {
     persistTheme(theme);
-
-    if (typeof document !== "undefined") {
-      const root = document.documentElement;
-      const values = themeValues[theme] || themeValues["light-dark"];
-
-      root.dataset.theme = theme;
-
-      root.classList.remove(
-        "theme-light-dark",
-        "theme-light",
-        "theme-blue",
-        "theme-green",
-        "theme-dark",
-      );
-
-      root.classList.add(`theme-${theme}`);
-
-      Object.entries(values).forEach(([property, value]) => {
-        root.style.setProperty(property, value);
-      });
-    }
+    applyTheme(theme);
   }, [theme]);
 
   async function updateProfile(event, avatarUrl) {

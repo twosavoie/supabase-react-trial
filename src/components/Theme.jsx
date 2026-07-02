@@ -32,7 +32,7 @@ const themeValues = {
     "--bg-color-2": "#ffffff",
     "--bg-color-3": "#bce4f9",
     "--bg-color-4": "#f2fafe",
-    "--my-gradient": "linear-gradient(#63bff005, #63bff040)",
+    "--my-gradient": "linear-gradient(#63bff040, hsl(240, 44%, 6%))",
     "--text-color": "#07124d",
     "--text-color-disabled": "#999999",
     "--text-color-placeholder": "#999999",
@@ -60,7 +60,7 @@ const themeValues = {
     "--bg-color-2": "#a09dea",
     "--bg-color-3": "#a09dea",
     "--bg-color-4": "#a09dea",
-    "--my-gradient": "linear-gradient(#63bff005, #63bff040)",
+    "--my-gradient": "linear-gradient(#81a4f1, #2362eb)",
     "--text-color": "#07124d",
     "--text-color-disabled": "#999999",
     "--text-color-placeholder": "#999999",
@@ -74,7 +74,7 @@ const themeValues = {
     "--bg-color-2": "#91e76a",
     "--bg-color-3": "#91e76a",
     "--bg-color-4": "#91e76a",
-    "--my-gradient": "linear-gradient(#63bff005, #63bff040)",
+    "--my-gradient": "linear-gradient(#18ef6040, #0a622740)",
     "--text-color": "#07124d",
     "--text-color-disabled": "#999999",
     "--text-color-placeholder": "#999999",
@@ -88,7 +88,7 @@ const themeValues = {
     "--bg-color-2": "#0c0828",
     "--bg-color-3": "#0c0828",
     "--bg-color-4": "#0c0828",
-    "--my-gradient": "linear-gradient(#63bff040, hsl(240, 44%, 6%))",
+    "--my-gradient": "linear-gradient(#1818ec, #babaf2)",
     "--text-color": "#f2e4e6",
     "--text-color-disabled": "#bbbbbb",
     "--text-color-placeholder": "#bbbbbb",
@@ -98,6 +98,45 @@ const themeValues = {
     "--accent-color-3": "#333",
   },
 };
+
+function applyTheme(themeName) {
+  if (typeof document === "undefined") {
+    return;
+  }
+
+  const root = document.documentElement;
+  const body = document.body;
+  const values = themeValues[themeName] || themeValues["light-dark"];
+
+  root.dataset.theme = themeName;
+  root.classList.remove(
+    "theme-light-dark",
+    "theme-light",
+    "theme-blue",
+    "theme-green",
+    "theme-dark",
+  );
+  root.classList.add(`theme-${themeName}`);
+
+  if (body) {
+    body.dataset.theme = themeName;
+    body.classList.remove(
+      "theme-light-dark",
+      "theme-light",
+      "theme-blue",
+      "theme-green",
+      "theme-dark",
+    );
+    body.classList.add(`theme-${themeName}`);
+  }
+
+  Object.entries(values).forEach(([property, value]) => {
+    root.style.setProperty(property, value);
+    if (body) {
+      body.style.setProperty(property, value);
+    }
+  });
+}
 
 export default function Theme({ session }) {
   const [selectedTheme, setSelectedTheme] = useState(() => getStoredTheme());
@@ -145,27 +184,7 @@ export default function Theme({ session }) {
 
   useEffect(() => {
     persistTheme(selectedTheme);
-
-    if (typeof document !== "undefined") {
-      const root = document.documentElement;
-      const values = themeValues[selectedTheme] || themeValues["light-dark"];
-
-      root.dataset.theme = selectedTheme;
-
-      root.classList.remove(
-        "theme-light-dark",
-        "theme-light",
-        "theme-blue",
-        "theme-green",
-        "theme-dark",
-      );
-
-      root.classList.add(`theme-${selectedTheme}`);
-
-      Object.entries(values).forEach(([property, value]) => {
-        root.style.setProperty(property, value);
-      });
-    }
+    applyTheme(selectedTheme);
   }, [selectedTheme]);
 
   async function updateProfile(theme) {
@@ -175,6 +194,7 @@ export default function Theme({ session }) {
 
     setSelectedTheme(theme);
     persistTheme(theme);
+    applyTheme(theme);
 
     const updates = {
       id: session.user.id,
