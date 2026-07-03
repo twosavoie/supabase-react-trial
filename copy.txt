@@ -15,3 +15,74 @@
   const handleThemeChange = (theme) => {
     setSelectedTheme(theme);
   };
+
+
+  --------
+  useEffect(() => {
+    const root = document.documentElement;
+    const themeStyles = {
+      light: {
+        "--bg-color-1": "#f9f9f9",
+        "--bg-color-2": "#f2f2f2",
+        "--text-color": "#333",
+        "--accent-color-1": "#f493a4",
+        "--accent-color-2": "#d7556c",
+        "--accent-color-2-hover": "#ed5e77",
+        "--accent-color-3": "#333",
+      },
+      dark: {
+        "--bg-color-1": "#15122f",
+        "--bg-color-2": "#0c0828",
+        "--text-color": "#f2e4e6",
+        "--accent-color-1": "#f493a4",
+        "--accent-color-2": "#d7556c",
+        "--accent-color-2-hover": "#ed5e77",
+        "--accent-color-3": "#333",
+      },
+      blue: {
+        "--bg-color-1": "#f9f9f9",
+        "--bg-color-2": "#f2f2f2",
+        "--text-color": "#333",
+        "--accent-color-1": "#f493a4",
+        "--accent-color-2": "#d7556c",
+        "--accent-color-2-hover": "#ed5e77",
+      },
+      // ... other themes
+    };
+    console.log("selectedTheme:", selectedTheme);
+    console.log("themeStyles:", themeStyles[selectedTheme]);
+
+    root.style.setProperty(
+      "--bg-color-1",
+      themeStyles[selectedTheme]["--bg-color-1"],
+    );
+    root.style.setProperty(
+      "--bg-color-2",
+      themeStyles[selectedTheme]["--bg-color-2"],
+    );
+    // ... set other theme styles
+  }, [selectedTheme]);
+
+   useEffect(() => {
+    // Fetch profile data from Supabase
+    const getProfile = async () => {
+      try {
+        const { data, error } = await supabase
+          .from("profiles")
+          .select("theme")
+          .eq("id", session?.user.id);
+
+        if (error) {
+          console.error(error);
+        } else if (data && data[0] && data[0].theme) {
+          setSelectedTheme(data[0].theme);
+        } else {
+          console.log("No theme data found in Supabase response:", data);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getProfile();
+  }, [session]);

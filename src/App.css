@@ -287,9 +287,9 @@ input[disabled] {
 
 .todo-edit-form {
   display: flex;
-  /* justify-content: flex-start; */
-  /* flex-flow: row wrap;
-  gap: 12px; */
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  gap: 12px;
   align-items: flex-end;
 }
 
@@ -697,6 +697,8 @@ button.primary,
   .input-form-layout {
     display: flex;
     flex-wrap: nowrap;
+    /* ? */
+    gap: 1rem;
   }
 
   .todo-edit-form {
@@ -802,6 +804,13 @@ button.primary,
 
   .edit-todo-input-label {
     width: 100%;
+  }
+
+  .edit-count-input-label,
+  .edit-date-input-label,
+  .edit-day-count-input-label {
+    width: 32%;
+    flex-grow: 0;
   }
 
   .edit-count-input-label,
@@ -976,11 +985,11 @@ button.primary,
 }
 
 .theme-color-picker__colors input[type="radio"]#blue {
-  --radio-color: #63bff0;
+  --radio-color: #e3a221;
 }
 
 .theme-color-picker__colors input[type="radio"]#green {
-  --radio-color: #3e733b;
+  --radio-color: #78e072;
 }
 
 .theme-color-picker__colors input[type="radio"]#dark {

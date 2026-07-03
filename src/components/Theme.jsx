@@ -65,19 +65,20 @@ const themeValues = {
     "--accent-color-3": "#09415e",
   },
   blue: {
+    // #eef0ef
     "/* color-scheme": "light dark */",
-    "--bg-color-1": "#a09dea",
-    "--bg-color-2": "#a09dea",
-    "--bg-color-3": "#a09dea",
-    "--bg-color-4": "#a09dea",
-    "--my-gradient": "linear-gradient(#81a4f1, #2362eb)",
-    "--text-color": "#07124d",
+    "--bg-color-1": "#ffffff",
+    "--bg-color-2": "#ffffff",
+    "--bg-color-3": "#ffffff",
+    "--bg-color-4": "#f5f4ef",
+    "--my-gradient": "linear-gradient(#f5f4ef,  #ece7d2)",
+    "--text-color": "#06213e",
     "--text-color-disabled": "#999999",
     "--text-color-placeholder": "#999999",
-    "--accent-color-1": "#09415e",
-    "--accent-color-2": "#09415e",
-    "--accent-color-2-hover": "#09415e",
-    "--accent-color-3": "#09415e",
+    "--accent-color-1": "#767e2a",
+    "--accent-color-2": "#ac321f",
+    "--accent-color-2-hover": "#862718",
+    "--accent-color-3": "#e3a221",
   },
   green: {
     // Got7: #13b552 or #17bd3c or #3e733b #f4ced8 #f55258 #f7d841 #f4d23e #d7e43c #f4a6bb
@@ -91,7 +92,9 @@ const themeValues = {
     // "--my-gradient": "linear-gradient(#e0ede3, #78e072)",
     "--my-gradient": "linear-gradient(#f6fef6, #78e072)",
 
-    "--text-color": "#196d14",
+    // "--text-color": "#196d14",
+    "--text-color": "#082506",
+
     "--text-color-disabled": "#999999",
     "--text-color-placeholder": "#999999",
     // "--accent-color-1": "#f4ced8",
