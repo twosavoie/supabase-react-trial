@@ -162,7 +162,13 @@ header p {
   display: block;
   font-size: 1rem;
   flex-grow: 1;
-  margin-bottom: 10px;
+  /* margin: 10px 0; */
+}
+
+#todo_name,
+#goal,
+#days-to-complete {
+  margin: 10px 0;
 }
 
 .todo-input .count-input-label,
@@ -700,6 +706,12 @@ button.primary,
 
   .todo-edit-form {
     flex-wrap: wrap;
+  }
+
+  #todo_name,
+  #goal,
+  #days-to-complete {
+    margin: 10px 0 0 0;
   }
 
   .edit-todo-input-label {
