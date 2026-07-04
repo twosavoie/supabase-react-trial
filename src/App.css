@@ -11,7 +11,7 @@
   /* * Respect user's color scheme preference. Use light-dark to implement */
   /* color-scheme: light dark; */
   /* * End Global and reset styles */
-  /* TODO: Remove extra CSS rules for themes */
+
   /* * Fallback colors for older browsers that don't support light-dark */
   /* ? Fallback needed for browsers that don't support CSS variables? */
   /* --bg-color-1: #ffffff;
@@ -26,6 +26,7 @@
   --accent-color-2: #f36500;
   --accent-color-2-hover: #ff6b00;
   --accent-color-3: #09415e; */
+
   /* * End Fallback colors for older browsers that don't support light-dark */
 
   /* * Global variables */
@@ -38,28 +39,24 @@
 
   /* * Text colors */
   /* --text-color: light-dark(#07124d, #f2e4e6);
-  --text-color-disabled: light-dark(#999999, #bbbbbb); */
-  /* todo choose colors - the disabled ones look good? The chrome default is around #777777 */
-  /* --text-color-placeholder: light-dark(#999999, #bbbbbb); */
-  /* --text-color-reduced-opacity: light-dark(#07124d50, #f2e4e650); */
+  --text-color-disabled: light-dark(#999999, #bbbbbb);
+  --text-color-placeholder: light-dark(#999999, #bbbbbb);
+  --text-color-reduced-opacity: light-dark(#07124d50, #f2e4e650); */
 
   /* * Accent colors */
   /* --accent-color-1: light-dark(#dc5a15, #f493a4);
   --accent-color-2: light-dark(#f36500, #d7556c);
   --accent-color-2-hover: light-dark(#ff6b00, #ed5e77);
   --accent-color-3: light-dark(#09415e, #333); */
-  /* ? #484747 for dark accent instead of #333 */
 
   /* * Borders */
   --narrow-border: 1px solid;
   --wide-border: 3px solid;
-  /* ? Is 1 pixel better? 2? It's difficult to tell in DevTools but 3 doesn't look like what I want on my phone. */
   --wide-border: 1px solid;
   --border-radius: 5px;
 
   /* * Fonts */
   --display-font-family: "Comfortaa", sans-serif;
-  /* --body-font-family: "Quicksand", sans-serif; */
   --body-font-family: "Mulish", sans-serif;
   --custom-font-family: sans-serif;
 }

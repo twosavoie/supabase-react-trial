@@ -29,7 +29,7 @@ function persistTheme(theme) {
 
 // ? Consider using CSS variables for theme values instead of hardcoding them in JavaScript. This would allow for easier theming and customization without needing to change the JavaScript code. (auto note... but I tried this and it didn't work because the CSS variables would need to be defined in the CSS file, and we want to be able to change them dynamically based on the selected theme. So for now, we'll keep the theme values in JavaScript.)
 // TODO: Update colors for each theme to be more visually distinct and accessible. Consider using a color palette generator to ensure good contrast and readability. (auto note...)
-
+// * Radio button colors are in the App.css file (starting at line ~942)
 const themeValues = {
   // TODO: Add light dark CSS to "light-dark" theme.
   "light-dark": {
