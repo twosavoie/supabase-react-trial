@@ -972,6 +972,7 @@ button.primary,
   margin: 10px;
 }
 
+/* TODO: Try moving these to the theme.jsx file */
 .theme-color-picker__colors input[type="radio"]:checked {
   background-color: var(--radio-color);
 }
@@ -982,6 +983,10 @@ button.primary,
 
 .theme-color-picker__colors input[type="radio"]#light {
   --radio-color: #bce4f9;
+}
+
+.theme-color-picker__colors input[type="radio"]#pink {
+  --radio-color: hsl(310 50% 90%);
 }
 
 .theme-color-picker__colors input[type="radio"]#blue {

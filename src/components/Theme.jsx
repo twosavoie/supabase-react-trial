@@ -64,6 +64,25 @@ const themeValues = {
     "--accent-color-2-hover": "#ff6b00",
     "--accent-color-3": "#09415e",
   },
+
+  pink: {
+    "/* color-scheme */": "/* light dark */",
+    "--bg-color-1": "#ffffff",
+    "--bg-color-2": "#ffffff",
+    "--bg-color-3": "#fcf6fb",
+    "--bg-color-4": "#fcf6fb",
+    "--my-gradient": "linear-gradient(#fcf6fb, hsl(310 50% 90%))",
+    "--text-color": "#36454f",
+    "--text-color-disabled": "#999999",
+    "--text-color-placeholder": "#999999",
+    "--accent-color-1": "#0d4d78",
+    "--accent-color-2": "#0d4d78",
+    "--accent-color-2-hover": "#1780c6",
+    "--accent-color-3": "#0d4d78",
+  },
+
+  // TODO: Update names for themes
+  // TODO: Add a pink theme with grey (and green?) accents?
   blue: {
     // #eef0ef
     "/* color-scheme": "light dark */",
@@ -138,6 +157,7 @@ function applyTheme(themeName) {
   root.classList.remove(
     "theme-light-dark",
     "theme-light",
+    "theme-pink",
     "theme-blue",
     "theme-green",
     "theme-dark",
@@ -149,6 +169,7 @@ function applyTheme(themeName) {
     body.classList.remove(
       "theme-light-dark",
       "theme-light",
+      "theme-pink",
       "theme-blue",
       "theme-green",
       "theme-dark",
@@ -236,6 +257,7 @@ export default function Theme({ session }) {
   }
 
   // ? Need defaultChecked on light-dark? Or is checked sufficient? I think checked is sufficient, because the selectedTheme state is initialized to the stored theme, which defaults to light-dark if nothing is stored. So the light-dark radio button will be checked by default. (auto note...)
+  // ? Use fieldset? Have tried before unsuccessfully. Not passing WCAG May not be an issue when I move this to a select dropdown.
   return (
     <div className="theme-color-picker account-form-widget-elements">
       <label>Pick a color scheme</label>
@@ -263,6 +285,18 @@ export default function Theme({ session }) {
           value="light"
           checked={selectedTheme === "light"}
           onChange={() => updateProfile("light")}
+        />
+
+        <label htmlFor="pink" className="visually-hidden">
+          Pink theme
+        </label>
+        <input
+          type="radio"
+          id="pink"
+          name="theme"
+          value="pink"
+          checked={selectedTheme === "pink"}
+          onChange={() => updateProfile("pink")}
         />
 
         <label htmlFor="blue" className="visually-hidden">
