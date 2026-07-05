@@ -258,6 +258,7 @@ export default function Theme({ session }) {
 
   // ? Need defaultChecked on light-dark? Or is checked sufficient? I think checked is sufficient, because the selectedTheme state is initialized to the stored theme, which defaults to light-dark if nothing is stored. So the light-dark radio button will be checked by default. (auto note...)
   // ? Use fieldset? Have tried before unsuccessfully. Not passing WCAG May not be an issue when I move this to a select dropdown.
+  // * Why am I not using event.target.value in the onChange handler? Because I want to directly pass the theme value to the updateProfile function, which will handle updating the state and persisting the theme. Using event.target.value would require an additional step to extract the value from the event object, which is unnecessary in this case. (auto note...)
   return (
     <div className="theme-color-picker account-form-widget-elements">
       <label>Pick a color scheme</label>
