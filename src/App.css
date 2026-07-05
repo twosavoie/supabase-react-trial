@@ -9,6 +9,7 @@
   /* Source: Chris Coyier */
   box-sizing: inherit;
   /* * Respect user's color scheme preference. Use light-dark to implement */
+  /* * Removed - in Theme component */
   /* color-scheme: light dark; */
   /* * End Global and reset styles */
 
@@ -26,10 +27,10 @@
   --accent-color-2: #f36500;
   --accent-color-2-hover: #ff6b00;
   --accent-color-3: #09415e; */
-
   /* * End Fallback colors for older browsers that don't support light-dark */
 
   /* * Global variables */
+  /* * Removed - in Theme component */
   /* * Background colors */
   /* --bg-color-1: light-dark(#ffffff, #15122f);
   --bg-color-2: light-dark(#ffffff, #0c0828);
@@ -61,12 +62,14 @@
   --custom-font-family: sans-serif;
 }
 
+/* * End Global variables */
+
 html,
 body {
   background-image: var(--my-gradient);
   padding: 0;
   margin: 0;
-  /* * Per Chris Coyier */
+  /* * Per Chris Coyier - see box sizing declaration above */
   box-sizing: border-box;
   font-family: var(--custom-font-family);
   /* * Ensures the gradient remains fixed even with scrolling content */
@@ -80,32 +83,20 @@ body {
   min-height: 100dvh;
   /* ? */
   scroll-behavior: smooth;
-  /* ? Does this change the color of the cursor or do I need to add it to the text area? */
+  /* * Changes the color of the cursor to the accent color */
   caret-color: var(--accent-color-1);
   /* caret-shape: block; */
 }
 
-/* Grid */
+/* * Grid */
 
 div#root {
   width: 100%;
 }
 
-/* ? change classname from app-ui to container and add in the footer.  */
-/* .container {
-  display: flex;
-  flex-flow: row wrap;
-  gap: 40px;
-  justify-content: center;
-  padding-top: 50px;
-} */
-
-/* ? Instead of column (which is fine) could make the footer x width */
 .app-ui {
   display: flex;
-  /* flex-flow: row wrap; */
   gap: 40px;
-  /* justify-content: center; */
   padding-top: 50px;
   flex-direction: column;
   align-items: center;
@@ -140,29 +131,24 @@ header {
 }
 
 .header-logo {
-  width: 100%;
-  /* ? */
   width: 90%;
 }
 
 header h1 {
   width: 100%;
-  /* text-align: center; */
   padding-bottom: 10px;
   font-family: var(--display-font-family);
 }
 
 header p {
   width: 100%;
-  /* text-align: center; */
 }
 
-/* Form */
+/* * Todo input form */
 .todo-input .todo-input-label {
   display: block;
   font-size: 1rem;
   flex-grow: 1;
-  /* margin: 10px 0; */
 }
 
 #todo_name,
@@ -176,8 +162,6 @@ header p {
 .edit-count-input-label,
 .edit-date-input-label,
 .edit-day-count-input-label {
-  width: 75%;
-  /* ? */
   width: 30%;
   flex-grow: 1;
   font-size: 1rem;
@@ -249,7 +233,8 @@ input[disabled] {
   border-radius: var(--border-radius);
 }
 
-/* End Style messages for Auth */
+/* * End Style messages for Auth */
+
 .todo_list {
   width: 90%;
   display: flex;
@@ -263,10 +248,7 @@ input[disabled] {
   gap: 27px;
 }
 
-.todo_item
-
-/*.edit-form input */
-  {
+.todo_item {
   display: flex;
   justify-content: space-between;
   justify-content: center;
@@ -281,13 +263,6 @@ input[disabled] {
   padding: 12px 0;
 }
 
-/* .edit-form input {
-  outline: transparent;
-  width: calc(100% - 14px);
-  height: calc(100% - 12px);
-  border: transparent;
-} */
-
 .todo-edit-form {
   display: flex;
   justify-content: flex-start;
@@ -301,12 +276,9 @@ input[disabled] {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* ? */
   flex-flow: row wrap;
   padding: 0 1rem;
 }
-
-
 
 .dialog-content .submit-edit-button button {
   margin: 0;
@@ -335,7 +307,7 @@ input[disabled] {
   text-transform: initial;
 }
 
-/* ? Change background color of unchecked checkbox */
+/* ? Implement? Change background color of unchecked checkbox */
 .todo_items_left input[type="checkbox"] {
   width: 20px;
   /* width: 8px; */
@@ -408,7 +380,6 @@ input[disabled] {
 
 .todo_items_right .card button:hover {
   text-decoration: none;
-  /* color: var(--accent-color-1); */
   transform: scale(1.5);
 }
 
@@ -439,12 +410,10 @@ dialog {
 
 .account-form-widget h1 {
   width: 100%;
-  /* text-align: center; */
 }
 
 .account-form-widget p {
   margin: 20px 0;
-  /* text-align: center; */
 }
 
 .account-form-widget button {
@@ -461,7 +430,6 @@ dialog {
 }
 
 dialog::backdrop {
-  /* ? */
   background-color: var(--bg-color-4);
 }
 
@@ -473,7 +441,7 @@ svg {
   width: 90%;
 }
 
-/* form */
+/* * form */
 .form-layout {
   display: flex;
   justify-content: center;
@@ -487,7 +455,7 @@ svg {
   justify-content: center;
 }
 
-/* Button */
+/* * Button */
 
 button,
 .button {
@@ -513,7 +481,7 @@ button.primary,
   background-color: var(--bg-color-1);
 }
 
-/* Widgets */
+/* * Widgets */
 
 .card {
   border: var(--narrow-border) var(--accent-color-3);
@@ -596,15 +564,10 @@ button.primary,
 .about-container {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   justify-content: center;
   gap: 20px;
   padding: 20px;
 }
-
-/* .about-container h1 {
-  text-align: center;
-} */
 
 .about-container p {
   text-align: left;
@@ -617,7 +580,6 @@ button.primary,
 
 .about-tagline {
   font-size: 1.25rem;
-  /* font-style: italic; */
 }
 
 .dialog-content {
@@ -643,7 +605,6 @@ button.primary,
   align-items: center;
   justify-content: center;
   border: none;
-  /* todo choose colors for light mode */
   background-color: #444444;
   background-color: var(--bg-color-3);
   text-transform: none !important;
@@ -651,7 +612,6 @@ button.primary,
 }
 
 .form-widget .button:hover {
-  /* todo choose colors for light mode */
   background-color: #2a2a2a;
   background-color: var(--bg-color-4);
 }
@@ -672,7 +632,7 @@ button.primary,
   width: 1px;
 }
 
-/* Utils */
+/* * Utils */
 
 .block {
   display: block;
@@ -700,7 +660,6 @@ button.primary,
   .input-form-layout {
     display: flex;
     flex-wrap: nowrap;
-    /* ? */
     gap: 1rem;
   }
 
@@ -732,12 +691,7 @@ button.primary,
   .todo_items_left,
   .todo_items_right {
     flex-wrap: nowrap;
-    /* justify-content: space-between; */
   }
-
-  /* .goal-due-date {
-    align-items: flex-end;
-  } */
 
   /* TODO: Test on an iPad mini to see if this is the correct media query of if it should be moved to the 1000px media query */
   .sign-in-input {
@@ -751,7 +705,7 @@ button.primary,
 
 @media (min-width: 1000px) {
 
-  /* Authorization form */
+  /* * Authorization form */
   .auth-container {
     max-width: 1280px;
     margin: 0 auto;
@@ -774,7 +728,7 @@ button.primary,
     width: 75%;
   }
 
-  /* Homepage */
+  /* * Homepage */
   .wrapper {
     width: 100%;
   }
@@ -792,10 +746,9 @@ button.primary,
 
   header p {
     text-align: left;
-    /* width: initial; */
   }
 
-  /* Forms */
+  /* * Forms */
 
   .todo-input .count-input-label,
   .date-input-label {
@@ -806,10 +759,6 @@ button.primary,
   .todo-input {
     width: 75%;
   }
-
-  /* .todo-edit-form {
-    justify-content: flex-start;
-  } */
 
   .edit-todo-input-label {
     width: 100%;
@@ -866,8 +815,6 @@ button.primary,
   }
 
   .app-ui .theme-color-picker {
-    /* width: 50%;
-    width: 90%; */
     width: 75%;
   }
 }
@@ -896,14 +843,13 @@ button.primary,
   }
 
   .app-ui .theme-color-picker {
-    width: 50%;
-    /* width: 90%; */
+    width: 60%;
   }
 }
 
 @media (min-width: 1500px) {
 
-  /* Authorization form */
+  /* * Authorization form */
   .sign-in-input {
     width: 60%;
   }
@@ -912,7 +858,7 @@ button.primary,
     width: 35%;
   }
 
-  /* Dialog */
+  /* * Dialog */
   dialog {
     width: 50%;
   }
@@ -946,16 +892,19 @@ button.primary,
   .todo_items_right {
     width: 35%;
   }
+
+  .app-ui .theme-color-picker {
+    width: 50%;
+  }
 }
 
-/* * Color theme pickers */
+/* * Color theme pickers. Refer to Themes component. */
 /* TODO: Check class names and styling - refer to themes branch */
 .theme-color-picker__colors {
   border: var(--narrow-border) var(--accent-color-3);
   border-radius: var(--border-radius);
   display: flex;
   justify-content: space-between;
-  /* padding: 10px; */
   width: 100%;
   border-radius: var(--border-radius);
   border: var(--narrow-border) var(--accent-color-3);
@@ -966,15 +915,11 @@ button.primary,
   margin: 10px 0 0 0;
 }
 
-/* input[type="radio"] {
-  margin: 10px;
-} */
-
 .theme-color-picker__colors input[type="radio"] {
   appearance: none;
   width: 1rem;
   height: 1rem;
-  /* * Use the radio color, but if no radio color currentColor will set the color as the text color. This may be why the light-dark radio button is the color it is when I try a gradient */
+  /* * Use the radio color, but if no radio color currentColor will set the color as the text color. */
   outline: 3px solid var(--radio-color, currentColor);
   outline-offset: 3px;
   border-radius: 50%;
@@ -1010,7 +955,7 @@ button.primary,
   --radio-color: hsl(248, 40%, 41%);
 }
 
-/* ? Classes were part of tutorial as a fallback for browsers that don't support :has(). May not include and just go with the :has() method. Or I may include to support older browsers. */
+/* ? Classes were part of tutorial as a fallback for browsers that don't support :has(). Leaving for reference. */
 /* .light {
   --bg-color-1: #ffffff;
   --bg-color-2: #ffffff;
