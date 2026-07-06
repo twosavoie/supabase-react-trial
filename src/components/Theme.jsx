@@ -110,14 +110,16 @@ const themeValues = {
     "--text-color-disabled": "#999999",
     "--text-color-placeholder": "#999999",
     // "--accent-color-1": "#f4ced8",
-    "--accent-color-1": "#f55258",
+    // "--accent-color-1": "#f55258",
+    "--accent-color-1": "#f487a4",
 
-    // "--accent-color-2": "#f17e9d",
-    "--accent-color-2": "#f55258",
+    "--accent-color-2": "#f17e9d",
+    // "--accent-color-2": "#f55258",
     "--accent-color-2-hover": "#ed494e",
     // "--accent-color-2-hover": "#f0555b",
     // "--accent-color-2-hover": "#f487a4",
-    "--accent-color-3": "#f55258",
+    // "--accent-color-3": "#f55258",
+    "--accent-color-3": "#f17e9d",
   },
 
   dark: {
