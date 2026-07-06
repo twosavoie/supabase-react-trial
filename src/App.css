@@ -948,7 +948,7 @@ button.primary,
 }
 
 .theme-color-picker__colors input[type="radio"]#green {
-  --radio-color: #78e072;
+  --radio-color: #90ed8a;
 }
 
 .theme-color-picker__colors input[type="radio"]#dark {

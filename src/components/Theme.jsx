@@ -103,23 +103,29 @@ const themeValues = {
     "--bg-color-1": "#ffffff",
     "--bg-color-2": "#ffffff",
     "--bg-color-3": "#ffffff",
-    "--bg-color-4": "#f6fef6",
-    "--my-gradient": "linear-gradient(#f6fef6, #78e072)",
-    "--text-color": "#082506",
-
+    "--bg-color-4": "#dff3df",
+    "--my-gradient": "linear-gradient(#f6fef6, #90ed8a)",
+    // "--text-color": "#082506",
+    "--text-color": "#10480b",
     "--text-color-disabled": "#999999",
     "--text-color-placeholder": "#999999",
     // "--accent-color-1": "#f4ced8",
     // "--accent-color-1": "#f55258",
     "--accent-color-1": "#f487a4",
+    // "--accent-color-1": "#f7d841",
 
-    "--accent-color-2": "#f17e9d",
+    // "--accent-color-2": "#f17e9d",
+    "--accent-color-2": "#fae26b",
+
     // "--accent-color-2": "#f55258",
-    "--accent-color-2-hover": "#ed494e",
+    // "--accent-color-2-hover": "#ed494e",
     // "--accent-color-2-hover": "#f0555b",
     // "--accent-color-2-hover": "#f487a4",
+    "--accent-color-2-hover": "#f9d01a",
+
     // "--accent-color-3": "#f55258",
     "--accent-color-3": "#f17e9d",
+    // "--accent-color-3": "#f7d841",
   },
 
   dark: {
