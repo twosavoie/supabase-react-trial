@@ -98,7 +98,7 @@ const themeValues = {
   },
 
   green: {
-    // Got7: #13b552 or #17bd3c or #3e733b #f4ced8 #f55258 #f487a4 #f7d841 #f4d23e #d7e43c #f4a6bb
+    // Got7: #13b552 or #17bd3c or #3e733b #f4ced8 #f55258 #f487a4 #f7d841 #f4d23e #d7e43c #f4a6bb #ffff00 #ffff4e #ffff9d
     "/* color-scheme": "light dark */",
     "--bg-color-1": "#ffffff",
     "--bg-color-2": "#ffffff",
@@ -109,8 +109,8 @@ const themeValues = {
     "--text-color-disabled": "#999999",
     "--text-color-placeholder": "#999999",
     "--accent-color-1": "#f487a4",
-    "--accent-color-2": "#ffff4e",
-    "--accent-color-2-hover": "#ffff9d",
+    "--accent-color-2": "#ef517b",
+    "--accent-color-2-hover": "#f487a4",
     "--accent-color-3": "#f17e9d",
   },
 
