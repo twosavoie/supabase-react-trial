@@ -109,8 +109,8 @@ const themeValues = {
     "--text-color-disabled": "#999999",
     "--text-color-placeholder": "#999999",
     "--accent-color-1": "#f487a4",
-    "--accent-color-2": "#ffff00",
-    "--accent-color-2-hover": "#f9d01a",
+    "--accent-color-2": "#ffff4e",
+    "--accent-color-2-hover": "#ffff9d",
     "--accent-color-3": "#f17e9d",
   },
 
@@ -246,6 +246,7 @@ export default function Theme({ session }) {
 
   // ? Use fieldset? Have tried before unsuccessfully. Not passing WCAG May not be an issue when I move this to a select dropdown.
   // * Why am I not using event.target.value in the onChange handler? Because I want to directly pass the theme value to the updateProfile function, which will handle updating the state and persisting the theme. Using event.target.value would require an additional step to extract the value from the event object, which is unnecessary in this case. (auto note...)
+  // ? use form instead? Instead of label for "pick a color scheme" and then form wraps around the div "theme-color-picker__colors"
   return (
     <div className="theme-color-picker account-form-widget-elements">
       <label>Pick a color scheme</label>
