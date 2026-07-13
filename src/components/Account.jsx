@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { supabase } from "../supabaseClient";
 import Avatar from "./Avatar";
 import PropTypes from "prop-types";
+import Theme from "./Theme.jsx";
 
 export default function Account({ session }) {
   const [loading, setLoading] = useState(true);
@@ -100,6 +101,7 @@ export default function Account({ session }) {
             onChange={(e) => setMotivation(e.target.value)}
           />
         </div>
+        <Theme session={session} />
         <Avatar
           url={avatar_url}
           size={150}
