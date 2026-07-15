@@ -235,6 +235,13 @@ input[disabled] {
 
 /* * End Style messages for Auth */
 
+/* * Todo list */
+
+h2.completed-todos-header {
+  width: 90%;
+  text-align: left;
+}
+
 .todo_list {
   width: 90%;
   display: flex;
@@ -778,6 +785,10 @@ button.primary,
     flex-grow: 0;
   }
 
+  h2.completed-todos-header {
+    width: 75%;
+  }
+
   .todo_list {
     width: 75%;
   }
@@ -834,6 +845,10 @@ button.primary,
     width: 60%;
   }
 
+  h2.completed-todos-header {
+    width: 60%;
+  }
+
   .todo_list {
     width: 60%;
   }
@@ -878,6 +893,10 @@ button.primary,
   }
 
   .todo-input {
+    width: 50%;
+  }
+
+  h2.completed-todos-header {
     width: 50%;
   }
 

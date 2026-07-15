@@ -17,17 +17,35 @@ function TodoList({ todos, setTodos, fetchTodos }) {
   }, []);
 
   return (
-    <ol className="todo_list">
-      {todos.map((item) => (
-        <TodoItem
-          key={item.id}
-          item={item}
-          todos={item.todo_name}
-          setTodos={setTodos}
-          fetchTodos={fetchTodos}
-        />
-      ))}
-    </ol>
+    <>
+      <ol className="todo_list">
+        {todos
+          .filter((item) => !item.completed)
+          .map((item) => (
+            <TodoItem
+              key={item.id}
+              item={item}
+              todos={item.todo_name}
+              setTodos={setTodos}
+              fetchTodos={fetchTodos}
+            />
+          ))}
+      </ol>
+      <h2 className="completed-todos-header">Completed Todos:</h2>
+      <ol className="todo_list">
+        {todos
+          .filter((item) => item.completed)
+          .map((item) => (
+            <TodoItem
+              key={item.id}
+              item={item}
+              todos={item.todo_name}
+              setTodos={setTodos}
+              fetchTodos={fetchTodos}
+            />
+          ))}
+      </ol>
+    </>
   );
 }
 

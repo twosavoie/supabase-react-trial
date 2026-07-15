@@ -46,7 +46,7 @@ function App() {
             setTodos={setTodos}
             fetchTodos={fetchTodos}
           />
-
+          {/* TODO: Render incomplete and completed todos in separate lists. Example: https://www.youtube.com/watch?app=desktop&v=yYIdFhkE3RU at ~23 and ~26 min mark. ? Or do this in the TodoList component? */}
           <TodoList todos={todos} setTodos={setTodos} fetchTodos={fetchTodos} />
           <form className="theme-form">
             <Theme session={session} />
