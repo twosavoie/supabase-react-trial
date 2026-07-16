@@ -46,7 +46,6 @@ function App() {
             setTodos={setTodos}
             fetchTodos={fetchTodos}
           />
-          {/* TODO: Render incomplete and completed todos in separate lists. Example: https://www.youtube.com/watch?app=desktop&v=yYIdFhkE3RU at ~23 and ~26 min mark. ? Or do this in the TodoList component? */}
           <TodoList todos={todos} setTodos={setTodos} fetchTodos={fetchTodos} />
           <form className="theme-form">
             <Theme session={session} />
@@ -60,5 +59,6 @@ function App() {
 
 // Source: https://www.freecodecamp.org/news/build-a-todo-app-from-scratch-with-reactjs/ original app
 // Source: Use this video to make Account a dialog: https://www.youtube.com/watch?v=YwHJMlvZRCc
-// Source: https://www.youtube.com/watch?app=desktop&v=yYIdFhkE3RU use Supabase rather than localStorage 24:42 for completed. Start at 29:06 next time
+// Source: https://www.youtube.com/watch?app=desktop&v=yYIdFhkE3RU use Supabase rather than localStorage 24:42 for completed. Start at 29:06 next time. Also used to separate completed and incomplete todos.
+
 export default App;

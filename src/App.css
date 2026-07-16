@@ -240,6 +240,8 @@ input[disabled] {
 h2.completed-todos-header {
   width: 90%;
   text-align: left;
+  font-weight: 400;
+  margin-bottom: -40px;
 }
 
 .todo_list {
