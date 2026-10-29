@@ -145,8 +145,21 @@ header p {
 }
 
 /* * Todo input form */
+/* ? Update layout of phone */
+.input-form-layout {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  gap: 1rem;
+}
+
+/* ? end */
+
 .todo-input .todo-input-label {
-  display: block;
+  /* ? */
+  /* display: block; */
+  width: 100%;
+  /* ? end */
   font-size: 1rem;
   flex-grow: 1;
 }
@@ -213,6 +226,20 @@ input:-webkit-autofill:active {
 input[disabled] {
   color: var(--text-color-disabled);
 }
+
+/* ? button update for phone layout */
+button.input-submit-button {
+  width: 100%;
+  padding-top: 12px;
+  /* padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: var(--border-radius);
+  border: var(--narrow-border) var(--accent-color-3);
+  background-color: var(--bg-color-1);
+  color: var(--text-color); */
+}
+
+/* ? end */
 
 /* * Style messages for Auth */
 .success-message {
@@ -474,7 +501,10 @@ button,
   display: inline-block;
   text-align: center;
   border-radius: var(--border-radius);
+  /* ? */
   padding: 0.5rem 1rem;
+  /* padding-top: 4px; */
+  /* ? end */
   cursor: pointer;
   text-align: center;
   font-size: 1rem;
@@ -667,9 +697,11 @@ button.primary,
 @media (min-width:768px) {
 
   .input-form-layout {
-    display: flex;
-    flex-wrap: nowrap;
+    /* ? I don't think this is needed */
+    /* display: flex; */
+    /* flex-wrap: nowrap; */
     gap: 1rem;
+    /* ? end */
   }
 
   .todo-edit-form {
@@ -761,8 +793,11 @@ button.primary,
 
   .todo-input .count-input-label,
   .date-input-label {
-    width: 20%;
-    flex-grow: 0;
+    /* ? */
+    /* width: 20%;
+    flex-grow: 0; */
+    /* ? end */
+    flex-grow: 1;
   }
 
   .todo-input {
