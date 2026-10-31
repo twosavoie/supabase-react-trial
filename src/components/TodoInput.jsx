@@ -144,7 +144,7 @@ function TodoInput({ fetchTodos, session }) {
           />
         </label>
         <label htmlFor="defer" className="defer-input-label">
-          Click to defer
+          Click to defer:
           <input
             type="checkbox"
             id="defer"

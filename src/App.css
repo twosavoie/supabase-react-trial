@@ -152,7 +152,7 @@ header p {
   /* ? */
   /* align-items: center; */
   /* ! Resize defer input label */
-  align-items: end;
+  /* align-items: end; */
   /* ? end */
   flex-flow: row wrap;
   /* ? Is there enough space so that the label is obviously connected to the input field? */
@@ -178,7 +178,7 @@ header p {
 #days-to-complete,
 /* ? */
 /* ! work the spacing out */
-.defer-input-label,
+/* .defer-input-label, */
 /* #defer, */
 #defer-date
 
@@ -211,30 +211,34 @@ header p {
 .defer-input-label {
   /* width: 5%; */
   /* width: 20%; */
-  border: var(--narrow-border) var(--accent-color-3);
-  border-radius: var(--border-radius);
-  background-color: var(--bg-color-1);
-  padding: 9px 0 9px 0;
-  text-align: center;
-  align-content: center;
+  /* width: 100px; */
+  /* border: var(--narrow-border) var(--accent-color-3); */
+  /* border-radius: var(--border-radius); */
+  /* background-color: var(--bg-color-1); */
+  /* padding: 9px 0 9px 0; */
+  /* text-align: center; */
+  /* align-content: center; */
   /* line-height: 0; */
+  /* padding-right: 10px; */
+  display: inline-flex;
+  align-items: center;
 }
 
 /* TODO: Add hover effect for defer input label */
-.defer-input-label:hover {
+/* .defer-input-label:hover {
   background-color: var(--bg-color-4);
   cursor: pointer;
-}
+} */
 
 /* TODO: ? Change text with JS to say that it's deferred? */
-.defer-input-label:active,
+/* .defer-input-label:active,
 .defer-input-label:focus,
 #defer:active,
 #defer:focus,
 #defer:checked {
-  /* background-color: var(--bg-color-4); */
-  background-color: red;
-}
+  background-color: var(--bg-color-4);
+  /* background-color: red; */
+/*} */
 
 /* .defer-date-input-label {
   width: 100%;
@@ -244,13 +248,25 @@ header p {
 /* ? end */
 
 /* ? Change dimensions of checkbox */
-input#defer {
+/* input#defer, */
+.defer-input-label input[type="checkbox"] {
   /* width: 30px; */
   /* height: 30px; */
   /* margin: 32px 0 0 10px; */
   /* aligns-self: center; */
-  width: 0px;
-  height: 0px;
+  /* width: 0px;
+  height: 0px; */
+  /* width: 45%; */
+  width: revert;
+  margin: 0 0 0 10px;
+  accent-color: var(--accent-color-2);
+  accent-color: red;
+}
+
+/* input#defer:hover,*/
+.defer-input-label input[type="checkbox"]:hover {
+  accent-color: var(--accent-color--2-hover);
+  cursor: pointer;
 }
 
 .edit-todo-input-label {
@@ -425,6 +441,7 @@ h2.completed-todos-header {
   text-transform: initial;
 }
 
+
 /* ? Implement? Change background color of unchecked checkbox */
 .todo_items_left input[type="checkbox"] {
   width: 20px;
@@ -442,8 +459,9 @@ h2.completed-todos-header {
   accent-color: var(--accent-color-2);
 }
 
-.todo_items_left input[type=checkbox]:hover {
+.todo_items_left input[type="checkbox"]:hover {
   accent-color: var(--accent-color-2-hover);
+  cursor: pointer;
   /* background-color: var(--accent-color-2-hover); */
 }
 
@@ -789,18 +807,18 @@ button.primary,
     flex-wrap: wrap;
   }
 
-  #todo_name,
+  /* #todo_name,
   #goal,
-  #days-to-complete,
+  #days-to-complete, */
   /* ? */
   /* #defer, */
-  .defer-date-input-label,
-  #defer-date
+  /* .defer-date-input-label,
+  #defer-date */
 
   /* ? end */
-    {
-    /* margin: 10px 0 0 0; */
-  }
+  /* { */
+  /* margin: 10px 0 0 0; */
+  /* } */
 
   /* ? */
   .todo-input .count-input-label,
@@ -824,10 +842,10 @@ button.primary,
 
   /* ? end */
 
-  /* ? Defer input label width */
-  /* .defer-input-label {
-    width: 5%;
-  } */
+  /* ? horizonally centered looks better on mobile but justified top looks better on larger screens */
+  .defer-input-label {
+    display: block;
+  }
 
   /* .defer-date-input-label {
   width: 45%;
