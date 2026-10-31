@@ -156,8 +156,8 @@ header p {
   /* ? end */
   flex-flow: row wrap;
   /* ? Is there enough space so that the label is obviously connected to the input field? */
-  gap: 1rem;
-  /* column-gap: 1rem; */
+  /* gap: 1rem; */
+  column-gap: 1rem;
   /* ? end */
 }
 
@@ -207,6 +207,7 @@ header p {
 }
 
 /* ? Defer input label width */
+/* ? Maybe make the checkbox look like the current label and then keep the label? */
 .defer-input-label {
   /* width: 5%; */
   /* width: 20%; */
@@ -217,6 +218,22 @@ header p {
   text-align: center;
   align-content: center;
   /* line-height: 0; */
+}
+
+/* TODO: Add hover effect for defer input label */
+.defer-input-label:hover {
+  background-color: var(--bg-color-4);
+  cursor: pointer;
+}
+
+/* TODO: ? Change text with JS to say that it's deferred? */
+.defer-input-label:active,
+.defer-input-label:focus,
+#defer:active,
+#defer:focus,
+#defer:checked {
+  /* background-color: var(--bg-color-4); */
+  background-color: red;
 }
 
 /* .defer-date-input-label {
