@@ -148,9 +148,17 @@ header p {
 /* ? Update layout of phone */
 .input-form-layout {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
+  /* ? */
+  /* align-items: center; */
+  /* ! Resize defer input label */
+  align-items: end;
+  /* ? end */
   flex-flow: row wrap;
+  /* ? Is there enough space so that the label is obviously connected to the input field? */
   gap: 1rem;
+  /* column-gap: 1rem; */
+  /* ? end */
 }
 
 /* ? end */
@@ -159,6 +167,7 @@ header p {
   /* ? */
   /* display: block; */
   width: 100%;
+  /* width: 75%; */
   /* ? end */
   font-size: 1rem;
   flex-grow: 1;
@@ -166,18 +175,65 @@ header p {
 
 #todo_name,
 #goal,
-#days-to-complete {
+#days-to-complete,
+/* ? */
+/* ! work the spacing out */
+.defer-input-label,
+/* #defer, */
+#defer-date
+
+/* ? end */
+  {
   margin: .5rem 0 1rem 0;
 }
 
 .todo-input .count-input-label,
 .date-input-label,
+.defer-input-label,
+.defer-date-input-label,
 .edit-count-input-label,
 .edit-date-input-label,
 .edit-day-count-input-label {
-  width: 30%;
+  /* ? */
+  /* display: block; */
+  /* width: 30%; */
+  width: 45%;
+  /* ? Maybe 23% +/- for mini screens */
+  /* width: 23%; */
+  /* width: 10%; */
+  /* ? end */
   flex-grow: 1;
   font-size: 1rem;
+}
+
+/* ? Defer input label width */
+.defer-input-label {
+  /* width: 5%; */
+  /* width: 20%; */
+  border: var(--narrow-border) var(--accent-color-3);
+  border-radius: var(--border-radius);
+  background-color: var(--bg-color-1);
+  padding: 9px 0 9px 0;
+  text-align: center;
+  align-content: center;
+  /* line-height: 0; */
+}
+
+/* .defer-date-input-label {
+  width: 100%;
+  width: 75%;
+} */
+
+/* ? end */
+
+/* ? Change dimensions of checkbox */
+input#defer {
+  /* width: 30px; */
+  /* height: 30px; */
+  /* margin: 32px 0 0 10px; */
+  /* aligns-self: center; */
+  width: 0px;
+  height: 0px;
 }
 
 .edit-todo-input-label {
@@ -208,6 +264,15 @@ input {
   color: var(--text-color);
   margin: 10px 0 0 0;
 }
+
+/* ? checkbox for input form styling */
+/* input#defer {
+  width: revert;
+  margin-left: 10px;
+  margin-top: 0;
+} */
+
+/* ? end */
 
 input[type="radio"] {
   border: var(--narrow-border) var(--radio-color, currentColor);
@@ -501,10 +566,9 @@ button,
   display: inline-block;
   text-align: center;
   border-radius: var(--border-radius);
-  /* ? */
+  /* * Needed for spacing of counter, edit, and delete buttons in todo items may want to move to more specific selectors */
   padding: 0.5rem 1rem;
-  /* padding-top: 4px; */
-  /* ? end */
+  /* * End needed for spacing of counter, edit, and delete buttons in todo items */
   cursor: pointer;
   text-align: center;
   font-size: 1rem;
@@ -700,7 +764,7 @@ button.primary,
     /* ? I don't think this is needed */
     /* display: flex; */
     /* flex-wrap: nowrap; */
-    gap: 1rem;
+    /* gap: 1rem; */
     /* ? end */
   }
 
@@ -710,9 +774,49 @@ button.primary,
 
   #todo_name,
   #goal,
-  #days-to-complete {
-    margin: 10px 0 0 0;
+  #days-to-complete,
+  /* ? */
+  /* #defer, */
+  .defer-date-input-label,
+  #defer-date
+
+  /* ? end */
+    {
+    /* margin: 10px 0 0 0; */
   }
+
+  /* ? */
+  .todo-input .count-input-label,
+  .date-input-label,
+  .defer-input-label,
+  .defer-date-input-label,
+  .edit-count-input-label,
+  .edit-date-input-label,
+  .edit-day-count-input-label {
+    /* ? */
+    /* display: block; */
+    /* width: 30%; */
+    width: 45%;
+    /* ? Maybe 23% +/- for mini screens */
+    width: 23%;
+    /* width: 10%; */
+    /* ? end */
+    flex-grow: 1;
+    font-size: 1rem;
+  }
+
+  /* ? end */
+
+  /* ? Defer input label width */
+  /* .defer-input-label {
+    width: 5%;
+  } */
+
+  /* .defer-date-input-label {
+  width: 45%;
+} */
+
+  /* ? end */
 
   .edit-todo-input-label {
     width: 100%;

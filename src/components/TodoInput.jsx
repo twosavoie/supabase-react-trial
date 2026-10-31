@@ -15,8 +15,11 @@ function TodoInput({ fetchTodos, session }) {
   const [todo_name, setTodo_name] = useState("");
   const [goal, setGoal] = useState("");
   const [daysToComplete, setDaysToComplete] = useState("");
+  const [defer, setDefer] = useState(false);
+  const [deferDate, setDeferDate] = useState("");
 
   // Source: https://claude.ai/share/44716456-b609-4ac6-a10a-3ed916cb6fad
+  // * Calculate the due date based on the number of days entered by user
   const calcDueDate = (days) => {
     if (!days || days <= 0) return null;
     const date = new Date();
@@ -32,9 +35,13 @@ function TodoInput({ fetchTodos, session }) {
       todo_name,
       goal,
       dueDate,
+      defer,
+      deferDate,
       setTodo_name,
       setGoal,
       () => setDaysToComplete(""),
+      setDefer,
+      setDeferDate,
       fetchTodos,
       session.user.id,
     );
@@ -44,9 +51,13 @@ function TodoInput({ fetchTodos, session }) {
     todo_name,
     goal,
     dueDate,
+    defer,
+    deferDate,
     setTodo_name,
     setGoal,
     setDueDate,
+    setDefer,
+    setDeferDate,
     fetchTodos,
     userId,
   ) {
@@ -57,6 +68,8 @@ function TodoInput({ fetchTodos, session }) {
         user_id: userId,
         goal: goal && goal > 0 ? Number(goal) : 0,
         due_date: dueDate || null,
+        defer: defer || false,
+        defer_date: deferDate || null,
       },
     ]);
     if (error) console.error("Error inserting todo:", error);
@@ -64,6 +77,8 @@ function TodoInput({ fetchTodos, session }) {
       setTodo_name("");
       setGoal("");
       setDueDate("");
+      setDefer(false);
+      setDeferDate("");
       fetchTodos();
     }
   }
@@ -72,7 +87,7 @@ function TodoInput({ fetchTodos, session }) {
     <div className="todo-input">
       <form onSubmit={handleSubmit} className="input-form-layout">
         <label htmlFor="todo_name" className="todo-input-label">
-          Click here to add a new todo:
+          Click here to add a new to-do:
           <input
             type="text"
             value={todo_name}
@@ -82,8 +97,29 @@ function TodoInput({ fetchTodos, session }) {
             onChange={(event) => setTodo_name(event.target.value)}
           />
         </label>
+        {/* <label htmlFor="defer" className="defer-input-label">
+          Defer:
+          <input
+            type="checkbox"
+            id="defer"
+            name="defer"
+            checked={defer}
+            onChange={(event) => setDefer(event.target.checked)}
+          />
+        </label>
+
+        <label htmlFor="defer-date" className="defer-date-input-label">
+          Defer until:
+          <input
+            type="date"
+            id="defer-date"
+            name="defer-date"
+            value={deferDate}
+            onChange={(event) => setDeferDate(event.target.value)}
+          />
+        </label> */}
         <label htmlFor="goal" className="count-input-label">
-          Set a Goal:
+          Set a goal:
           <input
             type="number"
             value={goal}
@@ -107,6 +143,28 @@ function TodoInput({ fetchTodos, session }) {
             onChange={(event) => setDaysToComplete(event.target.value)}
           />
         </label>
+        <label htmlFor="defer" className="defer-input-label">
+          Click to defer
+          <input
+            type="checkbox"
+            id="defer"
+            name="defer"
+            checked={defer}
+            onChange={(event) => setDefer(event.target.checked)}
+          />
+        </label>
+
+        <label htmlFor="defer-date" className="defer-date-input-label">
+          Defer Date:
+          <input
+            type="date"
+            id="defer-date"
+            name="defer-date"
+            value={deferDate}
+            onChange={(event) => setDeferDate(event.target.value)}
+          />
+        </label>
+
         <button className="button input-submit-button" type="submit">
           <span className="visually-hidden">Submit</span>
           <svg
