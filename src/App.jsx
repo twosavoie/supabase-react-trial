@@ -57,8 +57,4 @@ function App() {
   );
 }
 
-// Source: https://www.freecodecamp.org/news/build-a-todo-app-from-scratch-with-reactjs/ original app
-// Source: Use this video to make Account a dialog: https://www.youtube.com/watch?v=YwHJMlvZRCc
-// Source: https://www.youtube.com/watch?app=desktop&v=yYIdFhkE3RU use Supabase rather than localStorage 24:42 for completed. Start at 29:06 next time. Also used to separate completed and incomplete todos.
-
 export default App;

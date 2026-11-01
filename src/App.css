@@ -13,43 +13,7 @@
   /* color-scheme: light dark; */
   /* * End Global and reset styles */
 
-  /* * Fallback colors for older browsers that don't support light-dark */
-  /* ? Fallback needed for browsers that don't support CSS variables? */
-  /* --bg-color-1: #ffffff;
-  --bg-color-2: #ffffff;
-  --bg-color-3: #bce4f9;
-  --bg-color-4: #f2fafe;
-  --my-gradient: linear-gradient(#63bff005, #63bff040);
-  --text-color: #07124d;
-  --text-color-disabled: #999999;
-  --text-color-placeholder: #999999;
-  --accent-color-1: #dc5a15;
-  --accent-color-2: #f36500;
-  --accent-color-2-hover: #ff6b00;
-  --accent-color-3: #09415e; */
-  /* * End Fallback colors for older browsers that don't support light-dark */
-
-  /* * Global variables */
-  /* * Removed - in Theme component */
-  /* * Background colors */
-  /* --bg-color-1: light-dark(#ffffff, #15122f);
-  --bg-color-2: light-dark(#ffffff, #0c0828);
-  --bg-color-3: light-dark(#bce4f9, #0c0828);
-  --bg-color-4: light-dark(#f2fafe, #0c0828);
-  --my-gradient: linear-gradient(light-dark(#63bff005, hsl(248deg 45% 16%)), light-dark(#63bff040, hsl(240, 44%, 6%))); */
-
-  /* * Text colors */
-  /* --text-color: light-dark(#07124d, #f2e4e6);
-  --text-color-disabled: light-dark(#999999, #bbbbbb);
-  --text-color-placeholder: light-dark(#999999, #bbbbbb);
-  --text-color-reduced-opacity: light-dark(#07124d50, #f2e4e650); */
-
-  /* * Accent colors */
-  /* --accent-color-1: light-dark(#dc5a15, #f493a4);
-  --accent-color-2: light-dark(#f36500, #d7556c);
-  --accent-color-2-hover: light-dark(#ff6b00, #ed5e77);
-  --accent-color-3: light-dark(#09415e, #333); */
-
+  /* * GlobalCSS variables not part of theming. See Theme.jsx component for theme colors */
   /* * Borders */
   --narrow-border: 1px solid;
   --wide-border: 3px solid;
@@ -81,11 +45,9 @@ body {
   justify-content: center;
   width: 100vw;
   min-height: 100dvh;
-  /* ? */
   scroll-behavior: smooth;
   /* * Changes the color of the cursor to the accent color */
   caret-color: var(--accent-color-1);
-  /* caret-shape: block; */
 }
 
 /* * Grid */
@@ -145,30 +107,14 @@ header p {
 }
 
 /* * Todo input form */
-/* ? Update layout of phone */
 .input-form-layout {
   display: flex;
-  /* justify-content: center; */
-  /* ? */
-  /* align-items: center; */
-  /* ! Resize defer input label */
-  /* align-items: end; */
-  /* ? end */
   flex-flow: row wrap;
-  /* ? Is there enough space so that the label is obviously connected to the input field? */
-  /* gap: 1rem; */
   column-gap: 1rem;
-  /* ? end */
 }
 
-/* ? end */
-
 .todo-input .todo-input-label {
-  /* ? */
-  /* display: block; */
   width: 100%;
-  /* width: 75%; */
-  /* ? end */
   font-size: 1rem;
   flex-grow: 1;
 }
@@ -177,14 +123,7 @@ header p {
 #goal,
 #days-to-complete,
 #due-date,
-/* ? */
-/* ! work the spacing out */
-/* .defer-input-label, */
-/* #defer, */
-#defer-date
-
-/* ? end */
-  {
+#defer-date {
   margin: .5rem 0 1rem 0;
 }
 
@@ -197,89 +136,29 @@ header p {
 .edit-day-count-input-label,
 .edit-defer-input-label,
 .edit-defer-date-input-label {
-  /* ? */
-  /* display: block; */
-  /* width: 30%; */
   width: 45%;
-  /* ? Maybe 23% +/- for mini screens */
-  /* width: 23%; */
-  /* width: 10%; */
-  /* ? end */
   flex-grow: 1;
   font-size: 1rem;
 }
 
-/* ? Defer input label width */
-/* ? Maybe make the checkbox look like the current label and then keep the label? */
 .defer-input-label {
-  /* width: 5%; */
-  /* width: 20%; */
-  /* width: 100px; */
-  /* border: var(--narrow-border) var(--accent-color-3); */
-  /* border-radius: var(--border-radius); */
-  /* background-color: var(--bg-color-1); */
-  /* padding: 9px 0 9px 0; */
-  /* text-align: center; */
-  /* align-content: center; */
-  /* line-height: 0; */
-  /* padding-right: 10px; */
   display: inline-flex;
   align-items: center;
   flex-grow: 0;
-  /* width: 38%; */
-  /* width: 32%; */
 }
 
 /* ? Safari on iOS doesn't respect the width of the date input, so this is a hack to make it look better. Need to test on other browsers. Currently takes up the 20px of padding on the right. The screen is approx 291px wide. 20/291 = 6.9%. New wider phones are a bit different so testing widths */
 #defer-date {
-  /* width: 38%; */
-  width: 93%;
   width: 91%;
-  /* flex-grow: 0; */
 }
 
-/* TODO: Add hover effect for defer input label */
-/* .defer-input-label:hover {
-  background-color: var(--bg-color-4);
-  cursor: pointer;
-} */
-
-/* TODO: ? Change text with JS to say that it's deferred? */
-/* .defer-input-label:active,
-.defer-input-label:focus,
-#defer:active,
-#defer:focus,
-#defer:checked {
-  background-color: var(--bg-color-4);
-  /* background-color: red; */
-/*} */
-
-/* .defer-date-input-label {
-  width: 100%;
-  width: 75%;
-} */
-
-/* ? end */
-
-/* ? Change dimensions of checkbox */
-/* ? add edit styles */
-/* input#defer, */
 .defer-input-label input[type="checkbox"],
 .edit-defer-input-label input[type="checkbox"] {
-  /* width: 30px; */
-  /* height: 30px; */
-  /* margin: 32px 0 0 10px; */
-  /* aligns-self: center; */
-  /* width: 0px;
-  height: 0px; */
-  /* width: 45%; */
   width: revert;
   margin: 0 0 0 10px;
   accent-color: var(--accent-color-2);
-  /* accent-color: red; */
 }
 
-/* input#defer:hover,*/
 .defer-input-label input[type="checkbox"]:hover,
 .edit-defer-input-label input[type="checkbox"]:hover {
   accent-color: var(--accent-color-2-hover);
@@ -307,14 +186,12 @@ header p {
 /* ? Safari on iOS doesn't respect the width of the date input, so this is a hack to make it look better. Need to test on other browsers. Currently takes up the 20px of padding on the right. The screen is approx 291px wide. 20/291 = 6.9%. New wider phones are a bit different so testing widths */
 .edit-date-input-label input,
 .edit-defer-date-input-label input {
-  width: 93%;
-  width: 94%;
+  width: 95%;
 }
 
-/* .edit-date-input-label input,
 .edit-defer-date-input-label input {
-  width: 100%;
-} */
+  width: 97%;
+}
 
 input {
   width: 100%;
@@ -326,15 +203,6 @@ input {
   color: var(--text-color);
   margin: 10px 0 0 0;
 }
-
-/* ? checkbox for input form styling */
-/* input#defer {
-  width: revert;
-  margin-left: 10px;
-  margin-top: 0;
-} */
-
-/* ? end */
 
 input[type="radio"] {
   border: var(--narrow-border) var(--radio-color, currentColor);
@@ -354,19 +222,10 @@ input[disabled] {
   color: var(--text-color-disabled);
 }
 
-/* ? button update for phone layout */
 button.input-submit-button {
   width: 100%;
   padding-top: 12px;
-  /* padding: 0.5rem;
-  font-size: 1rem;
-  border-radius: var(--border-radius);
-  border: var(--narrow-border) var(--accent-color-3);
-  background-color: var(--bg-color-1);
-  color: var(--text-color); */
 }
-
-/* ? end */
 
 /* * Style messages for Auth */
 .success-message {
@@ -390,7 +249,6 @@ button.input-submit-button {
 /* * End Style messages for Auth */
 
 /* * Todo list */
-
 h2.deferred-todos-header,
 h2.completed-todos-header {
   width: 90%;
@@ -432,7 +290,6 @@ h2.completed-todos-header {
   justify-content: flex-start;
   flex-flow: row wrap;
   gap: 12px;
-  /* align-items: flex-end; */
 }
 
 .todo_items_left,
@@ -471,60 +328,26 @@ h2.completed-todos-header {
   text-transform: initial;
 }
 
-
-/* ? Implement? Change background color of unchecked checkbox */
 .todo_items_left input[type="checkbox"] {
   width: 20px;
-  /* width: 8px; */
   margin-top: 0;
   margin-right: 8px;
-  /* appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none; */
-  /* height: 20px; */
-  /* border-radius: 50%; */
-  /* border: var(--narrow-border) var(--accent-color-1);
-  background-color: var(--bg-color-1);
-  /* background-color: var(--bg-color-1); */
   accent-color: var(--accent-color-2);
 }
 
 .todo_items_left input[type="checkbox"]:hover {
   accent-color: var(--accent-color-2-hover);
   cursor: pointer;
-  /* background-color: var(--accent-color-2-hover); */
 }
 
-/* .todo_items_left input[type="checkbox"]:checked {
-  background-color: var(--accent-color-2);
-} */
-
-/* input[type="checkbox"]:checked::before {
-  content: "✔";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  /* Color of the check mark */
-/* font-size: 14px;
-} */
-/* ? End Change background color of unchecked checkbox */
-
 .todo_items_left p.goal {
-  /* ? */
-  /* flex-basis: 55%; */
-  /* flex-basis: 30%; */
   text-align: right;
 }
 
 .todo_items_left .goal-due-date {
   display: flex;
-  /* flex-direction: column; */
-  /* align-items: flex-end; */
   justify-content: flex-end;
   gap: 10px;
-  /* width: 50%; */
 }
 
 .todo_items_right {
@@ -622,7 +445,6 @@ svg {
 }
 
 /* * Button */
-
 button,
 .button {
   color: var(--text-color);
@@ -650,7 +472,6 @@ button.primary,
 }
 
 /* * Widgets */
-
 .card {
   border: var(--narrow-border) var(--accent-color-3);
   border-radius: var(--border-radius);
@@ -801,7 +622,6 @@ button.primary,
 }
 
 /* * Utils */
-
 .block {
   display: block;
   width: 100%;
@@ -825,32 +645,10 @@ button.primary,
 
 @media (min-width:768px) {
 
-  .input-form-layout {
-    /* ? I don't think this is needed */
-    /* display: flex; */
-    /* flex-wrap: nowrap; */
-    /* gap: 1rem; */
-    /* ? end */
-  }
-
   .todo-edit-form {
     flex-wrap: wrap;
   }
 
-  /* #todo_name,
-  #goal,
-  #days-to-complete, */
-  /* ? */
-  /* #defer, */
-  /* .defer-date-input-label,
-  #defer-date */
-
-  /* ? end */
-  /* { */
-  /* margin: 10px 0 0 0; */
-  /* } */
-
-  /* ? */
   .todo-input .count-input-label,
   .date-input-label,
   .defer-input-label,
@@ -860,30 +658,14 @@ button.primary,
   .edit-day-count-input-label,
   .edit-defer-input-label,
   .edit-defer-date-input-label {
-    /* ? */
-    /* display: block; */
-    /* width: 30%; */
-    width: 45%;
-    /* ? Maybe 23% +/- for mini screens */
     width: 23%;
-    /* width: 10%; */
-    /* ? end */
     flex-grow: 1;
     font-size: 1rem;
   }
 
-  /* ? end */
-
-  /* ? horizontally centered looks better on mobile but justified top looks better on larger screens */
   .defer-input-label {
     display: block;
   }
-
-  /* .defer-date-input-label {
-  width: 45%;
-} */
-
-  /* ? end */
 
   .edit-todo-input-label {
     width: 100%;
@@ -947,7 +729,7 @@ button.primary,
     width: 35%;
   }
 
-  /* Dialog */
+  /* *Dialog */
   dialog {
     width: 75%;
   }
@@ -973,13 +755,8 @@ button.primary,
   }
 
   /* * Forms */
-
   .todo-input .count-input-label,
   .date-input-label {
-    /* ? */
-    /* width: 20%;
-    flex-grow: 0; */
-    /* ? end */
     flex-grow: 1;
   }
 
@@ -997,11 +774,6 @@ button.primary,
     width: 32%;
     flex-grow: 0;
   }
-
-  /* .edit-defer-input-label {
-    width: 20%;
-    flex-grow: 0;
-  } */
 
   .edit-defer-date-input-label {
     width: 68%;
@@ -1055,7 +827,6 @@ button.primary,
 }
 
 @media (min-width: 1400px) {
-
   dialog {
     width: 60%;
   }
@@ -1199,142 +970,3 @@ button.primary,
 .theme-color-picker__colors input[type="radio"]#dark {
   --radio-color: hsl(248, 40%, 41%);
 }
-
-/* ? Classes were part of tutorial as a fallback for browsers that don't support :has(). Leaving for reference. */
-/* .light {
-  --bg-color-1: #ffffff;
-  --bg-color-2: #ffffff;
-  --bg-color-3: #bce4f9;
-  --bg-color-4: #f2fafe;
-  --my-gradient: linear-gradient(#63bff005, #63bff040);
-  --text-color: #07124d;
-  --text-color-disabled: #999999;
-  --text-color-placeholder: #999999;
-  --accent-color-1: #dc5a15;
-  --accent-color-2: #f36500;
-  --accent-color-2-hover: #ff6b00;
-  --accent-color-3: #09415e;
-}
-
-.blue {
-  --bg-color-1: #a09dea;
-  --bg-color-2: #a09dea;
-  --bg-color-3: #a09dea;
-  --bg-color-4: #a09dea;
-  --my-gradient: linear-gradient(#63bff005, #63bff040);
-  --text-color: #07124d;
-  --text-color-disabled: #999999;
-  --text-color-placeholder: #999999;
-  --accent-color-1: #09415e;
-  --accent-color-2: #09415e;
-  --accent-color-2-hover: #09415e;
-  --accent-color-3: #09415e;
-}
-
-.green {
-  --bg-color-1: #91e76a;
-  --bg-color-2: #91e76a;
-  --bg-color-3: #91e76a;
-  --bg-color-4: #91e76a;
-  --my-gradient: linear-gradient(#63bff005, #63bff040);
-  --text-color: #07124d;
-  --text-color-disabled: #999999;
-  --text-color-placeholder: #999999;
-  --accent-color-1: #3d602d;
-  --accent-color-2: #3d602d;
-  --accent-color-2-hover: #3d602d;
-  --accent-color-3: #3d602d;
-}
-
-.dark {
-  --bg-color-1: #15122f;
-  --bg-color-2: #0c0828;
-  --bg-color-3: #0c0828;
-  --bg-color-4: #0c0828;
-  --my-gradient: linear-gradient(#63bff040, hsl(240, 44%, 6%));
-  --text-color: #f2e4e6;
-  --text-color-disabled: #bbbbbb;
-  --text-color-placeholder: #bbbbbb;
-  --accent-color-1: #f493a4;
-  --accent-color-2: #d7556c;
-  --accent-color-2-hover: #ed5e77;
-  --accent-color-3: #333;
-} */
-/* Also tried using .light and :root:has(.light:checked) and .light:checked */
-/* :root[data-theme="light-dark"],
-:root.theme-light-dark,
-body[data-theme="light-dark"],
-body.theme-light-dark, */
-/* :root[data-theme="light"],
-:root.theme-light,
-body[data-theme="light"],
-body.theme-light {
-  --bg-color-1: #ffffff;
-  --bg-color-2: #ffffff;
-  --bg-color-3: #bce4f9;
-  --bg-color-4: #f2fafe;
-  --my-gradient: linear-gradient(#63bff005, #63bff040);
-  --text-color: #07124d;
-  --text-color-disabled: #999999;
-  --text-color-placeholder: #999999;
-  --accent-color-1: #dc5a15;
-  --accent-color-2: #f36500;
-  --accent-color-2-hover: #ff6b00;
-  --accent-color-3: #09415e;
-}
-
-:root[data-theme="blue"],
-:root.theme-blue,
-body[data-theme="blue"],
-body.theme-blue {
-  --bg-color-1: #a09dea;
-  --bg-color-2: #a09dea;
-  --bg-color-3: #a09dea;
-  --bg-color-4: #a09dea;
-  --my-gradient: linear-gradient(#63bff005, #63bff040);
-  --text-color: #07124d;
-  --text-color-disabled: #999999;
-  --text-color-placeholder: #999999;
-  --accent-color-1: #09415e;
-  --accent-color-2: #09415e;
-  --accent-color-2-hover: #09415e;
-  --accent-color-3: #09415e;
-}
-
-:root[data-theme="green"],
-:root.theme-green,
-body[data-theme="green"],
-body.theme-green {
-  --bg-color-1: #91e76a;
-  --bg-color-2: #91e76a;
-  --bg-color-3: #91e76a;
-  --bg-color-4: #91e76a;
-  --my-gradient: linear-gradient(#63bff005, #63bff040);
-  --text-color: #07124d;
-  --text-color-disabled: #999999;
-  --text-color-placeholder: #999999;
-  --accent-color-1: #3d602d;
-  --accent-color-2: #3d602d;
-  --accent-color-2-hover: #3d602d;
-  --accent-color-3: #3d602d;
-}
-
-:root[data-theme="dark"],
-:root.theme-dark,
-body[data-theme="dark"],
-body.theme-dark {
-  --bg-color-1: #15122f;
-  --bg-color-2: #0c0828;
-  --bg-color-3: #0c0828;
-  --bg-color-4: #0c0828;
-  --my-gradient: linear-gradient(#63bff040, hsl(240, 44%, 6%));
-  --text-color: #f2e4e6;
-  --text-color-disabled: #bbbbbb;
-  --text-color-placeholder: #bbbbbb;
-  --accent-color-1: #f493a4;
-  --accent-color-2: #d7556c;
-  --accent-color-2-hover: #ed5e77;
-  --accent-color-3: #333;
-} */
-
-/* * End Color theme pickers */
