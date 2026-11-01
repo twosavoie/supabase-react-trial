@@ -261,12 +261,12 @@ header p {
   width: revert;
   margin: 0 0 0 10px;
   accent-color: var(--accent-color-2);
-  accent-color: red;
+  /* accent-color: red; */
 }
 
 /* input#defer:hover,*/
 .defer-input-label input[type="checkbox"]:hover {
-  accent-color: var(--accent-color--2-hover);
+  accent-color: var(--accent-color-2-hover);
   cursor: pointer;
 }
 
@@ -363,6 +363,7 @@ button.input-submit-button {
 
 /* * Todo list */
 
+h2.deferred-todos-header,
 h2.completed-todos-header {
   width: 90%;
   text-align: left;
@@ -843,7 +844,7 @@ button.primary,
 
   /* ? end */
 
-  /* ? horizonally centered looks better on mobile but justified top looks better on larger screens */
+  /* ? horizontally centered looks better on mobile but justified top looks better on larger screens */
   .defer-input-label {
     display: block;
   }
@@ -962,6 +963,7 @@ button.primary,
     flex-grow: 0;
   }
 
+  h2.deferred-todos-header,
   h2.completed-todos-header {
     width: 75%;
   }
@@ -1022,6 +1024,7 @@ button.primary,
     width: 60%;
   }
 
+  h2.deferred-todos-header,
   h2.completed-todos-header {
     width: 60%;
   }
@@ -1073,6 +1076,7 @@ button.primary,
     width: 50%;
   }
 
+  h2.deferred-todos-header,
   h2.completed-todos-header {
     width: 50%;
   }

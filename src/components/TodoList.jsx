@@ -31,6 +31,20 @@ function TodoList({ todos, setTodos, fetchTodos }) {
             />
           ))}
       </ol>
+      <h2 className="deferred-todos-header">Deferred Todos:</h2>
+      <ol className="todo_list">
+        {todos
+          .filter((item) => item.defer && !item.completed)
+          .map((item) => (
+            <TodoItem
+              key={item.id}
+              item={item}
+              todos={item.todo_name}
+              setTodos={setTodos}
+              fetchTodos={fetchTodos}
+            />
+          ))}
+      </ol>
       <h2 className="completed-todos-header">Completed Todos:</h2>
       <ol className="todo_list">
         {todos
