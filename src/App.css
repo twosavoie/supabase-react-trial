@@ -232,7 +232,8 @@ header p {
 
 #defer-date {
   /* width: 38%; */
-  flex-grow: 0;
+  width: 93%;
+  /* flex-grow: 0; */
 }
 
 /* TODO: Add hover effect for defer input label */
