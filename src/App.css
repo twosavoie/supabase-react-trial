@@ -230,9 +230,11 @@ header p {
   /* width: 32%; */
 }
 
+/* ? Safari on iOS doesn't respect the width of the date input, so this is a hack to make it look better. Need to test on other browsers. Currently takes up the 20px of padding on the right. The screen is approx 291px wide. 20/291 = 6.9%. New wider phones are a bit different so testing widths */
 #defer-date {
   /* width: 38%; */
   width: 93%;
+  width: 91%;
   /* flex-grow: 0; */
 }
 
@@ -302,10 +304,11 @@ header p {
   width: 100%;
 }
 
-/* ? Safari on iOS doesn't respect the width of the date input, so this is a hack to make it look better. Need to test on other browsers. Currently takes up the 20px of padding on the right. The screen is approx 291px wide. 20/291 = 6.9% */
+/* ? Safari on iOS doesn't respect the width of the date input, so this is a hack to make it look better. Need to test on other browsers. Currently takes up the 20px of padding on the right. The screen is approx 291px wide. 20/291 = 6.9%. New wider phones are a bit different so testing widths */
 .edit-date-input-label input,
 .edit-defer-date-input-label input {
   width: 93%;
+  width: 94%;
 }
 
 /* .edit-date-input-label input,
