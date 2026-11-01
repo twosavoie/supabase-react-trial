@@ -20,7 +20,7 @@ function TodoList({ todos, setTodos, fetchTodos }) {
     <>
       <ol className="todo_list">
         {todos
-          .filter((item) => !item.completed)
+          .filter((item) => !item.completed && !item.defer)
           .map((item) => (
             <TodoItem
               key={item.id}
