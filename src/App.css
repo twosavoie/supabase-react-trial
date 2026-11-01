@@ -194,7 +194,9 @@ header p {
 .defer-date-input-label,
 .edit-count-input-label,
 .edit-date-input-label,
-.edit-day-count-input-label {
+.edit-day-count-input-label,
+.edit-defer-input-label,
+.edit-defer-date-input-label {
   /* ? */
   /* display: block; */
   /* width: 30%; */
@@ -249,8 +251,10 @@ header p {
 /* ? end */
 
 /* ? Change dimensions of checkbox */
+/* ? add edit styles */
 /* input#defer, */
-.defer-input-label input[type="checkbox"] {
+.defer-input-label input[type="checkbox"],
+.edit-defer-input-label input[type="checkbox"] {
   /* width: 30px; */
   /* height: 30px; */
   /* margin: 32px 0 0 10px; */
@@ -265,7 +269,8 @@ header p {
 }
 
 /* input#defer:hover,*/
-.defer-input-label input[type="checkbox"]:hover {
+.defer-input-label input[type="checkbox"]:hover,
+.edit-defer-input-label input[type="checkbox"]:hover {
   accent-color: var(--accent-color-2-hover);
   cursor: pointer;
 }
@@ -279,13 +284,23 @@ header p {
   width: 40%;
 }
 
+.edit-date-input-label,
+.edit-defer-date-input-label {
+  width: 60%;
+}
+
 .edit-date-input-label {
   width: 100%;
 }
 
 /* ? Safari on iOS doesn't respect the width of the date input, so this is a hack to make it look better. Need to test on other browsers. Currently takes up the 20px of padding on the right. The screen is approx 291px wide. 20/291 = 6.9% */
-.edit-date-input-label input {
+/* .edit-date-input-label input {
   width: 93%;
+} */
+
+.edit-date-input-label input,
+.edit-defer-date-input-label input {
+  width: 100%;
 }
 
 input {
@@ -404,7 +419,7 @@ h2.completed-todos-header {
   justify-content: flex-start;
   flex-flow: row wrap;
   gap: 12px;
-  align-items: flex-end;
+  /* align-items: flex-end; */
 }
 
 .todo_items_left,
@@ -829,7 +844,9 @@ button.primary,
   .defer-date-input-label,
   .edit-count-input-label,
   .edit-date-input-label,
-  .edit-day-count-input-label {
+  .edit-day-count-input-label,
+  .edit-defer-input-label,
+  .edit-defer-date-input-label {
     /* ? */
     /* display: block; */
     /* width: 30%; */
@@ -864,6 +881,18 @@ button.primary,
   .edit-day-count-input-label {
     width: 32%;
     flex-grow: 0;
+  }
+
+  .edit-defer-input-label {
+    width: 20%;
+    flex-grow: 0;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .edit-defer-date-input-label {
+    width: 60%;
+    flex-grow: 1;
   }
 
   .todo_items_left .goal-due-date {
@@ -956,11 +985,14 @@ button.primary,
     flex-grow: 0;
   }
 
-  .edit-count-input-label,
-  .edit-date-input-label,
-  .edit-day-count-input-label {
-    width: 32%;
+  /* .edit-defer-input-label {
+    width: 20%;
     flex-grow: 0;
+  } */
+
+  .edit-defer-date-input-label {
+    width: 68%;
+    flex-grow: 1;
   }
 
   h2.deferred-todos-header,

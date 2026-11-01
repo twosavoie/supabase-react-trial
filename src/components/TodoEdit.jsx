@@ -14,6 +14,8 @@ TodoEdit.propTypes = {
     count: PropTypes.number,
     completed: PropTypes.bool,
     due_date: PropTypes.string,
+    defer: PropTypes.bool,
+    defer_date: PropTypes.string,
   }).isRequired,
 };
 
@@ -44,6 +46,8 @@ export default function TodoEdit({ item, setTodos, fetchTodos, onClose }) {
   const [daysToComplete, setDaysToComplete] = useState(
     calcDaysFromDueDate(formattedDue),
   );
+  const [defer, setDefer] = useState(item?.defer || false);
+  const [deferDate, setDeferDate] = useState(item?.defer_date || "");
 
   useEffect(() => {
     if (inputRef.current) {
@@ -54,7 +58,7 @@ export default function TodoEdit({ item, setTodos, fetchTodos, onClose }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     // use the current dueDate state (computed either directly or via daysToComplete)
-    await updateTodo(item.id, todo_name, goal, dueDate);
+    await updateTodo(item.id, todo_name, goal, dueDate, defer, deferDate);
   };
 
   function calcDueDate(days) {
@@ -67,13 +71,15 @@ export default function TodoEdit({ item, setTodos, fetchTodos, onClose }) {
     return dueDate.toISOString().split("T")[0];
   }
 
-  async function updateTodo(id, name, goal, dueDate) {
+  async function updateTodo(id, name, goal, dueDate, defer, deferDate) {
     const { data, error } = await supabase
       .from("todos")
       .update({
         todo_name: name,
         goal: goal && goal > 0 ? Number(goal) : 0,
         due_date: dueDate || null,
+        defer: defer || false,
+        defer_date: deferDate || null,
       })
       .eq("id", id)
       .select();
@@ -158,6 +164,27 @@ export default function TodoEdit({ item, setTodos, fetchTodos, onClose }) {
                 setDueDate(val);
                 setDaysToComplete(calcDaysFromDueDate(val));
               }}
+            />
+          </label>
+          <label htmlFor="defer" className="edit-defer-input-label">
+            Defer to-do:
+            <input
+              type="checkbox"
+              id="defer"
+              name="defer"
+              checked={defer}
+              onChange={(event) => setDefer(event.target.checked)}
+            />
+          </label>
+
+          <label htmlFor="defer-date" className="edit-defer-date-input-label">
+            Defer Date:
+            <input
+              type="date"
+              id="defer-date"
+              name="defer-date"
+              value={deferDate}
+              onChange={(event) => setDeferDate(event.target.value)}
             />
           </label>
           {/* <div className="submit-edit-button"> */}
