@@ -47,7 +47,9 @@ export default function TodoEdit({ item, setTodos, fetchTodos, onClose }) {
     calcDaysFromDueDate(formattedDue),
   );
   const [defer, setDefer] = useState(item?.defer || false);
-  const [deferDate, setDeferDate] = useState(item?.defer_date || "");
+  const [deferDate, setDeferDate] = useState(
+    item?.defer_date ? item.defer_date.split("T")[0] : "",
+  );
 
   useEffect(() => {
     if (inputRef.current) {

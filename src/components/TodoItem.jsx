@@ -77,7 +77,7 @@ function TodoItem({ item, setTodos, fetchTodos }) {
       if (item.count >= item.goal && !item.completed) {
         completeTodo(item.id);
       } else if (item.count < item.goal && item.completed) {
-        completeTodo(item.id);
+        item.id;
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -143,6 +143,13 @@ function TodoItem({ item, setTodos, fetchTodos }) {
                 By: {parseLocalDate(item.due_date).toLocaleDateString()}
               </p>
             )}
+            {/* ? Keep and incorporate into the UI for deferred tasks? */}
+            {/* {item.defer_date && (
+              <p className="defer-date">
+                Deferred until:{" "}
+                {parseLocalDate(item.defer_date).toLocaleDateString()}
+              </p>
+            )} */}
           </div>
         </div>
         <div className="todo_items_right">

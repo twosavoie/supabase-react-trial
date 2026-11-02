@@ -28,8 +28,36 @@ function App() {
       .select("*")
       .eq("user_id", session.user.id)
       .order("created_at", { ascending: true });
-    if (error) console.error("Error fetching todos:", error);
-    else setTodos(data);
+    if (error) {
+      console.error("Error fetching todos:", error);
+      return;
+    }
+
+    const deferDateDue = data.filter(
+      (item) =>
+        item.defer &&
+        item.defer_date &&
+        new Date(item.defer_date) < new Date(),
+    );
+    const updatedDueTodos = await Promise.all(
+      deferDateDue.map(async (item) => {
+        const { error: updateError } = await supabase
+          .from("todos")
+          .update({ defer: false })
+          .eq("id", item.id);
+
+        if (updateError) {
+          console.error("Error updating deferred todo:", updateError);
+          return item;
+        }
+
+        return { ...item, defer: false };
+      }),
+    );
+    const updatedTodosById = new Map(
+      updatedDueTodos.map((item) => [item.id, item]),
+    );
+    setTodos(data.map((item) => updatedTodosById.get(item.id) ?? item));
   }, [session]); // Only re-create if session changes
 
   return (
