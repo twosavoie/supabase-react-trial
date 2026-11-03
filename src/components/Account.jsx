@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../supabaseClient";
-import Avatar from "./Avatar";
+// import Avatar from "./Avatar";
 import PropTypes from "prop-types";
 import Theme from "./Theme.jsx";
 
@@ -9,7 +9,7 @@ export default function Account({ session }) {
   const [username, setUsername] = useState(null);
   const [motivation, setMotivation] = useState(null);
   // const [theme, setTheme] = useState(() => getStoredTheme());
-  const [avatar_url, setAvatarUrl] = useState(null);
+  // const [avatar_url, setAvatarUrl] = useState(null);
 
   Account.propTypes = {
     session: PropTypes.object.isRequired,
@@ -33,7 +33,7 @@ export default function Account({ session }) {
         } else if (data) {
           setUsername(data.username);
           setMotivation(data.motivation);
-          setAvatarUrl(data.avatar_url);
+          // setAvatarUrl(data.avatar_url);
         }
       }
 
@@ -67,7 +67,7 @@ export default function Account({ session }) {
     if (error) {
       alert(error.message);
     } else {
-      setAvatarUrl(avatarUrl);
+      // setAvatarUrl(avatarUrl);
     }
     setLoading(false);
   }
@@ -91,7 +91,7 @@ export default function Account({ session }) {
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-        <div className="account-form-widget-elements">
+        {/* <div className="account-form-widget-elements">
           <label htmlFor="motivation">My motivational message</label>
           <input
             id="motivation"
@@ -100,15 +100,15 @@ export default function Account({ session }) {
             maxLength="100"
             onChange={(e) => setMotivation(e.target.value)}
           />
-        </div>
+        </div> */}
         <Theme session={session} />
-        <Avatar
+        {/* <Avatar
           url={avatar_url}
           size={150}
           onUpload={(event, url) => {
             updateProfile(event, url);
           }}
-        />
+        /> */}
 
         <div className="account-form-widget-elements account-form-buttons">
           <button

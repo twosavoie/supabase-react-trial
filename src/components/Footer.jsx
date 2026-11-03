@@ -34,7 +34,7 @@ export default function Footer({ session }) {
             toggleDialog();
           }}
         >
-          Account
+          Customize
         </button>
         <button
           className="button"
@@ -43,7 +43,7 @@ export default function Footer({ session }) {
             toggleDialog();
           }}
         >
-          About
+          About Pebli
         </button>
         <Dialog toggleDialog={toggleDialog} ref={dialogRef}>
           {dialogContent}

@@ -155,7 +155,7 @@ function TodoInput({ fetchTodos, session }) {
         </label>
 
         <label htmlFor="defer-date" className="defer-date-input-label">
-          Defer Date:
+          Defer date:
           <input
             type="date"
             id="defer-date"

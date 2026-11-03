@@ -30,7 +30,7 @@
 
 html,
 body {
-  background-image: linear-gradient(#1b163a, #090918);
+  background-image: linear-gradient(45deg, #1b163a, #090918);
   background-image: var(--my-gradient);
   padding: 0;
   margin: 0;
@@ -260,6 +260,7 @@ button.input-submit-button {
 /* * End Style messages for Auth */
 
 /* * Todo list */
+h2.active-todos-header,
 h2.deferred-todos-header,
 h2.completed-todos-header {
   width: 90%;
@@ -812,6 +813,7 @@ button.primary,
     flex-grow: 1;
   }
 
+  h2.active-todos-header,
   h2.deferred-todos-header,
   h2.completed-todos-header {
     width: 75%;
@@ -872,6 +874,7 @@ button.primary,
     width: 60%;
   }
 
+  h2.active-todos-header,
   h2.deferred-todos-header,
   h2.completed-todos-header {
     width: 60%;

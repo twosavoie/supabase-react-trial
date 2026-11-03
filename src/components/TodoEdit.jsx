@@ -123,7 +123,7 @@ export default function TodoEdit({ item, setTodos, fetchTodos, onClose }) {
             />
           </label>
           <label htmlFor="goal" className="edit-count-input-label">
-            New Goal:
+            New goal:
             <input
               type="number"
               id="goal"
@@ -180,7 +180,7 @@ export default function TodoEdit({ item, setTodos, fetchTodos, onClose }) {
           </label>
 
           <label htmlFor="defer-date" className="edit-defer-date-input-label">
-            Defer Date:
+            Defer date:
             <input
               type="date"
               id="defer-date"

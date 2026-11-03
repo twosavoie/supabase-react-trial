@@ -15,10 +15,11 @@ function TodoList({ todos, setTodos, fetchTodos }) {
   // * the linter doesn't like this but an empty dependency array creates 7 calls while adding fetchTodos to the dependency array creates 11. So I'm leaving this as is for now. I've also checked with GitHub Copilot. Should I completely remove the array?
   useEffect(() => {
     fetchTodos();
-  }, []);
+  }, [fetchTodos]);
 
   return (
     <>
+      <h2 className="active-todos-header">Active To-dos:</h2>
       <ol className="todo_list">
         {todos
           .filter((item) => !item.completed && !item.defer)
@@ -46,7 +47,7 @@ function TodoList({ todos, setTodos, fetchTodos }) {
             />
           ))}
       </ol>
-      <h2 className="completed-todos-header">Completed Todos:</h2>
+      <h2 className="completed-todos-header">Completed To-dos:</h2>
       <ol className="todo_list">
         {todos
           .filter((item) => item.completed)
