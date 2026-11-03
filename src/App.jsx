@@ -27,6 +27,7 @@ function App() {
       .from("todos")
       .select("*")
       .eq("user_id", session.user.id)
+      .order("due_date", { ascending: true, nullsFirst: false })
       .order("created_at", { ascending: true });
     if (error) {
       console.error("Error fetching todos:", error);
@@ -35,9 +36,7 @@ function App() {
 
     const deferDateDue = data.filter(
       (item) =>
-        item.defer &&
-        item.defer_date &&
-        new Date(item.defer_date) < new Date(),
+        item.defer && item.defer_date && new Date(item.defer_date) < new Date(),
     );
     const updatedDueTodos = await Promise.all(
       deferDateDue.map(async (item) => {
