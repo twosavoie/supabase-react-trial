@@ -253,7 +253,7 @@ export default function Theme({ session }) {
   // ? use form here instead of in App.jsx file? Instead of label for "pick a color scheme" and then form wraps around the div "theme-color-picker__colors"
   return (
     <div className="theme-color-picker account-form-widget-elements">
-      <label>Pick a color scheme</label>
+      <label>Choose a color scheme:</label>
       <div className="theme-color-picker__colors">
         <label htmlFor="light-dark" className="visually-hidden">
           Light-Dark theme

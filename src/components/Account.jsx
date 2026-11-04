@@ -82,7 +82,7 @@ export default function Account({ session }) {
           <input id="email" type="text" value={session.user.email} disabled />
         </div>
         <div className="account-form-widget-elements">
-          <label htmlFor="username">Name</label>
+          <label htmlFor="username">Your Name</label>
           <input
             id="username"
             type="text"
@@ -116,7 +116,7 @@ export default function Account({ session }) {
             type="submit"
             disabled={loading}
           >
-            {loading ? "Loading ..." : "Update Account"}
+            {loading ? "Loading ..." : "Update Your Account"}
           </button>
           {/* * adding button here */}
           <button

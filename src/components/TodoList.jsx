@@ -33,7 +33,7 @@ function TodoList({ todos, setTodos, fetchTodos }) {
             />
           ))}
       </ol>
-      <h2 className="deferred-todos-header">Deferred Todos:</h2>
+      <h2 className="deferred-todos-header">Deferred To-dos:</h2>
       <ol className="todo_list">
         {todos
           .filter((item) => item.defer && !item.completed)

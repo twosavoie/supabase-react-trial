@@ -87,7 +87,7 @@ function TodoInput({ fetchTodos, session }) {
     <div className="todo-input">
       <form onSubmit={handleSubmit} className="input-form-layout">
         <label htmlFor="todo_name" className="todo-input-label">
-          Click here to add a new to-do:
+          Click here to add to the list:
           <input
             type="text"
             value={todo_name}
@@ -119,7 +119,7 @@ function TodoInput({ fetchTodos, session }) {
           />
         </label> */}
         <label htmlFor="goal" className="count-input-label">
-          Set a goal:
+          What&apos;s your goal?
           <input
             type="number"
             value={goal}
@@ -132,7 +132,7 @@ function TodoInput({ fetchTodos, session }) {
         </label>
         {/* Used for days to complete */}
         <label htmlFor="days-to-complete" className="date-input-label">
-          Over # of days:
+          Over how many days?
           <input
             type="number"
             value={daysToComplete}
@@ -144,7 +144,7 @@ function TodoInput({ fetchTodos, session }) {
           />
         </label>
         <label htmlFor="defer" className="defer-input-label">
-          Defer to-do:
+          Wait to add to list:
           <input
             type="checkbox"
             id="defer"
@@ -155,7 +155,7 @@ function TodoInput({ fetchTodos, session }) {
         </label>
 
         <label htmlFor="defer-date" className="defer-date-input-label">
-          Defer date:
+          Date to add to list:
           <input
             type="date"
             id="defer-date"
