@@ -8,6 +8,10 @@ export default function Account({ session }) {
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState(null);
   const [motivation, setMotivation] = useState(null);
+  console.log("Motivation in Account.jsx:", motivation);
+  console.log("Account session in Account.jsx:", session);
+  console.log("Username in Account.jsx:", username);
+  console.log("Email in Account.jsx:", session.user.email);
   // const [theme, setTheme] = useState(() => getStoredTheme());
   // const [avatar_url, setAvatarUrl] = useState(null);
 

@@ -144,7 +144,7 @@ function TodoInput({ fetchTodos, session }) {
           />
         </label>
         <label htmlFor="defer" className="defer-input-label">
-          Wait to add to list:
+          Add to your wait list?
           <input
             type="checkbox"
             id="defer"

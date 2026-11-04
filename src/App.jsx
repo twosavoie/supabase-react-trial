@@ -10,6 +10,7 @@ import Theme from "./components/Theme.jsx";
 
 function App() {
   const [session, setSession] = useState(null);
+  console.log("Session in App.jsx:", session);
   const [todos, setTodos] = useState([]);
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -73,7 +74,13 @@ function App() {
             setTodos={setTodos}
             fetchTodos={fetchTodos}
           />
-          <TodoList todos={todos} setTodos={setTodos} fetchTodos={fetchTodos} />
+          <TodoList
+            todos={todos}
+            setTodos={setTodos}
+            fetchTodos={fetchTodos}
+            session={session}
+          />
+          {/* TODO: Remove theme from main App component but still load the current theme for the user https://claude.ai/share/4055a008-0373-429f-998e-e2c0fc85f626 */}
           <form className="theme-form">
             <Theme session={session} />
           </form>

@@ -11,6 +11,9 @@ TodoList.propTypes = {
 
 function TodoList({ todos, setTodos, fetchTodos }) {
   console.log("TodoList todos:", todos);
+  // ? Need a useEffect to pull motivation? Email is already available in the session object. Maybe move getProfile logic here from Account.jsx? Maybe make a new component to get profile info? Or maybe a whole new motivation component?
+  // console.log("Email in TodoList.jsx:", session.user.email);
+  // console.log("Motivation in TodoList.jsx:", session.user.motivation);
   // ? Is this where I would check deferred todos to see if they should be moved to the active list based on the current date? Or in the TodoItem component?
   // * the linter doesn't like this but an empty dependency array creates 7 calls while adding fetchTodos to the dependency array creates 11. So I'm leaving this as is for now. I've also checked with GitHub Copilot. Should I completely remove the array?
   useEffect(() => {
