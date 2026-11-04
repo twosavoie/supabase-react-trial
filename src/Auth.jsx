@@ -57,18 +57,22 @@ export default function Auth() {
         {step === 1 ? (
           <form className="form-widget" onSubmit={handleSendOtp}>
             <div className="sign-in-input">
-              <input
-                className="inputField"
-                type="email"
-                placeholder="Your email"
-                value={email}
-                required
-                onChange={(e) => setEmail(e.target.value)}
-                disabled={loading}
-              />
+              <label htmlFor="email" className="auth-email-input-label">
+                Enter your email:
+                <input
+                  className="inputField"
+                  id="email"
+                  type="email"
+                  placeholder="myemail@example.com"
+                  value={email}
+                  required
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={loading}
+                />
+              </label>
             </div>
             <div className="sign-in-button">
-              <button className="button block" disabled={loading}>
+              <button className="button block auth-button" disabled={loading}>
                 {loading ? <span>Loading</span> : <span>Send OTP</span>}
               </button>
             </div>
@@ -76,18 +80,22 @@ export default function Auth() {
         ) : (
           <form className="form-widget" onSubmit={handleVerifyOtp}>
             <div className="sign-in-input">
-              <input
-                className="inputField"
-                type="text"
-                placeholder="Enter OTP code"
-                value={otp}
-                required
-                onChange={(e) => setOtp(e.target.value)}
-                disabled={loading}
-              />
+              <label htmlFor="otp" className="auth-otp-input-label">
+                Enter OTP code:
+                <input
+                  className="inputField"
+                  id="otp"
+                  type="text"
+                  placeholder="Enter OTP code"
+                  value={otp}
+                  required
+                  onChange={(e) => setOtp(e.target.value)}
+                  disabled={loading}
+                />
+              </label>
             </div>
             <div className="sign-in-button">
-              <button className="button block" disabled={loading}>
+              <button className="button block otp-button" disabled={loading}>
                 {loading ? <span>Verifying...</span> : <span>Verify OTP</span>}
               </button>
             </div>

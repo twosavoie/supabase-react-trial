@@ -30,7 +30,6 @@
 
 html,
 body {
-  background-image: linear-gradient(45deg, #1b163a, #090918);
   background-image: var(--my-gradient);
   padding: 0;
   margin: 0;
@@ -41,7 +40,6 @@ body {
   background-attachment: fixed;
   background-size: cover;
   font-family: var(--body-font-family);
-  color: #f2e4e6;
   color: var(--text-color);
   display: flex;
   justify-content: center;
@@ -49,7 +47,6 @@ body {
   min-height: 100dvh;
   scroll-behavior: smooth;
   /* * Changes the color of the cursor to the accent color */
-  caret-color: #f493a4;
   caret-color: var(--accent-color-1);
 }
 
@@ -76,6 +73,10 @@ button:hover {
   text-decoration-color: inherit;
 }
 
+input::placeholder {
+  opacity: 1;
+}
+
 /* Source: https://piccalil.li/blog/an-in-depth-guide-to-customising-lists-with-css/ */
 ul {
   padding-inline-start: 1lh;
@@ -84,6 +85,8 @@ ul {
 .overdue {
   opacity: 0.6;
 }
+
+/* * Header */
 
 header {
   display: flex;
@@ -159,13 +162,11 @@ header p {
 .edit-defer-input-label input[type="checkbox"] {
   width: revert;
   margin: 0 0 0 10px;
-  accent-color: #d7556c;
   accent-color: var(--accent-color-2);
 }
 
 .defer-input-label input[type="checkbox"]:hover,
 .edit-defer-input-label input[type="checkbox"]:hover {
-  accent-color: #ed5e77;
   accent-color: var(--accent-color-2-hover);
   cursor: pointer;
 }
@@ -201,13 +202,10 @@ header p {
 input {
   width: 100%;
   border-radius: var(--border-radius);
-  border-color: #333;
   border: var(--narrow-border) var(--accent-color-3);
   padding: 8px;
   font-size: 1rem;
-  background-color: #15122f;
   background-color: var(--bg-color-1);
-  color: #f2e4e6;
   color: var(--text-color);
   margin: 10px 0 0 0;
 }
@@ -224,12 +222,12 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px #15122f inset !important;
   -webkit-text-fill-color: #f2e4e6 !important;
+  /* * Since this applies to the auth form also, and CSS variables are in the Theme.jsx file, I may not want to use CSS variables here. */
   -webkit-box-shadow: 0 0 0 30px var(--bg-color-1) inset !important;
   -webkit-text-fill-color: var(--text-color) !important;
 }
 
 input[disabled] {
-  color: #bbbbbb;
   color: var(--text-color-disabled);
 }
 
@@ -237,27 +235,6 @@ button.input-submit-button {
   width: 100%;
   padding-top: 12px;
 }
-
-/* * Style messages for Auth */
-.success-message {
-  color: #0b2812;
-  background: #dbe8de;
-  border: 1px solid #c3e6cb;
-  padding: 0.5em;
-  margin-bottom: 1em;
-  border-radius: var(--border-radius);
-}
-
-.error-message {
-  color: #401015;
-  background: #f2dee0;
-  border: 1px solid #f5c6cb;
-  padding: 0.5em;
-  margin-bottom: 1em;
-  border-radius: var(--border-radius);
-}
-
-/* * End Style messages for Auth */
 
 /* * Todo list */
 h2.active-todos-header,
@@ -289,13 +266,10 @@ h2.completed-todos-header {
   flex-flow: row wrap;
   align-items: center;
   width: 100%;
-  border-color: #f493a4;
   border: var(--narrow-border) var(--accent-color-1);
   border-radius: var(--border-radius);
   font-size: 16px;
-  background-color: #0c0828;
   background-color: var(--bg-color-2);
-  color: #f2e4e6;
   color: var(--text-color);
   padding: 12px 0;
 }
@@ -324,7 +298,6 @@ h2.completed-todos-header {
 .todo_items_left {
   background-color: transparent;
   border: none;
-  color: #f2e4e6;
   color: var(--text-color);
   gap: 12px;
   font-size: 16px;
@@ -348,12 +321,10 @@ h2.completed-todos-header {
   width: 20px;
   margin-top: 0;
   margin-right: 8px;
-  accent-color: #d7556c;
   accent-color: var(--accent-color-2);
 }
 
 .todo_items_left input[type="checkbox"]:hover {
-  accent-color: #ed5e77;
   accent-color: var(--accent-color-2-hover);
   cursor: pointer;
 }
@@ -381,7 +352,6 @@ h2.completed-todos-header {
 
 .todo_items_right button {
   background-color: transparent;
-  color: #f2e4e6;
   color: var(--text-color);
   border: none;
 }
@@ -392,7 +362,6 @@ h2.completed-todos-header {
 }
 
 .todo_items_right button svg {
-  fill: #f2e4e6;
   fill: var(--text-color);
 }
 
@@ -405,19 +374,20 @@ footer {
   gap: 60px;
 }
 
+/* * Dialog */
+
 dialog {
-  background-color: #15122f;
   background-color: var(--bg-color-1);
-  color: #f2e4e6;
   color: var(--text-color);
   width: 100%;
   margin: auto;
-  border-color: #333;
   border: var(--wide-border) var(--accent-color-3);
   border-radius: var(--border-radius);
   /* * Removes horizontal scroll due to vertical scrollbar */
   overflow-x: hidden;
 }
+
+/* * Account Form Widget */
 
 .account-form-widget h1 {
   width: 100%;
@@ -441,12 +411,10 @@ dialog {
 }
 
 dialog::backdrop {
-  background-color: #0c0828;
   background-color: var(--bg-color-4);
 }
 
 svg {
-  fill: #f2e4e6;
   fill: var(--text-color);
 }
 
@@ -471,11 +439,8 @@ svg {
 /* * Button */
 button,
 .button {
-  color: #f2e4e6;
   color: var(--text-color);
-  border-color: #333;
   border: var(--narrow-border) var(--accent-color-3);
-  background-color: #15122f;
   background-color: var(--bg-color-1);
   display: inline-block;
   text-align: center;
@@ -490,19 +455,16 @@ button,
 }
 
 .button:hover {
-  background-color: #0c0828;
   background-color: var(--bg-color-4);
 }
 
 button.primary,
 .button.primary {
-  background-color: #15122f;
   background-color: var(--bg-color-1);
 }
 
 /* * Widgets */
 .card {
-  border-color: #333;
   border: var(--narrow-border) var(--accent-color-3);
   border-radius: var(--border-radius);
   display: flex;
@@ -524,8 +486,8 @@ button.primary,
 }
 
 .avatar.no-image {
-  background-color: #333;
-  border: 1px solid rgb(200, 200, 200);
+  background-color: var(--bg-color-3);
+  border: var(--narrow-border) var(--accent-color-3);
   border-radius: var(--border-radius);
 }
 
@@ -536,7 +498,6 @@ button.primary,
 }
 
 .avatarPlaceholder {
-  border-color: #333;
   border: var(--narrow-border) var(--accent-color-3);
   border-radius: var(--border-radius);
   width: 35px;
@@ -607,35 +568,100 @@ button.primary,
   padding: 20px;
 }
 
+/* * Authorization Form Styles */
+/* * Authorization form - see also 1000px media query */
+
+body:has(div.auth-container) {
+  background-image: linear-gradient(45deg, #1b163a, #090918);
+  color: #f2e4e6;
+  padding-top: 50px;
+}
+
+.auth-container input {
+  background-color: #0c0828;
+  color: #f2e4e6;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+}
+
+.auth-container input::placeholder {
+  color: #f2e4e6;
+  opacity: 1;
+}
+
+.auth-container .form-widget {
+  align-items: flex-end;
+}
+
+button.auth-button,
+button.otp-button {
+  /* background-color: #f493a4; */
+  background-color: #0c0828;
+  color: #f2e4e6;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+}
+
+button.auth-button:hover,
+button.otp-button:hover {
+  /* background-color: #f2e4e6; */
+  background-color: #0c0828;
+  color: #f493a4;
+}
+
+.success-message {
+  color: #0b2812;
+  background: #dbe8de;
+  border: 1px solid #c3e6cb;
+  padding: 0.5em;
+  margin-bottom: 1em;
+  border-radius: var(--border-radius);
+}
+
+.error-message {
+  color: #401015;
+  background: #f2dee0;
+  border: 1px solid #f5c6cb;
+  padding: 0.5em;
+  margin-bottom: 1em;
+  border-radius: var(--border-radius);
+}
+
 .sign-in-input {
   width: 90%;
 }
 
 .sign-in-input input {
-  margin: 0;
+  margin: 10px 0 10px 0;
   padding: .75rem 1rem;
 }
 
 .sign-in-button button {
   padding: .75rem 1rem;
+  margin: 10px 0 10px 0;
 }
 
 .form-widget>.button {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: none;
+  /* border: none; */
   /* background-color: #444444; */
-  background-color: #0c0828;
-  background-color: var(--bg-color-3);
+  /* background-color: #0c0828; */
+  /* background-color: var(--bg-color-3); */
   text-transform: none !important;
   transition: all 0.2s ease;
 }
 
 .form-widget .button:hover {
   /* background-color: #2a2a2a; */
-  background-color: #0c0828;
-  background-color: var(--bg-color-4);
+  /* background-color: #0c0828; */
+  /* background-color: var(--bg-color-4); */
 }
 
 .form-widget .button>.loader {
@@ -643,6 +669,10 @@ button.primary,
   animation: spin 1s linear infinite;
   filter: invert(1);
 }
+
+/* * End Authorization form */
+
+/* * Utils */
 
 .visually-hidden:not(:focus):not(:active) {
   clip: rect(0 0 0 0);
@@ -654,7 +684,6 @@ button.primary,
   width: 1px;
 }
 
-/* * Utils */
 .block {
   display: block;
   width: 100%;
@@ -675,6 +704,8 @@ button.primary,
   overflow: hidden;
   white-space: nowrap;
 }
+
+/* * End Utils */
 
 @media (min-width:768px) {
 
@@ -749,11 +780,9 @@ button.primary,
     max-width: 1280px;
     margin: 0 auto;
     padding: 2rem;
-    text-align: center;
     width: 75%;
   }
 
-  /* ? Duplicate? */
   .sign-in-input {
     width: 60%;
   }
@@ -761,6 +790,8 @@ button.primary,
   .sign-in-button {
     width: 35%;
   }
+
+  /* * End Authorization form */
 
   /* *Dialog */
   dialog {
@@ -952,20 +983,14 @@ button.primary,
 /* * Color theme pickers. Refer to Themes component. */
 /* TODO: Check class names and styling - refer to themes branch */
 .theme-color-picker__colors {
-  border-color: #333;
-  border: var(--narrow-border) var(--accent-color-3);
-  border-radius: var(--border-radius);
   display: flex;
   justify-content: space-between;
   width: 100%;
   border-radius: var(--border-radius);
-  border-color: #333;
   border: var(--narrow-border) var(--accent-color-3);
   padding: 8px;
   font-size: 1rem;
-  background-color: #15122f;
   background-color: var(--bg-color-1);
-  color: #f2e4e6;
   color: var(--text-color);
   margin: 10px 0 0 0;
 }
