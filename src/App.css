@@ -196,7 +196,7 @@ header p {
 }
 
 .edit-defer-date-input-label input {
-  width: 99%;
+  width: 100%;
 }
 
 input {
@@ -593,7 +593,7 @@ body:has(div.auth-container) {
 .auth-container input::placeholder {
   /* color: #f2e4e6; */
   color: #686263;
-  color: #4c32f1;
+  /* color: #4c32f1; */
   opacity: 1;
 }
 
@@ -620,7 +620,8 @@ button.otp-button:hover {
   /* background-color: #f2e4e6; */
   /* background-color: #0c0828;
   color: #f493a4; */
-  background-color: #f493a4;
+  /* background-color: #f493a4; */
+  background-color: #f2e4e6;
   color: #0c0828;
 }
 
