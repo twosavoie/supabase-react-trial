@@ -87,7 +87,7 @@ function TodoInput({ fetchTodos, session }) {
     <div className="todo-input">
       <form onSubmit={handleSubmit} className="input-form-layout">
         <label htmlFor="todo_name" className="todo-input-label">
-          Click here to add to the list:
+          Click here to add to your list:
           <input
             type="text"
             value={todo_name}
