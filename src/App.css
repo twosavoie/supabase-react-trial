@@ -968,6 +968,7 @@ button.otp-button:hover {
     width: 50%;
   }
 
+  h2.active-todos-header,
   h2.deferred-todos-header,
   h2.completed-todos-header {
     width: 50%;

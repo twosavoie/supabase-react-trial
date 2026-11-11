@@ -50,7 +50,7 @@ export default function Auth() {
       <div className="col-6 form-widget">
         <h1 className="header">Pebli</h1>
         <p className="description">
-          Enter your email to receive a one-time code (OTP).
+          Enter your email to receive a one-time code (OTP)
         </p>
         {message && <div className="success-message">{message}</div>}
         {error && <div className="error-message">{error}</div>}
