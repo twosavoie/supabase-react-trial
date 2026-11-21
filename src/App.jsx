@@ -12,6 +12,7 @@ function App() {
   const [session, setSession] = useState(null);
   console.log("Session in App.jsx:", session);
   const [todos, setTodos] = useState([]);
+  console.log("Todos in App.jsx:", todos);
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
@@ -68,6 +69,9 @@ function App() {
         <div className="app-ui">
           {/* <Header key={session.user.id} session={session} /> */}
           <Header />
+          {/* <p>
+            Welcome, {session.user.email}!
+          </p> */}
           <TodoInput
             session={session}
             todos={todos}

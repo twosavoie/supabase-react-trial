@@ -95,7 +95,7 @@ export default function Account({ session }) {
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-        {/* <div className="account-form-widget-elements">
+        <div className="account-form-widget-elements">
           <label htmlFor="motivation">My motivational message</label>
           <input
             id="motivation"
@@ -104,7 +104,7 @@ export default function Account({ session }) {
             maxLength="100"
             onChange={(e) => setMotivation(e.target.value)}
           />
-        </div> */}
+        </div>
         <Theme session={session} />
         {/* <Avatar
           url={avatar_url}

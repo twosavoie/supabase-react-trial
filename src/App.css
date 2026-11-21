@@ -549,6 +549,19 @@ button.primary,
   padding: 20px;
 }
 
+/* .about-section-item-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+} */
+
+.about-section-item {
+  border: var(--narrow-border) var(--accent-color-1);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  /* width: 45%; */
+}
+
 .about-container p {
   text-align: left;
 }
