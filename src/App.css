@@ -546,7 +546,7 @@ button.primary,
   flex-direction: column;
   justify-content: center;
   gap: 20px;
-  padding: 20px;
+  /* padding: 20px; */
 }
 
 /* .about-section-item-container {
@@ -784,6 +784,14 @@ button.otp-button:hover {
   .todo_items_left,
   .todo_items_right {
     flex-wrap: nowrap;
+  }
+
+  .about-container {
+    /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px; */
+    padding: 20px;
   }
 
   /* TODO: Test on an iPad mini to see if this is the correct media query of if it should be moved to the 1000px media query */

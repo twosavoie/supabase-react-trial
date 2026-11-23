@@ -1,21 +1,14 @@
+/* eslint-disable react/no-unescaped-entities */
 export default function About() {
   return (
     <div className="about-container">
       <h1>Pebli is a new approach to habit tracking</h1>
       <p>
-        Pebli is designed for busy adults with lives that streaks and static
-        to-do lists aren't made for. It's for those who want to get things done
-        on their schedule and still receive a little congratulatory boost along
-        the way. I started with a simple idea: productivity tools should be
-        packed with useful features to help me to reach my goals. And they
-        shouldn’t overwhelm me with the pressure to be perfect. Because being
-        perfect is just <i>not</i> a sustainable goal. With Pebli, I can track
-        each step I take. And as I achieve my goals, Pebli celebrates with me!
+        Designed for busy adults who need a habit tracker that can keep up with
+        their lives. Pebli doesn't overwhelm you with the pressure to be
+        perfect. Because being perfect is just <i>not</i> a sustainable goal.
       </p>
-      <p>
-        Streak tracking apps and static to-do lists never worked for me. I felt
-        like I had to accommodate them and adjust my life to fit them.
-      </p>
+
       {/* <h2>Use Pebli to set and track your goals on your schedule:</h2>
       <p>After setting a goal, you can choose several options:</p> */}
       {/* <ul>
@@ -38,42 +31,40 @@ export default function About() {
         <li>Edit the goal to update its details or progress.</li>
       </ul> */}
       <h2>Why Pebli is Different</h2>
+      <p>
+        Streak tracking apps and static to-do lists never worked for me. I felt
+        like I had to define my goals to accommodate their limitations.
+      </p>
       {/* <div className="about-section-item-container"> */}
       <p>
-        Most habit tracking apps are focused on tracking streaks. They assume
-        you are planning to follow a rigid schedule and maintain perfect
-        consistency — every single day!
+        Most habit tracking apps track streaks. They assume you are planning to
+        maintain perfect consistency <i>every single day!</i>
       </p>
       <p>
-        And most to-do apps focus on completing tasks without considering your
-        personal schedule or flexibility. They often create unnecessary pressure
-        to finish everything on time. Tasks are divided into “to-do” and
-        “completed” lists — as if all of your tasks are equally urgent and
-        important.
+        And most to-do apps are divided into “to-do” and “completed” lists
+        without any way to plan for future tasks.
       </p>
       <p>
-        Instead, Pebli focuses on flexibility, awareness, and realistic goal
-        tracking:
+        Pebli focuses on flexibility, awareness, and realistic goal tracking:
       </p>
       <p className="about-section-item">
         <b>Flexible Scheduling </b>
         <br />
-        What sets Pebli apart from other apps that only track streaks. Set a
-        reasonable goal to meditate 3 times over the next 7 days.
+        Set a timeframe to complete your goal that works for you. Set the number
+        of times you want to complete a task over what time period and Pebli
+        will help you track it.
       </p>
       <p className="about-section-item">
         <b>Activity Counters </b>
         <br />
-        Use the counters to gain awareness and to set a baseline for your goals.
-        Check how often you already meditate by counting the number of times you
-        practice over a week or two.
+        Gain awareness for how often you already perform an activity to
+        understand your current habits and to set a baseline for your goals.
       </p>
       <p className="about-section-item">
         <b>Goal Tracking </b>
         <br />
-        Set a goal for how many times you want to meditate and track your
-        progress. “Meditation” will be checked off automatically when you reach
-        your goal.
+        Set a goal for how many times you want to complete the task and track
+        your progress. Pebli will help you stay on top of it.
       </p>
       <p className="about-section-item">
         <b>Goal Date </b>
@@ -85,21 +76,20 @@ export default function About() {
       <p className="about-section-item">
         <b>Streak Tracking </b>
         <br />
-        might be your thing. If so, Pebli will also work for you. Just set the
-        goal and days-to-complete to the same number.
+        If streak tracking is your thing, Pebli will also work for you. Just set
+        the goal and days-to-complete to the same number.
       </p>
       <p className="about-section-item">
         <b>Todo List </b>
         <br />
-        At its core, Pebli is a simple to-do list. Add “Meditation” to your list
-        and check it off when you’re finished. Yeah you! 🎉
+        At its core, Pebli is a simple to-do list. You know what to do!
       </p>
       <p className="about-section-item">
         <b>Planning for your future</b>
         <br />
         Pebli also allows you to set a goal for the future. If you are not ready
-        to add an item to your active list yet, you can instead add it to the
-        Waiting list. If you set a date, the item will automatically move to the
+        to add an item to your active list yet, add it to the Waiting list
+        instead. If you set a date, the item will automatically move to the
         Active list when the date is reached.
       </p>
       {/* </div> */}
